@@ -32,7 +32,7 @@
             pictureBox1 = new PictureBox();
             Bt_Deco = new Button();
             button6 = new Button();
-            ClientConnecter = new Label();
+            lbl_ClientActuel = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -74,14 +74,13 @@
             button6.Text = "Bénéficiaire";
             button6.UseVisualStyleBackColor = true;
             // 
-            // ClientConnecter
+            // lbl_ClientActuel
             // 
-            ClientConnecter.AutoSize = true;
-            ClientConnecter.Location = new Point(167, 114);
-            ClientConnecter.Name = "ClientConnecter";
-            ClientConnecter.Size = new Size(38, 15);
-            ClientConnecter.TabIndex = 7;
-            ClientConnecter.Text = "label1";
+            lbl_ClientActuel.AutoSize = true;
+            lbl_ClientActuel.Location = new Point(167, 114);
+            lbl_ClientActuel.Name = "lbl_ClientActuel";
+            lbl_ClientActuel.Size = new Size(0, 15);
+            lbl_ClientActuel.TabIndex = 7;
             // 
             // ChooseAccount
             // 
@@ -89,13 +88,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
-            Controls.Add(ClientConnecter);
+            Controls.Add(lbl_ClientActuel);
             Controls.Add(button6);
             Controls.Add(Bt_Deco);
             Controls.Add(pictureBox1);
             Controls.Add(bt_compte);
             Name = "ChooseAccount";
             Text = "Form1";
+            Load += ChooseAccount_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -110,6 +110,6 @@
         private PictureBox pictureBox1;
         private Button Bt_Deco;
         private Button button6;
-        private Label ClientConnecter;
+        private Label lbl_ClientActuel;
     }
 }

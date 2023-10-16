@@ -13,8 +13,10 @@ namespace Fulbank
 {
     public partial class ChooseAccount : Form
     {
-        public ChooseAccount()
+        int NumCompteActuel;
+        public ChooseAccount(int numerocompte = 0)
         {
+            NumCompteActuel = numerocompte;
             InitializeComponent();
         }
 
@@ -23,6 +25,11 @@ namespace Fulbank
             CompteCourant compteCourant = new CompteCourant();
             compteCourant.Show();
             this.Hide();
+        }
+
+        private void ChooseAccount_Load(object sender, EventArgs e)
+        {
+            lbl_ClientActuel.Text = NumCompteActuel.ToString();
         }
     }
 }
