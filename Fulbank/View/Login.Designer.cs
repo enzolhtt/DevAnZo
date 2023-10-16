@@ -58,6 +58,7 @@
             bt_connect.TabIndex = 1;
             bt_connect.Text = "Se connecter";
             bt_connect.UseVisualStyleBackColor = false;
+            bt_connect.Click += bt_connect_Click;
             // 
             // tbx_password
             // 
@@ -89,7 +90,6 @@
             Controls.Add(pictureBox1);
             Name = "Login";
             Text = "Login";
-            Load += Login_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
