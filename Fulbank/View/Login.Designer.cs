@@ -48,6 +48,7 @@
             // 
             // bt_connecter
             // 
+
             bt_connecter.BackColor = Color.FromArgb(34, 67, 153);
             bt_connecter.Font = new Font("Microsoft Sans Serif", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
             bt_connecter.ForeColor = Color.White;
@@ -89,7 +90,6 @@
             Controls.Add(pictureBox1);
             Name = "Login";
             Text = "Login";
-            Load += Login_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
