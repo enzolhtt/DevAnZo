@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             pictureBox1 = new PictureBox();
-            bt_connect = new Button();
+            bt_connecter = new Button();
             tbx_password = new TextBox();
             tbx_user = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -46,18 +46,18 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // bt_connect
+            // bt_connecter
             // 
-            bt_connect.BackColor = Color.FromArgb(34, 67, 153);
-            bt_connect.Font = new Font("Microsoft Sans Serif", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
-            bt_connect.ForeColor = Color.White;
-            bt_connect.Location = new Point(373, 754);
-            bt_connect.Margin = new Padding(0);
-            bt_connect.Name = "bt_connect";
-            bt_connect.Size = new Size(247, 77);
-            bt_connect.TabIndex = 1;
-            bt_connect.Text = "Se connecter";
-            bt_connect.UseVisualStyleBackColor = false;
+            bt_connecter.BackColor = Color.FromArgb(34, 67, 153);
+            bt_connecter.Font = new Font("Microsoft Sans Serif", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
+            bt_connecter.ForeColor = Color.White;
+            bt_connecter.Location = new Point(373, 754);
+            bt_connecter.Margin = new Padding(0);
+            bt_connecter.Name = "bt_connecter";
+            bt_connecter.Size = new Size(247, 77);
+            bt_connecter.TabIndex = 1;
+            bt_connecter.Text = "Se connecter";
+            bt_connecter.UseVisualStyleBackColor = false;
             // 
             // tbx_password
             // 
@@ -85,7 +85,7 @@
             ClientSize = new Size(984, 961);
             Controls.Add(tbx_user);
             Controls.Add(tbx_password);
-            Controls.Add(bt_connect);
+            Controls.Add(bt_connecter);
             Controls.Add(pictureBox1);
             Name = "Login";
             Text = "Login";
@@ -98,7 +98,7 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private Button bt_connect;
+        private Button bt_connecter;
         private TextBox tbx_password;
         private TextBox tbx_user;
     }
