@@ -7,8 +7,6 @@ using Fulbank.Model;
 
 namespace Fulbank
 {
-
-
     public partial class Login : Form
     {
         private Fb_VM.ConnexionViewModel connexionViewModel;
@@ -25,8 +23,28 @@ namespace Fulbank
             string MdpCompte = tbx_password.Text;
             if(connexionViewModel.TestConnexion(NumCompte, MdpCompte))
             {
-                MessageBox.Show("Connexion réussie");
+                MessageBox.Show("Connexion rï¿½ussie");
             }
+        }
+        private void Login_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                string connstring = "server=172.16.119.21; uid=brochard;pwd=admin;database=FulBank";
+                MySqlConnection conn = new MySqlConnection();
+                conn.ConnectionString = connstring;
+                conn.Open();
+                string sql = "select * from Client;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+
+
         }
     }
 }
