@@ -74,7 +74,7 @@
             // 
             // bt_livret
             // 
-            bt_livret.Location = new Point(469, 633);
+            bt_livret.Location = new Point(469, 655);
             bt_livret.Name = "bt_livret";
             bt_livret.Size = new Size(444, 74);
             bt_livret.TabIndex = 10;
@@ -83,7 +83,7 @@
             // 
             // bt_epargne
             // 
-            bt_epargne.Location = new Point(72, 539);
+            bt_epargne.Location = new Point(72, 536);
             bt_epargne.Name = "bt_epargne";
             bt_epargne.Size = new Size(403, 74);
             bt_epargne.TabIndex = 9;
@@ -92,7 +92,7 @@
             // 
             // bt_courant
             // 
-            bt_courant.Location = new Point(469, 394);
+            bt_courant.Location = new Point(469, 408);
             bt_courant.Name = "bt_courant";
             bt_courant.Size = new Size(444, 74);
             bt_courant.TabIndex = 8;
@@ -135,9 +135,9 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(372, 451);
+            listBox1.Location = new Point(349, 452);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(218, 319);
+            listBox1.Size = new Size(284, 349);
             listBox1.TabIndex = 16;
             listBox1.Visible = false;
             // 

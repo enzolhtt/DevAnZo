@@ -48,7 +48,6 @@
             // 
             // bt_connecter
             // 
-
             bt_connecter.BackColor = Color.FromArgb(34, 67, 153);
             bt_connecter.Font = new Font("Microsoft Sans Serif", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
             bt_connecter.ForeColor = Color.White;
@@ -59,6 +58,7 @@
             bt_connecter.TabIndex = 1;
             bt_connecter.Text = "Se connecter";
             bt_connecter.UseVisualStyleBackColor = false;
+            bt_connecter.Click += bt_connecter_Click;
             // 
             // tbx_password
             // 
