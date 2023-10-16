@@ -4,6 +4,7 @@ using Fb_VM = Fulbank.ViewModel;
 using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 using Fulbank.Model;
+using Fulbank.View;
 
 namespace Fulbank
 {
@@ -15,16 +16,6 @@ namespace Fulbank
         {
             InitializeComponent();
             connexionViewModel = new ConnexionViewModel();
-        }
-
-        private void bt_connect_Click(object sender, EventArgs e)
-        {
-            int NumCompte = int.Parse(tbx_user.Text);
-            string MdpCompte = tbx_password.Text;
-            if(connexionViewModel.TestConnexion(NumCompte, MdpCompte))
-            {
-                MessageBox.Show("Connexion r�ussie");
-            }
         }
         private void Login_Load(object sender, EventArgs e)
         {
@@ -45,6 +36,22 @@ namespace Fulbank
 
 
 
+        }
+
+        private void bt_connecter_Click(object sender, EventArgs e)
+        {
+            int NumCompte = int.Parse(tbx_user.Text);
+            string MdpCompte = tbx_password.Text;
+            if (connexionViewModel.TestConnexion(NumCompte, MdpCompte))
+            {
+                ChooseAccount chooseAccount = new ChooseAccount();
+                chooseAccount.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Numero de compte ou mot de passe incorrecte");
+            }
         }
     }
 }

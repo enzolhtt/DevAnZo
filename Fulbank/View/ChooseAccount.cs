@@ -24,5 +24,12 @@ namespace Fulbank
             compteCourant.Show();
             this.Hide();
         }
+
+        private void Bt_Deco_Click(object sender, EventArgs e)
+        {
+            Login deco = new Login();
+            deco.Show();
+            this.Hide();
+        }
     }
 }

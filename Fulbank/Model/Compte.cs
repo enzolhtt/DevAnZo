@@ -28,5 +28,7 @@ namespace Fulbank.Model
             _iban = iban;
             _externe = externe;
         }
+
+        public string Solde { get; set; }
     }
 }

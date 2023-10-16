@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
+            img_retour = new PictureBox();
             bt_crypto = new Button();
             bt_livret = new Button();
             bt_epargne = new Button();
@@ -37,9 +37,12 @@
             bt_virement = new Button();
             lb_solde = new Label();
             lb_compte = new Label();
-            listBox1 = new ListBox();
+            gbx_compte = new GroupBox();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
+            gbx_compte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -52,16 +55,16 @@
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
-            // pictureBox2
+            // img_retour
             // 
-            pictureBox2.Image = Properties.Resources.flecheRetour;
-            pictureBox2.Location = new Point(35, 37);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(140, 140);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 6;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
+            img_retour.Image = Properties.Resources.flecheRetour;
+            img_retour.Location = new Point(35, 37);
+            img_retour.Name = "img_retour";
+            img_retour.Size = new Size(140, 140);
+            img_retour.SizeMode = PictureBoxSizeMode.StretchImage;
+            img_retour.TabIndex = 6;
+            img_retour.TabStop = false;
+            img_retour.Click += img_retour_Click;
             // 
             // bt_crypto
             // 
@@ -102,44 +105,55 @@
             // 
             // bt_virement
             // 
-            bt_virement.Location = new Point(349, 855);
+            bt_virement.Location = new Point(245, 632);
             bt_virement.Name = "bt_virement";
             bt_virement.Size = new Size(284, 44);
             bt_virement.TabIndex = 13;
             bt_virement.Text = "Effectuer un virement";
             bt_virement.UseVisualStyleBackColor = true;
-            bt_virement.Visible = false;
             // 
             // lb_solde
             // 
             lb_solde.AutoSize = true;
             lb_solde.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
-            lb_solde.Location = new Point(204, 312);
+            lb_solde.Location = new Point(69, 168);
             lb_solde.Name = "lb_solde";
             lb_solde.Size = new Size(120, 46);
             lb_solde.TabIndex = 14;
             lb_solde.Text = "Solde :";
-            lb_solde.Visible = false;
             // 
             // lb_compte
             // 
             lb_compte.AutoSize = true;
             lb_compte.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            lb_compte.Location = new Point(409, 230);
+            lb_compte.Location = new Point(323, 65);
             lb_compte.Name = "lb_compte";
             lb_compte.Size = new Size(127, 37);
             lb_compte.TabIndex = 15;
             lb_compte.Text = "personne";
             // 
-            // listBox1
+            // gbx_compte
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(372, 451);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(218, 319);
-            listBox1.TabIndex = 16;
-            listBox1.Visible = false;
+            gbx_compte.Controls.Add(dataGridView1);
+            gbx_compte.Controls.Add(lb_compte);
+            gbx_compte.Controls.Add(bt_virement);
+            gbx_compte.Controls.Add(lb_solde);
+            gbx_compte.Location = new Point(129, 226);
+            gbx_compte.Name = "gbx_compte";
+            gbx_compte.Size = new Size(741, 708);
+            gbx_compte.TabIndex = 17;
+            gbx_compte.TabStop = false;
+            gbx_compte.Text = "groupBox1";
+            gbx_compte.Visible = false;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(196, 262);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(390, 312);
+            dataGridView1.TabIndex = 16;
             // 
             // CompteCourant
             // 
@@ -147,28 +161,27 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
-            Controls.Add(listBox1);
-            Controls.Add(lb_compte);
-            Controls.Add(lb_solde);
-            Controls.Add(bt_virement);
+            Controls.Add(gbx_compte);
             Controls.Add(bt_crypto);
             Controls.Add(bt_livret);
             Controls.Add(bt_epargne);
             Controls.Add(bt_courant);
-            Controls.Add(pictureBox2);
+            Controls.Add(img_retour);
             Controls.Add(pictureBox1);
             Name = "CompteCourant";
             Text = "CompteCourant";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)img_retour).EndInit();
+            gbx_compte.ResumeLayout(false);
+            gbx_compte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
+        private PictureBox img_retour;
         private Button bt_crypto;
         private Button bt_livret;
         private Button bt_epargne;
@@ -177,5 +190,7 @@
         private Label lb_solde;
         private Label lb_compte;
         private ListBox listBox1;
+        private GroupBox gbx_compte;
+        private DataGridView dataGridView1;
     }
 }
