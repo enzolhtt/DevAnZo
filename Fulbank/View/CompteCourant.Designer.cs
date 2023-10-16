@@ -37,6 +37,7 @@
             bt_virement = new Button();
             lb_solde = new Label();
             lb_compte = new Label();
+            listBox1 = new ListBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -82,7 +83,7 @@
             // 
             // bt_epargne
             // 
-            bt_epargne.Location = new Point(72, 492);
+            bt_epargne.Location = new Point(72, 539);
             bt_epargne.Name = "bt_epargne";
             bt_epargne.Size = new Size(403, 74);
             bt_epargne.TabIndex = 9;
@@ -91,7 +92,7 @@
             // 
             // bt_courant
             // 
-            bt_courant.Location = new Point(469, 361);
+            bt_courant.Location = new Point(469, 394);
             bt_courant.Name = "bt_courant";
             bt_courant.Size = new Size(444, 74);
             bt_courant.TabIndex = 8;
@@ -130,12 +131,23 @@
             lb_compte.TabIndex = 15;
             lb_compte.Text = "personne";
             // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(372, 451);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(218, 319);
+            listBox1.TabIndex = 16;
+            listBox1.Visible = false;
+            // 
             // CompteCourant
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
+            Controls.Add(listBox1);
             Controls.Add(lb_compte);
             Controls.Add(lb_solde);
             Controls.Add(bt_virement);
@@ -164,5 +176,6 @@
         private Button bt_virement;
         private Label lb_solde;
         private Label lb_compte;
+        private ListBox listBox1;
     }
 }
