@@ -14,6 +14,8 @@ namespace Fulbank
     public partial class ChooseAccount : Form
     {
         int NumCompteActuel;
+        string NomClient;
+        string Nomclient;
         public ChooseAccount(int numerocompte = 0)
         {
             NumCompteActuel = numerocompte;
