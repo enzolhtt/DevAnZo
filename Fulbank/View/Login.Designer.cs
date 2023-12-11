@@ -79,7 +79,7 @@
             tbx_user.Name = "tbx_user";
             tbx_user.Size = new Size(346, 43);
             tbx_user.TabIndex = 3;
-            tbx_user.Text = "Username";
+            tbx_user.Text = "Numéro de compte";
             tbx_user.TextAlign = HorizontalAlignment.Center;
             tbx_user.Click += tbx_user_Click;
             // 

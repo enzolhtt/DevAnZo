@@ -1,4 +1,5 @@
 ﻿using Fulbank.View;
+using Fulbank.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,18 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Fb_VM = Fulbank.ViewModel;
 
 namespace Fulbank
 {
     public partial class ChooseAccount : Form
     {
-        int NumCompteActuel;
-        string NomClient;
-        string PrenomClient;
+        public int NumCompteActuel;
+        public string NomPrenomClient;
+        private Fb_VM.ClientViewModel clientViewModel;
+        private Fb_VM.CompteViewModel compteViewModel;
         public ChooseAccount(int numerocompte = 0)
         {
             NumCompteActuel = numerocompte;
             InitializeComponent();
+            clientViewModel = new ClientViewModel();
+            compteViewModel = new CompteViewModel();
+            lbl_ClientAccount.Text = clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(numerocompte)).ToString();
         }
 
         private void bt_courant_Click(object sender, EventArgs e)
@@ -29,10 +35,6 @@ namespace Fulbank
             this.Hide();
         }
 
-        private void ChooseAccount_Load(object sender, EventArgs e)
-        {
-            lbl_ClientActuel.Text = NumCompteActuel.ToString();
-        }
         private void Bt_Deco_Click(object sender, EventArgs e)
         {
             Login deco = new Login();
