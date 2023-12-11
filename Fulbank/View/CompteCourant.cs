@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fulbank.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,9 +21,9 @@ namespace Fulbank.View
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void img_retour_Click(object sender, EventArgs e)
         {
-            if (listBox1.Visible == false)
+            if (gbx_compte.Visible == false)
             {
                 ChooseAccount retour = new ChooseAccount(Login.NumCompte);
                 retour.Show();
@@ -34,10 +35,7 @@ namespace Fulbank.View
                 bt_epargne.Visible = true;
                 bt_livret.Visible = true;
                 bt_crypto.Visible = true;
-                bt_virement.Visible = false;
-                listBox1.Visible = false;
-                lb_solde.Visible = false;
-                lb_compte.Text = "personne";
+                gbx_compte.Visible = false;
             }
         }
 
@@ -47,10 +45,10 @@ namespace Fulbank.View
             bt_epargne.Visible = false;
             bt_livret.Visible = false;
             bt_crypto.Visible = false;
-            bt_virement.Visible = true;
-            listBox1.Visible = true;
-            lb_solde.Visible = true;
+            gbx_compte.Visible = true;
             lb_compte.Text = "personne" + "\n" + "Compte courant";
+            gbx_compte.Text = "Compte courant";
         }
+
     }
 }

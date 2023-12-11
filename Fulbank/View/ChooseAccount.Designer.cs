@@ -32,7 +32,7 @@
             pictureBox1 = new PictureBox();
             Bt_Deco = new Button();
             button6 = new Button();
-            lbl_ClientActuel = new Label();
+            lbl_ClientAccount = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -64,6 +64,7 @@
             Bt_Deco.TabIndex = 5;
             Bt_Deco.Text = "Deconnexion";
             Bt_Deco.UseVisualStyleBackColor = true;
+            Bt_Deco.Click += Bt_Deco_Click;
             // 
             // button6
             // 
@@ -74,13 +75,14 @@
             button6.Text = "Bénéficiaire";
             button6.UseVisualStyleBackColor = true;
             // 
-            // lbl_ClientActuel
+            // lbl_ClientAccount
             // 
-            lbl_ClientActuel.AutoSize = true;
-            lbl_ClientActuel.Location = new Point(167, 114);
-            lbl_ClientActuel.Name = "lbl_ClientActuel";
-            lbl_ClientActuel.Size = new Size(0, 15);
-            lbl_ClientActuel.TabIndex = 7;
+            lbl_ClientAccount.AutoSize = true;
+            lbl_ClientAccount.Location = new Point(167, 114);
+            lbl_ClientAccount.Name = "lbl_ClientAccount";
+            lbl_ClientAccount.Size = new Size(38, 15);
+            lbl_ClientAccount.TabIndex = 7;
+            lbl_ClientAccount.Text = "label1";
             // 
             // ChooseAccount
             // 
@@ -88,7 +90,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
-            Controls.Add(lbl_ClientActuel);
+            Controls.Add(lbl_ClientAccount);
             Controls.Add(button6);
             Controls.Add(Bt_Deco);
             Controls.Add(pictureBox1);
@@ -110,6 +112,6 @@
         private PictureBox pictureBox1;
         private Button Bt_Deco;
         private Button button6;
-        private Label lbl_ClientActuel;
+        private Label lbl_ClientAccount;
     }
 }
