@@ -40,21 +40,5 @@ namespace Fulbank
         {
             tbx_password.Text = "";
         }
-
-        private void bt_connecter_Click(object sender, EventArgs e)
-        {
-            int NumCompte = int.Parse(tbx_user.Text);
-            string MdpCompte = tbx_password.Text;
-            if (connexionViewModel.TestConnexion(NumCompte, MdpCompte))
-            {
-                ChooseAccount chooseAccount = new ChooseAccount();
-                chooseAccount.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Numero de compte ou mot de passe incorrecte");
-            }
-        }
     }
 }

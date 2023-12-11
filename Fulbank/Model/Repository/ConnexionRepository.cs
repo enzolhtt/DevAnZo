@@ -11,7 +11,7 @@ namespace Fulbank.Model.Repository
 {
     internal class ConnexionRepository
     {
-        private string connectionString = "server=172.16.119.21; uid=brochard;pwd=admin;database=FulBank";
+        private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
 
         public  bool TestConnexion(int username, string password)
         {

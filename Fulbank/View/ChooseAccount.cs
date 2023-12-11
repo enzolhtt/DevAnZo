@@ -29,7 +29,7 @@ namespace Fulbank
 
         private void ChooseAccount_Load(object sender, EventArgs e)
         {
-            lbl_ClientActuel.Text = NumCompteActuel.ToString();
+            lbl_ClientAccount.Text = NumCompteActuel.ToString();
         }
         private void Bt_Deco_Click(object sender, EventArgs e)
         {
