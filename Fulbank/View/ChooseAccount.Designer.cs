@@ -97,7 +97,6 @@
             Controls.Add(bt_compte);
             Name = "ChooseAccount";
             Text = "Form1";
-            Load += ChooseAccount_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

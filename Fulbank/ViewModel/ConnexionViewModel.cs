@@ -23,7 +23,5 @@ namespace Fulbank.ViewModel
             }
             return false;
         }
-
-
     }
 }
