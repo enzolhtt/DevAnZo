@@ -12,30 +12,33 @@ namespace Fulbank
     {
         private Fb_VM.ConnexionViewModel connexionViewModel;
         private Model.Compte compte;
+        public static int NumCompte;
         public Login()
         {
             InitializeComponent();
             connexionViewModel = new ConnexionViewModel();
         }
-        private void Login_Load(object sender, EventArgs e)
+
+        private void bt_connecter_Click(object sender, EventArgs e)
         {
-            try
+            NumCompte = int.Parse(tbx_user.Text);
+            string MdpCompte = tbx_password.Text;
+            if (connexionViewModel.TestConnexion(NumCompte, MdpCompte))
             {
-                string connstring = "server=172.16.119.21; uid=brochard;pwd=admin;database=FulBank";
-                MySqlConnection conn = new MySqlConnection();
-                conn.ConnectionString = connstring;
-                conn.Open();
-                string sql = "select * from Client;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                ChooseAccount chooseAccount = new ChooseAccount(NumCompte);
+                chooseAccount.Show();
+                this.Hide();
             }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+        }
 
+        private void tbx_user_Click(object sender, EventArgs e)
+        {
+            tbx_user.Text = "";
+        }
 
-
+        private void tbx_password_Click(object sender, EventArgs e)
+        {
+            tbx_password.Text = "";
         }
 
         private void bt_connecter_Click(object sender, EventArgs e)

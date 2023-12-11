@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Fulbank.View;
 
 namespace Fulbank.View
 {
     public partial class CompteCourant : Form
     {
+        public Login Login = new Login();
         public CompteCourant()
         {
             InitializeComponent();
@@ -23,7 +25,7 @@ namespace Fulbank.View
         {
             if (gbx_compte.Visible == false)
             {
-                ChooseAccount retour = new ChooseAccount();
+                ChooseAccount retour = new ChooseAccount(Login.NumCompte);
                 retour.Show();
                 this.Hide();
             }

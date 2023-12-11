@@ -25,15 +25,13 @@ namespace Fulbank.Model.Repository
                 while (reader.Read())
                 {
                     //MessageBox.Show("user: " + username + " mdp: " + reader["Mdp"]);
-                    MessageBox.Show("password: " + password + " mdpbase: " + reader["Mdp"]);
                     if (password == Convert.ToString(reader["Mdp"]))
                     {
-                        MessageBox.Show("user: " + username + " mdp: " + reader["Mdp"]);
                         return true;
                     }
                     else
                     {
-                        MessageBox.Show("Nul");
+                        MessageBox.Show("Le mot de passe ne correspond pas au numéro du compte");
                         return false;
                     }
                 }
