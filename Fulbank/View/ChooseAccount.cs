@@ -33,5 +33,11 @@ namespace Fulbank
         {
             lbl_ClientActuel.Text = NumCompteActuel.ToString();
         }
+        private void Bt_Deco_Click(object sender, EventArgs e)
+        {
+            Login deco = new Login();
+            deco.Show();
+            this.Hide();
+        }
     }
 }
