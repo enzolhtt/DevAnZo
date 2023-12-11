@@ -15,7 +15,7 @@ namespace Fulbank
     {
         int NumCompteActuel;
         string NomClient;
-        string Nomclient;
+        string PrenomClient;
         public ChooseAccount(int numerocompte = 0)
         {
             NumCompteActuel = numerocompte;
