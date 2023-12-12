@@ -9,16 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fulbank.View;
+using Fb_VM = Fulbank.ViewModel;
+using Fulbank.ViewModel;
+
 
 namespace Fulbank.View
 {
     public partial class CompteCourant : Form
     {
         public Login Login = new Login();
-        public CompteCourant()
+        private Fb_VM.ClientViewModel clientViewModel;
+        private Fb_VM.CompteViewModel compteViewModel;
+        public CompteCourant(int NumCompte)
         {
             InitializeComponent();
-
+            clientViewModel = new ClientViewModel();
+            compteViewModel = new CompteViewModel();
+            lb_compte.Text = clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(NumCompte)).ToString();
         }
 
         private void img_retour_Click(object sender, EventArgs e)
@@ -46,8 +53,8 @@ namespace Fulbank.View
             bt_livret.Visible = false;
             bt_crypto.Visible = false;
             gbx_compte.Visible = true;
-            lb_compte.Text = "personne" + "\n" + "Compte courant";
             gbx_compte.Text = "Compte courant";
+            lbl_client.Text = "Compte courant";
         }
 
     }

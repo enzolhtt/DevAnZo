@@ -38,6 +38,7 @@
             lb_solde = new Label();
             lb_compte = new Label();
             gbx_compte = new GroupBox();
+            lbl_client = new Label();
             dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
@@ -126,14 +127,16 @@
             // 
             lb_compte.AutoSize = true;
             lb_compte.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            lb_compte.Location = new Point(323, 65);
+            lb_compte.Location = new Point(323, 82);
             lb_compte.Name = "lb_compte";
             lb_compte.Size = new Size(127, 37);
             lb_compte.TabIndex = 15;
             lb_compte.Text = "personne";
+            lb_compte.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // gbx_compte
             // 
+            gbx_compte.Controls.Add(lbl_client);
             gbx_compte.Controls.Add(dataGridView1);
             gbx_compte.Controls.Add(lb_compte);
             gbx_compte.Controls.Add(bt_virement);
@@ -145,6 +148,15 @@
             gbx_compte.TabStop = false;
             gbx_compte.Text = "groupBox1";
             gbx_compte.Visible = false;
+            // 
+            // lbl_client
+            // 
+            lbl_client.AutoSize = true;
+            lbl_client.Location = new Point(367, 65);
+            lbl_client.Name = "lbl_client";
+            lbl_client.Size = new Size(38, 15);
+            lbl_client.TabIndex = 17;
+            lbl_client.Text = "label1";
             // 
             // dataGridView1
             // 
@@ -192,5 +204,6 @@
         private ListBox listBox1;
         private GroupBox gbx_compte;
         private DataGridView dataGridView1;
+        private Label lbl_client;
     }
 }

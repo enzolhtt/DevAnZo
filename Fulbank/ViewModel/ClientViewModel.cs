@@ -9,18 +9,18 @@ namespace Fulbank.ViewModel
 {
     internal class ClientViewModel
     {
-        private CRepository.ClientRepository CompteRepository;
+        private CRepository.ClientRepository ClientRepository;
 
         public ClientViewModel()
         {
-            CompteRepository = new CRepository.ClientRepository();
+            ClientRepository = new CRepository.ClientRepository();
         }
 
         public string GetNomPrenom(int id)
         {
-            if(CompteRepository.GetNomPrenom(id) != "")
+            if(ClientRepository.GetNomPrenom(id) != "")
             {
-                return CompteRepository.GetNomPrenom(id);
+                return ClientRepository.GetNomPrenom(id);
             }
             return "";
         }

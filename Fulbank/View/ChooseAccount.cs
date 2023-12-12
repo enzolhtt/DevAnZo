@@ -30,7 +30,7 @@ namespace Fulbank
 
         private void bt_courant_Click(object sender, EventArgs e)
         {
-            CompteCourant compteCourant = new CompteCourant();
+            CompteCourant compteCourant = new CompteCourant(NumCompteActuel);
             compteCourant.Show();
             this.Hide();
         }
