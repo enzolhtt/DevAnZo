@@ -29,10 +29,9 @@ namespace Fulbank.Model.Repository
             }
             return 0;
         }
-
-        public int getIdClientByRib(string ribNum)
+        public double getSoldeByNumCompte(int NumCompte)
         {
-            int IdClient;
+            double solde;
             using (MySqlConnection connexion = new MySqlConnection())
             {
                 connexion.ConnectionString = connectionString;

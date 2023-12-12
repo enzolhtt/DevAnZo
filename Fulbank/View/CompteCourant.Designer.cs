@@ -38,6 +38,7 @@
             lb_solde = new Label();
             lb_compte = new Label();
             gbx_compte = new GroupBox();
+            lbl_solde = new Label();
             lbl_client = new Label();
             dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -116,10 +117,10 @@
             // lb_solde
             // 
             lb_solde.AutoSize = true;
-            lb_solde.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
+            lb_solde.Font = new Font("Segoe UI Black", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
             lb_solde.Location = new Point(69, 168);
             lb_solde.Name = "lb_solde";
-            lb_solde.Size = new Size(120, 46);
+            lb_solde.Size = new Size(129, 45);
             lb_solde.TabIndex = 14;
             lb_solde.Text = "Solde :";
             // 
@@ -137,6 +138,7 @@
             // 
             // gbx_compte
             // 
+            gbx_compte.Controls.Add(lbl_solde);
             gbx_compte.Controls.Add(lbl_client);
             gbx_compte.Controls.Add(dataGridView1);
             gbx_compte.Controls.Add(lb_compte);
@@ -150,12 +152,23 @@
             gbx_compte.Text = "groupBox1";
             gbx_compte.Visible = false;
             // 
+            // lbl_solde
+            // 
+            lbl_solde.AutoSize = true;
+            lbl_solde.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_solde.Location = new Point(302, 174);
+            lbl_solde.Name = "lbl_solde";
+            lbl_solde.Size = new Size(179, 37);
+            lbl_solde.TabIndex = 18;
+            lbl_solde.Text = "SoldeCompte";
+            // 
             // lbl_client
             // 
             lbl_client.AutoSize = true;
-            lbl_client.Location = new Point(367, 65);
+            lbl_client.Font = new Font("Segoe UI", 9.75F, FontStyle.Underline, GraphicsUnit.Point);
+            lbl_client.Location = new Point(339, 65);
             lbl_client.Name = "lbl_client";
-            lbl_client.Size = new Size(38, 15);
+            lbl_client.Size = new Size(43, 17);
             lbl_client.TabIndex = 17;
             lbl_client.Text = "label1";
             // 
@@ -183,6 +196,7 @@
             Controls.Add(pictureBox1);
             Name = "CompteCourant";
             Text = "CompteCourant";
+            Load += CompteCourant_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)img_retour).EndInit();
             gbx_compte.ResumeLayout(false);
@@ -206,5 +220,6 @@
         private GroupBox gbx_compte;
         private DataGridView dataGridView1;
         private Label lbl_client;
+        private Label lbl_solde;
     }
 }

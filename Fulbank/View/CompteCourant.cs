@@ -26,6 +26,7 @@ namespace Fulbank.View
             clientViewModel = new ClientViewModel();
             compteViewModel = new CompteViewModel();
             lb_compte.Text = clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(NumCompte)).ToString();
+            lbl_solde.Text = compteViewModel.getSoldeByNumCompte(NumCompte).ToString();
         }
 
         private void img_retour_Click(object sender, EventArgs e)
@@ -57,5 +58,22 @@ namespace Fulbank.View
             lbl_client.Text = "Compte courant";
         }
 
+        private void CompteCourant_Load(object sender, EventArgs e)
+        {
+            if (int.Parse(lbl_solde.Text) > 0)
+            {
+                lbl_solde.Text = " + " + lbl_solde.Text + " €";
+                lbl_solde.ForeColor = Color.Green;
+            }
+            else if (int.Parse(lbl_solde.Text) == 0)
+            {
+                lbl_solde.Text = lbl_solde.Text + " €";
+            }
+            else
+            {
+                lbl_solde.Text = lbl_solde.Text + " €";
+                lbl_solde.ForeColor = Color.Red;
+            }
+        }
     }
 }

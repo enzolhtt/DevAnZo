@@ -29,5 +29,10 @@ namespace Fulbank.ViewModel
             }
             return 0;
         }
+        
+        public double getSoldeByNumCompte(int NumCompte)
+        {
+            return CompteRepository.getSoldeByNumCompte(NumCompte);
+        }
     }
 }
