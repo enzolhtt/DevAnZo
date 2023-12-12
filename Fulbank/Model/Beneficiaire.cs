@@ -12,19 +12,22 @@ namespace Fulbank.Model
         private string _nom;
         private string _RIB;
         private string _IBAN;
+        private Client _client;
 
-        public Beneficiaire(int idBeficiaire, string nom, string rIB, string iBAN)
+        public Beneficiaire(int idBeficiaire, string nom, string rIB, string iBAN, Client client)
         {
             _idBeficiaire = idBeficiaire;
             _nom = nom;
             _RIB = rIB;
             _IBAN = iBAN;
+            _client = client;
         }
 
-        public int IdBeficiaire { get; set; }
+        public int IdBeficiaire { get { return _idBeficiaire; } }
         public string Nomb { get; set; }
         public string RIB { get; set; }
         public string IBAN { get; set; }
+        public Client Client { get { return _client; } }
 
     }
 }

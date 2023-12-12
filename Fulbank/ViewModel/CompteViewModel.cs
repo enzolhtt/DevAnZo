@@ -25,5 +25,14 @@ namespace Fulbank.ViewModel
         {
             return CompteRepository.getSoldeByNumCompte(NumCompte);
         }
+
+        public int getIdClientByRib(string id)
+        {
+            if (CompteRepository.getIdClientByRib(id) != 0)
+            {
+                return CompteRepository.getIdClientByRib(id);
+            }
+            return 0;
+        }
     }
 }

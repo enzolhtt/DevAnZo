@@ -16,6 +16,7 @@ namespace Fulbank.Model
         private string _rue;
         private int _cp;
         private string _mail;
+        private List<Beneficiaire> _beneficiaires;
 
         public Client(int unId, string unTel, string unNom, string unPrenom, string unevile, string uneRue, int unCp, string unMail) 
         {

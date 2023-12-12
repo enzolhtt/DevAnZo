@@ -30,20 +30,20 @@ namespace Fulbank.Model.Repository
             return 0;
         }
 
-        public double getSoldeByNumCompte(int NumCompte)
+        public int getIdClientByRib(string ribNum)
         {
-            double solde;
+            int IdClient;
             using (MySqlConnection connexion = new MySqlConnection())
             {
                 connexion.ConnectionString = connectionString;
                 connexion.Open();
-                string sql = "select Solde from Compte where numerocompte = " + NumCompte + ";";
+                string sql = "select idClient from Compte where RIB = " + ribNum + ";";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    solde = (double)reader["Solde"];
-                    return solde;
+                    IdClient = (int)reader["idClient"];
+                    return IdClient;
                 }
             }
             return 0;

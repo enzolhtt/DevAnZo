@@ -19,6 +19,7 @@ namespace Fulbank
         public string NomPrenomClient;
         private Fb_VM.ClientViewModel clientViewModel;
         private Fb_VM.CompteViewModel compteViewModel;
+
         public ChooseAccount(int numerocompte = 0)
         {
             NumCompteActuel = numerocompte;
@@ -39,6 +40,13 @@ namespace Fulbank
         {
             Login deco = new Login();
             deco.Show();
+            this.Hide();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Beneficiaire benef = new Beneficiaire();
+            benef.Show();
             this.Hide();
         }
     }
