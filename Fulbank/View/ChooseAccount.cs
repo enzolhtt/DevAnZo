@@ -45,7 +45,7 @@ namespace Fulbank
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Beneficiaire benef = new Beneficiaire();
+            Beneficiaire benef = new Beneficiaire(NumCompteActuel);
             benef.Show();
             this.Hide();
         }

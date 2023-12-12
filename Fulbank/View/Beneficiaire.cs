@@ -14,10 +14,12 @@ namespace Fulbank.View
 {
     public partial class Beneficiaire : Form
     {
+        public int NumCompteActuel;
         private Fb_VM.CompteViewModel compteViewModel;
         private Fb_VM.BeneficiaireViewModel beneficiaireViewModel;
-        public Beneficiaire()
+        public Beneficiaire(int NumCompte)
         {
+            NumCompteActuel = NumCompte;
             InitializeComponent();
             compteViewModel = new Fb_VM.CompteViewModel();
             beneficiaireViewModel = new BeneficiaireViewModel();
@@ -25,7 +27,7 @@ namespace Fulbank.View
 
         private void img_retour_Click(object sender, EventArgs e)
         {
-            ChooseAccount retour = new ChooseAccount();
+            ChooseAccount retour = new ChooseAccount(NumCompteActuel);
             retour.Show();
             this.Hide();
         }
