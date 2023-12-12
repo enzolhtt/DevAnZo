@@ -29,5 +29,24 @@ namespace Fulbank.Model.Repository
             }
             return 0;
         }
+
+        public int getIdClientByRib(string ribNum)
+        {
+            int IdClient;
+            using (MySqlConnection connexion = new MySqlConnection())
+            {
+                connexion.ConnectionString = connectionString;
+                connexion.Open();
+                string sql = "select idClient from Compte where RIB = " + ribNum + ";";
+                MySqlCommand cmd = new MySqlCommand(sql, connexion);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    IdClient = (int)reader["idClient"];
+                    return IdClient;
+                }
+            }
+            return 0;
+        }
     }
 }

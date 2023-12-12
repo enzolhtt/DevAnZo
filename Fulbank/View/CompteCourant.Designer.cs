@@ -126,6 +126,7 @@
             // 
             lb_compte.AutoSize = true;
             lb_compte.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            lb_compte.ForeColor = SystemColors.ControlText;
             lb_compte.Location = new Point(323, 65);
             lb_compte.Name = "lb_compte";
             lb_compte.Size = new Size(127, 37);
