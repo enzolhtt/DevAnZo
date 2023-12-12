@@ -48,5 +48,24 @@ namespace Fulbank.Model.Repository
             }
             return 0;
         }
+
+        public double getSoldeByNumCompte(int NumCompte)
+        {
+            double solde;
+            using (MySqlConnection connexion = new MySqlConnection())
+            {
+                connexion.ConnectionString = connectionString;
+                connexion.Open();
+                string sql = "select Solde from Compte where numerocompte = " + NumCompte + ";";
+                MySqlCommand cmd = new MySqlCommand(sql, connexion);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    solde = (double)reader["Solde"];
+                    return solde;
+                }
+            }
+            return 0;
+        }
     }
 }
