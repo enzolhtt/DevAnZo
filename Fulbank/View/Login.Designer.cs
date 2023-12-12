@@ -62,21 +62,26 @@
             // 
             // tbx_password
             // 
-            tbx_password.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            tbx_password.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             tbx_password.Location = new Point(324, 602);
             tbx_password.Name = "tbx_password";
+            tbx_password.PasswordChar = '*';
             tbx_password.Size = new Size(346, 43);
             tbx_password.TabIndex = 2;
             tbx_password.Text = "Password";
+            tbx_password.TextAlign = HorizontalAlignment.Center;
+            tbx_password.Click += tbx_password_Click;
             // 
             // tbx_user
             // 
-            tbx_user.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            tbx_user.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             tbx_user.Location = new Point(324, 449);
             tbx_user.Name = "tbx_user";
             tbx_user.Size = new Size(346, 43);
             tbx_user.TabIndex = 3;
-            tbx_user.Text = "Username";
+            tbx_user.Text = "Numéro de compte";
+            tbx_user.TextAlign = HorizontalAlignment.Center;
+            tbx_user.Click += tbx_user_Click;
             // 
             // Login
             // 

@@ -1,41 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-
 namespace Fulbank.Model.Repository
 {
-    internal class ConnexionRepository
+
+    internal class ClientRepository
     {
         private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
-
-        public  bool TestConnexion(int username, string password)
+        public string GetNomPrenom(int id)
         {
             using (MySqlConnection connexion = new MySqlConnection())
             {
                 connexion.ConnectionString = connectionString;
                 connexion.Open();
-                string sql = "select Mdp, idClient from Compte where NumeroCompte = " + username + ";";
+                string sql = "select Nom, Prenom from Client where idClient = " + id + ";";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    //MessageBox.Show("user: " + username + " mdp: " + reader["Mdp"]);
-                    if (password == Convert.ToString(reader["Mdp"]))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Le mot de passe ne correspond pas au numéro du compte");
-                        return false;
-                    }
+                    string Nom = Convert.ToString(reader["Nom"]);
+                    string Prenom = Convert.ToString(reader["Prenom"]);
+                    return Nom + " " + Prenom;
                 }
-                return false;
+                return "Aucun Nom ou Prenom associé à ce compte";
             }
         }
     }

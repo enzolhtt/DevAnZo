@@ -4,6 +4,7 @@ using Fb_VM = Fulbank.ViewModel;
 using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 using Fulbank.Model;
+using Fulbank.View;
 
 namespace Fulbank
 {
@@ -20,14 +21,24 @@ namespace Fulbank
 
         private void bt_connecter_Click(object sender, EventArgs e)
         {
-             NumCompte = int.Parse(tbx_user.Text);
-             string MdpCompte = tbx_password.Text;
+            NumCompte = int.Parse(tbx_user.Text);
+            string MdpCompte = tbx_password.Text;
             if (connexionViewModel.TestConnexion(NumCompte, MdpCompte))
             {
                 ChooseAccount chooseAccount = new ChooseAccount(NumCompte);
                 chooseAccount.Show();
                 this.Hide();
             }
+        }
+
+        private void tbx_user_Click(object sender, EventArgs e)
+        {
+            tbx_user.Text = "";
+        }
+
+        private void tbx_password_Click(object sender, EventArgs e)
+        {
+            tbx_password.Text = "";
         }
     }
 }
