@@ -44,6 +44,7 @@ namespace Fulbank.View
                 bt_livret.Visible = true;
                 bt_crypto.Visible = true;
                 gbx_compte.Visible = false;
+                gbx_virement.Visible = false;
             }
         }
 
@@ -53,6 +54,7 @@ namespace Fulbank.View
             bt_epargne.Visible = false;
             bt_livret.Visible = false;
             bt_crypto.Visible = false;
+            gbx_virement.Visible = false;
             gbx_compte.Visible = true;
             gbx_compte.Text = "Compte courant";
             lbl_client.Text = "Compte courant";
@@ -60,6 +62,7 @@ namespace Fulbank.View
 
         private void CompteCourant_Load(object sender, EventArgs e)
         {
+            gbx_virement.Visible = false;
             if (int.Parse(lbl_solde.Text) > 0)
             {
                 lbl_solde.Text = " + " + lbl_solde.Text + " €";
@@ -74,6 +77,17 @@ namespace Fulbank.View
                 lbl_solde.Text = lbl_solde.Text + " €";
                 lbl_solde.ForeColor = Color.Red;
             }
+        }
+
+        private void bt_virement_Click(object sender, EventArgs e)
+        {
+            gbx_compte.Visible = false;
+            gbx_virement.Visible = true;
+            lbl_virement.Visible = true;
+            cbx_personne.Visible = true;
+            txt_montant.Visible = true;
+
+
         }
     }
 }

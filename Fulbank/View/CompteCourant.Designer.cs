@@ -41,10 +41,16 @@
             lbl_solde = new Label();
             lbl_client = new Label();
             dataGridView1 = new DataGridView();
+            gbx_virement = new GroupBox();
+            bt_envoyer = new Button();
+            lbl_virement = new Label();
+            txt_montant = new TextBox();
+            cbx_personne = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             gbx_compte.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            gbx_virement.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -113,6 +119,7 @@
             bt_virement.TabIndex = 13;
             bt_virement.Text = "Effectuer un virement";
             bt_virement.UseVisualStyleBackColor = true;
+            bt_virement.Click += bt_virement_Click;
             // 
             // lb_solde
             // 
@@ -129,7 +136,7 @@
             lb_compte.AutoSize = true;
             lb_compte.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             lb_compte.ForeColor = SystemColors.ControlText;
-            lb_compte.Location = new Point(323, 65);
+            lb_compte.Location = new Point(299, 81);
             lb_compte.Name = "lb_compte";
             lb_compte.Size = new Size(127, 37);
             lb_compte.TabIndex = 15;
@@ -181,12 +188,63 @@
             dataGridView1.Size = new Size(390, 312);
             dataGridView1.TabIndex = 16;
             // 
+            // gbx_virement
+            // 
+            gbx_virement.BackColor = Color.FromArgb(128, 194, 236);
+            gbx_virement.Controls.Add(cbx_personne);
+            gbx_virement.Controls.Add(bt_envoyer);
+            gbx_virement.Controls.Add(lbl_virement);
+            gbx_virement.Controls.Add(txt_montant);
+            gbx_virement.Location = new Point(221, 226);
+            gbx_virement.Name = "gbx_virement";
+            gbx_virement.Size = new Size(549, 571);
+            gbx_virement.TabIndex = 20;
+            gbx_virement.TabStop = false;
+            gbx_virement.Text = "groupBox2";
+            // 
+            // bt_envoyer
+            // 
+            bt_envoyer.Location = new Point(232, 404);
+            bt_envoyer.Name = "bt_envoyer";
+            bt_envoyer.Size = new Size(75, 23);
+            bt_envoyer.TabIndex = 4;
+            bt_envoyer.Text = "Envoyer";
+            bt_envoyer.UseVisualStyleBackColor = true;
+            // 
+            // lbl_virement
+            // 
+            lbl_virement.AutoSize = true;
+            lbl_virement.Font = new Font("Segoe UI", 36F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            lbl_virement.Location = new Point(159, 152);
+            lbl_virement.Name = "lbl_virement";
+            lbl_virement.Size = new Size(237, 65);
+            lbl_virement.TabIndex = 3;
+            lbl_virement.Text = "Virement";
+            // 
+            // txt_montant
+            // 
+            txt_montant.Location = new Point(195, 349);
+            txt_montant.Name = "txt_montant";
+            txt_montant.Size = new Size(155, 23);
+            txt_montant.TabIndex = 1;
+            txt_montant.Text = "De combien ?";
+            txt_montant.TextAlign = HorizontalAlignment.Center;
+            // 
+            // cbx_personne
+            // 
+            cbx_personne.FormattingEnabled = true;
+            cbx_personne.Location = new Point(195, 288);
+            cbx_personne.Name = "cbx_personne";
+            cbx_personne.Size = new Size(155, 23);
+            cbx_personne.TabIndex = 5;
+            // 
             // CompteCourant
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
+            Controls.Add(gbx_virement);
             Controls.Add(gbx_compte);
             Controls.Add(bt_crypto);
             Controls.Add(bt_livret);
@@ -202,6 +260,8 @@
             gbx_compte.ResumeLayout(false);
             gbx_compte.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            gbx_virement.ResumeLayout(false);
+            gbx_virement.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -221,5 +281,10 @@
         private DataGridView dataGridView1;
         private Label lbl_client;
         private Label lbl_solde;
+        private GroupBox gbx_virement;
+        private Button bt_envoyer;
+        private Label lbl_virement;
+        private TextBox txt_montant;
+        private ComboBox cbx_personne;
     }
 }
