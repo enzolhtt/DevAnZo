@@ -40,5 +40,20 @@ namespace Fulbank
         {
             tbx_password.Text = "";
         }
+
+        private void tbx_password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                NumCompte = int.Parse(tbx_user.Text);
+                string MdpCompte = tbx_password.Text;
+                if (connexionViewModel.TestConnexion(NumCompte) == MdpCompte)
+                {
+                    ChooseAccount chooseAccount = new ChooseAccount(NumCompte);
+                    chooseAccount.Show();
+                    this.Hide();
+                }
+            }
+        }
     }
 }
