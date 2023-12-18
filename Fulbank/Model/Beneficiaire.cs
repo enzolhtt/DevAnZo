@@ -8,26 +8,26 @@ namespace Fulbank.Model
 {
     internal class Beneficiaire
     {
-        private int _idBeficiaire;
         private string _nom;
         private string _RIB;
         private string _IBAN;
-        private Client _client;
+        private int _idClient;
 
-        public Beneficiaire(int idBeficiaire, string nom, string rIB, string iBAN, Client client)
+        public Beneficiaire(string nom, string rIB, string iBAN, int client)
         {
-            _idBeficiaire = idBeficiaire;
             _nom = nom;
             _RIB = rIB;
             _IBAN = iBAN;
-            _client = client;
+            _idClient = client;
         }
 
-        public int IdBeficiaire { get { return _idBeficiaire; } }
         public string Nomb { get; set; }
         public string RIB { get; set; }
         public string IBAN { get; set; }
-        public Client Client { get { return _client; } }
+        public int Client { get { return _idClient; } }
 
+        public string getNom() { return _nom; }
+        public string getRIB() { return _RIB; }
+        public string getIBAN() { return _IBAN; }
     }
 }

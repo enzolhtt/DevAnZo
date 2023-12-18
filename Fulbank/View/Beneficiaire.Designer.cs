@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             img_retour = new PictureBox();
             pictureBox1 = new PictureBox();
-            dataGridView1 = new DataGridView();
             bt_add = new Button();
             bt_delete = new Button();
             groupBox1 = new GroupBox();
@@ -39,10 +39,14 @@
             textBox1 = new TextBox();
             button1 = new Button();
             bt_voir = new Button();
+            bindingSource1 = new BindingSource(components);
+            listBox1 = new ListBox();
+            groupBox2 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // img_retour
@@ -65,14 +69,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(255, 342);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(485, 343);
-            dataGridView1.TabIndex = 9;
             // 
             // bt_add
             // 
@@ -99,9 +95,9 @@
             groupBox1.Controls.Add(textBox2);
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(button1);
-            groupBox1.Location = new Point(255, 289);
+            groupBox1.Location = new Point(341, 205);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(518, 464);
+            groupBox1.Size = new Size(305, 464);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
@@ -109,7 +105,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(188, 305);
+            textBox3.Location = new Point(73, 275);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(155, 23);
             textBox3.TabIndex = 3;
@@ -117,7 +113,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(188, 221);
+            textBox2.Location = new Point(73, 191);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(155, 23);
             textBox2.TabIndex = 2;
@@ -125,16 +121,15 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(188, 144);
+            textBox1.Location = new Point(73, 114);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(155, 23);
             textBox1.TabIndex = 1;
             textBox1.Text = "Nom";
-            textBox1.Click += textBox1_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(229, 386);
+            button1.Location = new Point(114, 356);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
@@ -153,26 +148,47 @@
             bt_voir.Visible = false;
             bt_voir.Click += bt_voir_Click;
             // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(73, 81);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(553, 379);
+            listBox1.TabIndex = 14;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(listBox1);
+            groupBox2.Location = new Point(149, 238);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(699, 547);
+            groupBox2.TabIndex = 15;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "groupBox2";
+            // 
             // Beneficiaire
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
-            Controls.Add(bt_voir);
             Controls.Add(groupBox1);
+            Controls.Add(groupBox2);
+            Controls.Add(bt_voir);
             Controls.Add(bt_delete);
             Controls.Add(bt_add);
-            Controls.Add(dataGridView1);
             Controls.Add(pictureBox1);
             Controls.Add(img_retour);
             Name = "Beneficiaire";
             Text = "Beneficiaire";
+            Load += Beneficiaire_Load;
             ((System.ComponentModel.ISupportInitialize)img_retour).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -180,7 +196,6 @@
 
         private PictureBox img_retour;
         private PictureBox pictureBox1;
-        private DataGridView dataGridView1;
         private Button bt_add;
         private Button bt_delete;
         private GroupBox groupBox1;
@@ -189,5 +204,10 @@
         private TextBox textBox1;
         private Button button1;
         private Button bt_voir;
+        private BindingSource bindingSource1;
+        private DataGridView dataGridView1;
+        private ListView listView1;
+        private ListBox listBox1;
+        private GroupBox groupBox2;
     }
 }
