@@ -150,19 +150,20 @@
             // 
             // listBox1
             // 
+            listBox1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(73, 81);
+            listBox1.ItemHeight = 32;
+            listBox1.Location = new Point(33, 91);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(553, 379);
+            listBox1.Size = new Size(828, 356);
             listBox1.TabIndex = 14;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(listBox1);
-            groupBox2.Location = new Point(149, 238);
+            groupBox2.Location = new Point(33, 238);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(699, 547);
+            groupBox2.Size = new Size(891, 547);
             groupBox2.TabIndex = 15;
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox2";
