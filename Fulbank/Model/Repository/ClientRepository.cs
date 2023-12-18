@@ -21,13 +21,15 @@ namespace Fulbank.Model.Repository
                 string sql = "select Nom, Prenom from Client where idClient = " + id + ";";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
                 MySqlDataReader reader = cmd.ExecuteReader();
+                string NomComplet = "";
                 while (reader.Read())
                 {
                     string Nom = Convert.ToString(reader["Nom"]);
                     string Prenom = Convert.ToString(reader["Prenom"]);
-                    return Nom + " " + Prenom;
+                    NomComplet = Nom + " " + Prenom;
+                    return NomComplet;
                 }
-                return "Aucun Nom ou Prenom associé à ce compte";
+                return NomComplet;
             }
         }
     }

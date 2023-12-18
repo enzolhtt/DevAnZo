@@ -42,10 +42,10 @@
             lbl_client = new Label();
             dataGridView1 = new DataGridView();
             gbx_virement = new GroupBox();
+            cbx_personne = new ComboBox();
             bt_envoyer = new Button();
             lbl_virement = new Label();
             txt_montant = new TextBox();
-            cbx_personne = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             gbx_compte.SuspendLayout();
@@ -156,7 +156,6 @@
             gbx_compte.Size = new Size(741, 708);
             gbx_compte.TabIndex = 17;
             gbx_compte.TabStop = false;
-            gbx_compte.Text = "groupBox1";
             gbx_compte.Visible = false;
             // 
             // lbl_solde
@@ -200,7 +199,14 @@
             gbx_virement.Size = new Size(549, 571);
             gbx_virement.TabIndex = 20;
             gbx_virement.TabStop = false;
-            gbx_virement.Text = "groupBox2";
+            // 
+            // cbx_personne
+            // 
+            cbx_personne.FormattingEnabled = true;
+            cbx_personne.Location = new Point(195, 288);
+            cbx_personne.Name = "cbx_personne";
+            cbx_personne.Size = new Size(155, 23);
+            cbx_personne.TabIndex = 5;
             // 
             // bt_envoyer
             // 
@@ -229,14 +235,6 @@
             txt_montant.TabIndex = 1;
             txt_montant.Text = "De combien ?";
             txt_montant.TextAlign = HorizontalAlignment.Center;
-            // 
-            // cbx_personne
-            // 
-            cbx_personne.FormattingEnabled = true;
-            cbx_personne.Location = new Point(195, 288);
-            cbx_personne.Name = "cbx_personne";
-            cbx_personne.Size = new Size(155, 23);
-            cbx_personne.TabIndex = 5;
             // 
             // CompteCourant
             // 

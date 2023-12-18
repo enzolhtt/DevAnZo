@@ -29,6 +29,10 @@ namespace Fulbank
                 chooseAccount.Show();
                 this.Hide();
             }
+            else
+            {
+                MessageBox.Show("Le mot de passe ne correspond pas au numéro du compte");
+            }
         }
 
         private void tbx_user_Click(object sender, EventArgs e)
@@ -52,6 +56,10 @@ namespace Fulbank
                     ChooseAccount chooseAccount = new ChooseAccount(NumCompte);
                     chooseAccount.Show();
                     this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Le mot de passe ne correspond pas au numéro du compte");
                 }
             }
         }

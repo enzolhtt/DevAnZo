@@ -18,11 +18,7 @@ namespace Fulbank.ViewModel
 
         public string GetNomPrenom(int id)
         {
-            if(ClientRepository.GetNomPrenom(id) != "")
-            {
-                return ClientRepository.GetNomPrenom(id);
-            }
-            return "";
+            return ClientRepository.GetNomPrenom(id);
         }
     }
 }

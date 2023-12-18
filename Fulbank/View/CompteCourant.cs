@@ -56,7 +56,6 @@ namespace Fulbank.View
             bt_crypto.Visible = false;
             gbx_virement.Visible = false;
             gbx_compte.Visible = true;
-            gbx_compte.Text = "Compte courant";
             lbl_client.Text = "Compte courant";
         }
 
@@ -86,8 +85,6 @@ namespace Fulbank.View
             lbl_virement.Visible = true;
             cbx_personne.Visible = true;
             txt_montant.Visible = true;
-
-
         }
     }
 }

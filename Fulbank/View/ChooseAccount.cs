@@ -26,7 +26,10 @@ namespace Fulbank
             InitializeComponent();
             clientViewModel = new ClientViewModel();
             compteViewModel = new CompteViewModel();
-            lbl_ClientAccount.Text = clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(numerocompte)).ToString();
+            if(clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(numerocompte)).ToString() != "")
+            {
+                lbl_ClientAccount.Text = clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(numerocompte)).ToString();
+            }
         }
 
         private void bt_courant_Click(object sender, EventArgs e)
