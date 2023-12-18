@@ -32,5 +32,10 @@ namespace Fulbank.ViewModel
         {
             return BeneficiaireRepository.getAllBeneficiaire(idClient);
         }
+
+        public void deleteBeneficiaire(string name)
+        {
+            BeneficiaireRepository.deleteBeneficiaire(name);
+        }
     }
 }
