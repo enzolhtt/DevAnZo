@@ -23,7 +23,7 @@ namespace Fulbank
         {
             NumCompte = int.Parse(tbx_user.Text);
             string MdpCompte = tbx_password.Text;
-            if (connexionViewModel.TestConnexion(NumCompte, MdpCompte))
+            if (connexionViewModel.TestConnexion(NumCompte) == MdpCompte)
             {
                 ChooseAccount chooseAccount = new ChooseAccount(NumCompte);
                 chooseAccount.Show();
