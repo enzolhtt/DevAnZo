@@ -81,7 +81,7 @@ namespace Fulbank.View
             List<Fb_M.Beneficiaire> BeneficiaireVar = beneficiaireViewModel.getAllBeneficiaire(compteViewModel.getIdClientByNumCompte(NumCompteActuel));
             foreach (Fb_M.Beneficiaire b in BeneficiaireVar)
             {
-                listBox1.Items.Add("Nom : "+b.getNom()+" RIB : "+b.getRIB()+" IBAN : "+b.getIBAN());
+                listBox1.Items.Add("Nom : " + b.getNom() + " RIB : " + b.getRIB() + " IBAN : " + b.getIBAN());
             }
         }
     }
