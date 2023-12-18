@@ -62,5 +62,18 @@ namespace Fulbank.Model.Repository
             //MessageBox.Show(LesBeneficiaires[0].getNom());
             return LesBeneficiaires;
         }
+
+        public void deleteBeneficiaire(string Nom)
+        {
+            using (MySqlConnection connexion = new MySqlConnection())
+            {
+                connexion.ConnectionString = connectionString;
+                connexion.Open();
+                string sql = "DELETE FROM bénéficiaire WHERE nom = @Nom;";
+                MySqlCommand cmd = new MySqlCommand(sql, connexion);
+                cmd.Parameters.AddWithValue("@Nom", Nom);
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

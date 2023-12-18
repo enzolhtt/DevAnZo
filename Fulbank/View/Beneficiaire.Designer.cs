@@ -88,6 +88,7 @@
             bt_delete.TabIndex = 11;
             bt_delete.Text = "Supprimer Bénéficaire";
             bt_delete.UseVisualStyleBackColor = true;
+            bt_delete.Click += bt_delete_Click;
             // 
             // groupBox1
             // 
@@ -157,6 +158,7 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(828, 356);
             listBox1.TabIndex = 14;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // groupBox2
             // 

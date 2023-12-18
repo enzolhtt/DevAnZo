@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,5 +30,10 @@ namespace Fulbank.Model
         public string getNom() { return _nom; }
         public string getRIB() { return _RIB; }
         public string getIBAN() { return _IBAN; }
+
+        public string affiche()
+        {
+            return "Nom : " + this.getNom() + " RIB : " + this.getRIB() + " IBAN : " + this.getIBAN();            
+        }
     }
 }

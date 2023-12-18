@@ -12,6 +12,7 @@ using Fb_M = Fulbank.Model;
 using Fb_VM = Fulbank.ViewModel;
 using Fulbank.Model.Repository;
 using Fulbank.Model;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Fulbank.View
 {
@@ -81,8 +82,56 @@ namespace Fulbank.View
             List<Fb_M.Beneficiaire> BeneficiaireVar = beneficiaireViewModel.getAllBeneficiaire(compteViewModel.getIdClientByNumCompte(NumCompteActuel));
             foreach (Fb_M.Beneficiaire b in BeneficiaireVar)
             {
-                listBox1.Items.Add("Nom : " + b.getNom() + " RIB : " + b.getRIB() + " IBAN : " + b.getIBAN());
+                listBox1.Items.Add(b.affiche());
+                //listBox1.Items.Add("Nom : " + b.getNom() + " RIB : " + b.getRIB() + " IBAN : " + b.getIBAN());
             }
+        }
+
+        private void bt_delete_Click(object sender, EventArgs e)
+        {
+            string getNom()
+            {
+                string NomList = "";
+                for (var i = 0; i < listBox1.Items.Count; i++)
+                {
+                    if (i == listBox1.SelectedIndex)
+                    {
+                        string chaine = (string)listBox1.Items[i];
+                        for (var j = 0; j < chaine.Length; j++)
+                        {
+                            if (Convert.ToString(chaine[j]) == ":")
+                            {
+                                string RIBText = "";
+                                int k = j + 2;
+                                while (Convert.ToString(chaine[j]) != " ")
+                                {
+                                    NomList += Convert.ToString(chaine[k]);
+                                    RIBText = Convert.ToString(chaine[k + 1]) + Convert.ToString(chaine[k + 2]) + Convert.ToString(chaine[k + 3]) + Convert.ToString(chaine[k + 4]);
+                                    k += 1;
+                                    if (RIBText == " RIB")
+                                    {
+                                        return NomList;
+                                    }
+                                } 
+                            }
+                        }  
+                    } 
+                }
+                return NomList;
+            }
+            
+            if(getNom() != "")
+            {
+                beneficiaireViewModel.deleteBeneficiaire(getNom());
+                Beneficiaire benef = new Beneficiaire(NumCompteActuel);
+                benef.Show();
+                this.Hide();
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
