@@ -61,20 +61,26 @@ namespace Fulbank.View
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MessageBoxIcon icon = MessageBoxIcon.Exclamation;
             string name = textBox1.Text;
             string rib = textBox2.Text;
             string iban = textBox3.Text;
-            beneficiaireViewModel.addBeneficiaire(name, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
-
-            groupBox1.Visible = false;
-            bt_add.Visible = true;
-            bt_delete.Visible = true;
-            bt_voir.Visible = false;
-            groupBox2.Visible = true;
-
-            Beneficiaire benef = new Beneficiaire(NumCompteActuel);
-            benef.Show();
-            this.Hide();
+            if (name == "")
+            {
+                MessageBox.Show("Le champs nom est obligatoire !", "Attention :", MessageBoxButtons.OK, icon);
+            }
+            else
+            {
+                beneficiaireViewModel.addBeneficiaire(name, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
+                Beneficiaire benef = new Beneficiaire(NumCompteActuel);
+                benef.Show();
+                this.Hide();
+                groupBox1.Visible = false;
+                bt_add.Visible = true;
+                bt_delete.Visible = true;
+                bt_voir.Visible = false;
+                groupBox2.Visible = true;
+            }
         }
 
         private void Beneficiaire_Load(object sender, EventArgs e)
@@ -112,26 +118,30 @@ namespace Fulbank.View
                                     {
                                         return NomList;
                                     }
-                                } 
+                                }
                             }
-                        }  
-                    } 
+                        }
+                    }
                 }
                 return NomList;
             }
-            
-            if(getNom() != "")
+
+
+            if (getNom() != "")
             {
-                beneficiaireViewModel.deleteBeneficiaire(getNom());
-                Beneficiaire benef = new Beneficiaire(NumCompteActuel);
-                benef.Show();
-                this.Hide();
+                string mess = "Etes-vous sur de vouloir suprimer " + getNom() + " de votre liste de beneficiare ?"; ;
+                string title = "Attention vous tentez de supprimer un beneficiaire.";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                MessageBoxIcon icon = MessageBoxIcon.Exclamation;
+                DialogResult result = MessageBox.Show(mess, title, buttons, icon);
+                if (result == DialogResult.Yes)
+                {
+                    beneficiaireViewModel.deleteBeneficiaire(getNom());
+                    Beneficiaire benef = new Beneficiaire(NumCompteActuel);
+                    benef.Show();
+                    this.Hide();
+                }
             }
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

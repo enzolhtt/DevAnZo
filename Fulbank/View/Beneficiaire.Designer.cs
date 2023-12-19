@@ -158,7 +158,6 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(828, 356);
             listBox1.TabIndex = 14;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // groupBox2
             // 
