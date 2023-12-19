@@ -30,5 +30,9 @@ namespace Fulbank.ViewModel
         {
             return CompteRepository.getIdClientByRib(id);
         }
+        public void transactionCompteCourant(int idCompteDebiteur, int idCompteCrediteur, float Valdebit)
+        {
+            CompteRepository.transactionCompteCourant(idCompteDebiteur,idCompteCrediteur, Valdebit);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,6 +67,23 @@ namespace Fulbank.Model.Repository
                 }
             }
             return 0;
+        }
+
+        public void transactionCompteCourant(int idCompteDebiteur, int idCompteCrediteur,float Valdebit)
+        {
+            using (MySqlConnection connexion = new MySqlConnection())
+            {
+                connexion.ConnectionString = connectionString;
+                connexion.Open();
+                //string sql = "CALL transactionCompteCourant(@idOne,@idTwo,@Val);";
+                MySqlCommand cmd = new MySqlCommand("transactionCompteCourant", connexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new MySqlParameter("idCompteDebiteur", idCompteDebiteur));
+                cmd.Parameters.Add(new MySqlParameter("idCompteCrediteur", idCompteCrediteur));
+                cmd.Parameters.Add(new MySqlParameter("ValDebit", Valdebit));
+                cmd.ExecuteNonQuery();
+                MessageBox.Show(cmd.ToString());
+            }
         }
     }
 }
