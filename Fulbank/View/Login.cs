@@ -5,6 +5,7 @@ using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 using Fulbank.Model;
 using Fulbank.View;
+using System.Text;
 
 namespace Fulbank
 {
@@ -21,9 +22,22 @@ namespace Fulbank
 
         private void bt_connecter_Click(object sender, EventArgs e)
         {
+            static string ToSHA256(string s)
+            {
+                using var sha256 = SHA256.Create();
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(s));
+
+                var sb = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    sb.Append(bytes[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+
             NumCompte = int.Parse(tbx_user.Text);
             string MdpCompte = tbx_password.Text;
-            if (connexionViewModel.TestConnexion(NumCompte) == MdpCompte)
+            if (connexionViewModel.TestConnexion(NumCompte) == ToSHA256(MdpCompte))
             {
                 ChooseAccount chooseAccount = new ChooseAccount(NumCompte);
                 chooseAccount.Show();
@@ -47,11 +61,24 @@ namespace Fulbank
 
         private void tbx_password_KeyPress(object sender, KeyPressEventArgs e)
         {
+            static string ToSHA256(string s)
+            {
+                using var sha256 = SHA256.Create();
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(s));
+
+                var sb = new StringBuilder();
+                for (int i = 0; i  < bytes.Length; i++)
+                {
+                    sb.Append(bytes[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+
             if (e.KeyChar == (char)Keys.Enter)
             {
                 NumCompte = int.Parse(tbx_user.Text);
                 string MdpCompte = tbx_password.Text;
-                if (connexionViewModel.TestConnexion(NumCompte) == MdpCompte)
+                if (connexionViewModel.TestConnexion(NumCompte) == ToSHA256(MdpCompte))
                 {
                     ChooseAccount chooseAccount = new ChooseAccount(NumCompte);
                     chooseAccount.Show();
