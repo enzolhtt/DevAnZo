@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fulbank.View;
+using Fb_M = Fulbank.Model;
 using Fb_VM = Fulbank.ViewModel;
 using Fulbank.ViewModel;
 
@@ -17,14 +18,18 @@ namespace Fulbank.View
 {
     public partial class CompteCourant : Form
     {
+        public int NumCompteActuel;
         public Login Login = new Login();
         private Fb_VM.ClientViewModel clientViewModel;
         private Fb_VM.CompteViewModel compteViewModel;
+        private Fb_VM.BeneficiaireViewModel beneficiaireViewModel;
         public CompteCourant(int NumCompte)
         {
+            NumCompteActuel = NumCompte;
             InitializeComponent();
             clientViewModel = new ClientViewModel();
             compteViewModel = new CompteViewModel();
+            beneficiaireViewModel = new BeneficiaireViewModel();
             lb_compte.Text = clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(NumCompte)).ToString();
             lbl_solde.Text = compteViewModel.getSoldeByNumCompte(NumCompte).ToString();
         }
@@ -85,6 +90,21 @@ namespace Fulbank.View
             lbl_virement.Visible = true;
             cbx_personne.Visible = true;
             txt_montant.Visible = true;
+        }
+
+        private void bt_envoyer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbx_personne_VisibleChanged(object sender, EventArgs e)
+        {
+            List<Fb_M.Beneficiaire> BeneficiaireVar = beneficiaireViewModel.getAllBeneficiaire(compteViewModel.getIdClientByNumCompte(NumCompteActuel));
+            foreach (Fb_M.Beneficiaire b in BeneficiaireVar)
+            {
+                cbx_personne.Items.Add(b.getNom());
+                //listBox1.Items.Add("Nom : " + b.getNom() + " RIB : " + b.getRIB() + " IBAN : " + b.getIBAN());
+            }
         }
     }
 }

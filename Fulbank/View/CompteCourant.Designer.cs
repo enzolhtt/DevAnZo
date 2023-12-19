@@ -203,10 +203,11 @@
             // cbx_personne
             // 
             cbx_personne.FormattingEnabled = true;
-            cbx_personne.Location = new Point(195, 288);
+            cbx_personne.Location = new Point(129, 288);
             cbx_personne.Name = "cbx_personne";
-            cbx_personne.Size = new Size(155, 23);
+            cbx_personne.Size = new Size(288, 23);
             cbx_personne.TabIndex = 5;
+            cbx_personne.VisibleChanged += cbx_personne_VisibleChanged;
             // 
             // bt_envoyer
             // 
@@ -216,6 +217,7 @@
             bt_envoyer.TabIndex = 4;
             bt_envoyer.Text = "Envoyer";
             bt_envoyer.UseVisualStyleBackColor = true;
+            bt_envoyer.Click += bt_envoyer_Click;
             // 
             // lbl_virement
             // 
