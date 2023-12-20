@@ -42,6 +42,7 @@
             bindingSource1 = new BindingSource(components);
             listBox1 = new ListBox();
             groupBox2 = new GroupBox();
+            tbx_Prenom = new TextBox();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -92,6 +93,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(tbx_Prenom);
             groupBox1.Controls.Add(textBox3);
             groupBox1.Controls.Add(textBox2);
             groupBox1.Controls.Add(textBox1);
@@ -114,7 +116,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(73, 191);
+            textBox2.Location = new Point(73, 210);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(155, 23);
             textBox2.TabIndex = 2;
@@ -122,7 +124,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(73, 114);
+            textBox1.Location = new Point(73, 76);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(155, 23);
             textBox1.TabIndex = 1;
@@ -169,6 +171,14 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox2";
             // 
+            // tbx_Prenom
+            // 
+            tbx_Prenom.Location = new Point(73, 139);
+            tbx_Prenom.Name = "tbx_Prenom";
+            tbx_Prenom.Size = new Size(155, 23);
+            tbx_Prenom.TabIndex = 4;
+            tbx_Prenom.Text = "Prenom";
+            // 
             // Beneficiaire
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -211,5 +221,6 @@
         private ListView listView1;
         private ListBox listBox1;
         private GroupBox groupBox2;
+        private TextBox tbx_Prenom;
     }
 }

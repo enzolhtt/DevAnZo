@@ -95,8 +95,8 @@ namespace Fulbank.View
         private void bt_envoyer_Click(object sender, EventArgs e)
         {
             string nomcre = cbx_personne.SelectedItem.ToString();
-            MessageBox.Show(nomcre);
-            compteViewModel.transactionCompteCourant(NumCompteActuel,10,10);
+            // MessageBox.Show(nomcre);
+            compteViewModel.transactionCompteCourant(NumCompteActuel, compteViewModel.getNumCompteByNom(nomcre), float.Parse(txt_montant.Text));
         }
 
         private void cbx_personne_VisibleChanged(object sender, EventArgs e)

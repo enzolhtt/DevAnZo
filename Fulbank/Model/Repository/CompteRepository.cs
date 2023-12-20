@@ -85,5 +85,25 @@ namespace Fulbank.Model.Repository
                 MessageBox.Show(cmd.ToString());
             }
         }
+
+        public int getNumCompteByNom(string name)
+        {
+            int numcompte;
+            using (MySqlConnection connexion = new MySqlConnection())
+            {
+                connexion.ConnectionString = connectionString;
+                connexion.Open();
+                string sql = "select NumeroCompte from Compte join Client c on c.idClient = Compte.idClient where Prenom = @name;";
+                MySqlCommand cmd = new MySqlCommand(sql, connexion);
+                cmd.Parameters.AddWithValue("@name", name);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    numcompte = (int)reader["NumeroCompte"];
+                    return numcompte;
+                }
+            }
+            return 0;
+        }
     }
 }
