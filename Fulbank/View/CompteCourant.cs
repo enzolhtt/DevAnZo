@@ -95,8 +95,26 @@ namespace Fulbank.View
         private void bt_envoyer_Click(object sender, EventArgs e)
         {
             string nomcre = cbx_personne.SelectedItem.ToString();
-            // MessageBox.Show(nomcre);
-            compteViewModel.transactionCompteCourant(NumCompteActuel, compteViewModel.getNumCompteByNom(nomcre), float.Parse(txt_montant.Text));
+
+                string[] NomPrenom = new string[2];
+                string nom = "";
+                string prenom = "";
+                // MessageBox.Show(nomcre);
+                for (int i = 0; i < nomcre.Length; i++)
+                {
+                    nom += nomcre[i];
+                    if (nomcre[i].ToString() == " ")
+                    {
+                        NomPrenom[0] = nom;
+                        for (int j = i+1; j < nomcre.Length; j++)
+                        {
+                            prenom += nomcre[j];
+                        }
+                        NomPrenom[1] = prenom;
+                    }
+                }
+            
+            compteViewModel.transactionCompteCourant(NumCompteActuel, compteViewModel.getNumCompteByNom(NomPrenom[1], NomPrenom[0]), float.Parse(txt_montant.Text));
         }
 
         private void cbx_personne_VisibleChanged(object sender, EventArgs e)
@@ -104,7 +122,7 @@ namespace Fulbank.View
             List<Fb_M.Beneficiaire> BeneficiaireVar = beneficiaireViewModel.getAllBeneficiaire(compteViewModel.getIdClientByNumCompte(NumCompteActuel));
             foreach (Fb_M.Beneficiaire b in BeneficiaireVar)
             {
-                cbx_personne.Items.Add(b.getNom());
+                cbx_personne.Items.Add(b.getNom() + " " + b.getPrenom());
                 //listBox1.Items.Add("Nom : " + b.getNom() + " RIB : " + b.getRIB() + " IBAN : " + b.getIBAN());
             }
         }
