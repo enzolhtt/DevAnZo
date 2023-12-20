@@ -34,9 +34,9 @@ namespace Fulbank.ViewModel
         {
             CompteRepository.transactionCompteCourant(idCompteDebiteur,idCompteCrediteur, Valdebit);
         }
-        public int getNumCompteByNom(string name)
+        public int getNumCompteByNom(string prenom, string nom)
         {
-            return CompteRepository.getNumCompteByNom(name);
+            return CompteRepository.getNumCompteByNom(prenom, nom);
         }
 
     }
