@@ -86,16 +86,17 @@ namespace Fulbank.Model.Repository
             }
         }
 
-        public int getNumCompteByNom(string name)
+        public int getNumCompteByNom(string prenom, string nom)
         {
             int numcompte;
             using (MySqlConnection connexion = new MySqlConnection())
             {
                 connexion.ConnectionString = connectionString;
                 connexion.Open();
-                string sql = "select NumeroCompte from Compte join Client c on c.idClient = Compte.idClient where Prenom = @name;";
+                string sql = "select NumeroCompte from Compte join Client c on c.idClient = Compte.idClient where Prenom = @name AND Nom = @nom;";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
-                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@name", prenom);
+                cmd.Parameters.AddWithValue("@nom", nom);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
