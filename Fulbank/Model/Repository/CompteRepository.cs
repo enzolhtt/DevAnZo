@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Security;
 
 namespace Fulbank.Model.Repository
 {
@@ -105,6 +107,27 @@ namespace Fulbank.Model.Repository
                 }
             }
             return 0;
+        }
+
+        public string getNomByNumCompte(int NumCompte)
+        {
+            string nom;
+            using (MySqlConnection connexion = new MySqlConnection())
+            {
+                connexion.ConnectionString = connectionString;
+                connexion.Open();
+                string sql = "select nom from Client cli join Compte com on cli.idClient = com.idClient where NumeroCompte = @NumCompte;";
+                MySqlCommand cmd = new MySqlCommand(sql, connexion);
+                cmd.Parameters.AddWithValue("@NumCompte", NumCompte);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                nom = "";
+                while (reader.Read())
+                {
+                    nom = Convert.ToString(reader["nom"]);
+                    return nom;
+                }
+                return nom;
+            }
         }
     }
 }

@@ -12,11 +12,11 @@ namespace Fulbank.Model
         private DateTime _dateTransaction;
         private float _montantEmeteur;
         private float _taux;
-        private Compte _CompteDebiteur;
-        private Compte _CompteCrediteur;
+        private int _CompteDebiteur;
+        private int _CompteCrediteur;
         private DAB _idDAB;
 
-        public Transaction(int idTransaction, DateTime dateTransaction, float montantEmeteur, float taux, Compte compteDebiteur, Compte compteCrediteur, DAB idDAB)
+        public Transaction(int idTransaction, DateTime dateTransaction, float montantEmeteur, float taux, int compteDebiteur, int compteCrediteur, DAB idDAB)
         {
             _idTransaction = idTransaction;
             _dateTransaction = dateTransaction;
@@ -26,5 +26,18 @@ namespace Fulbank.Model
             _CompteCrediteur = compteCrediteur;
             _idDAB = idDAB;
         }
+
+        public int getIdTransaction() { return _idTransaction;}
+
+        public DateTime getDateTransaction() { return _dateTransaction;}
+        
+        public float getMontantEmeteur() {  return _montantEmeteur;}
+
+        public float getTaux() { return _taux;}
+
+        public int getCompteDebiteur() { return _CompteDebiteur; }
+
+        public int getCompteCrediteur() { return _CompteCrediteur;}
+
     }
 }
