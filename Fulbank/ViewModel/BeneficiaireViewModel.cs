@@ -22,10 +22,10 @@ namespace Fulbank.ViewModel
             BeneficiaireRepository = new CRepository.BeneficiaireRepository();
         }
 
-        public void addBeneficiaire(string name, string rib, string iban, string IdClient)
+        public void addBeneficiaire(string name, string prenom, string rib, string iban, string IdClient)
         {
             //compteViewModel = new CompteViewModel();
-            BeneficiaireRepository.addBeneficiaire(name, rib, iban, IdClient);
+            BeneficiaireRepository.addBeneficiaire(name, prenom, rib, iban, IdClient);
         }
 
         public List<Beneficiaire> getAllBeneficiaire(int idClient)

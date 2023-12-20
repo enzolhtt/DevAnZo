@@ -65,13 +65,14 @@ namespace Fulbank.View
             string name = textBox1.Text;
             string rib = textBox2.Text;
             string iban = textBox3.Text;
+            string prenom = tbx_Prenom.Text;
             if (name == "")
             {
                 MessageBox.Show("Le champs nom est obligatoire !", "Attention :", MessageBoxButtons.OK, icon);
             }
             else
             {
-                beneficiaireViewModel.addBeneficiaire(name, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
+                beneficiaireViewModel.addBeneficiaire(name, prenom, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
                 Beneficiaire benef = new Beneficiaire(NumCompteActuel);
                 benef.Show();
                 this.Hide();

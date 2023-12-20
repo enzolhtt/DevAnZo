@@ -13,15 +13,16 @@ namespace Fulbank.Model.Repository
     {
         private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
 
-        public void addBeneficiaire(string name, string rib, string iban, string idClient)
+        public void addBeneficiaire(string name, string prenom, string rib, string iban, string idClient)
         {
             using (MySqlConnection connexion = new MySqlConnection())
             {
                 connexion.ConnectionString = connectionString;
                 connexion.Open();
-                string sql = "INSERT INTO bénéficiaire (nom, RIB, IBAN, IdClient) VALUES (@name,@rib,@iban,@idClient);";
+                string sql = "INSERT INTO bénéficiaire (nom, RIB, IBAN, IdClient, prenom) VALUES (@name, @rib,@iban, @idClient, @prenom);";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
                 cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@prenom", prenom);
                 cmd.Parameters.AddWithValue("@rib", rib);
                 cmd.Parameters.AddWithValue("@iban", iban);
                 cmd.Parameters.AddWithValue("@idClient", idClient);
@@ -36,11 +37,12 @@ namespace Fulbank.Model.Repository
             string name;
             string rib;
             string iban;
+            string prenom;
             using (MySqlConnection connexion = new MySqlConnection())
             {
                 connexion.ConnectionString = connectionString;
                 connexion.Open();
-                string sql = "SELECT nom, RIB, IBAN FROM bénéficiaire WHERE idClient = @idClient;";
+                string sql = "SELECT nom, prenom, RIB, IBAN FROM bénéficiaire WHERE idClient = @idClient;";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
                 cmd.Parameters.AddWithValue("@idClient", idClient);
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -51,9 +53,10 @@ namespace Fulbank.Model.Repository
                     {
                         //MessageBox.Show("oui je read");
                         name = reader.GetString(0);
-                        rib = reader.GetString(1);
-                        iban = reader.GetString(2);
-                        Beneficiaire b = new Beneficiaire(name, rib, iban, compte.getIdClientByNumCompte(idClient));
+                        prenom = reader.GetString(1);
+                        rib = reader.GetString(2);
+                        iban = reader.GetString(3);
+                        Beneficiaire b = new Beneficiaire(name, prenom, rib, iban, compte.getIdClientByNumCompte(idClient));
                         LesBeneficiaires.Add(b);
                     }
                     reader.NextResult();
