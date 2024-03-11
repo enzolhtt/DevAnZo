@@ -81,6 +81,9 @@ namespace Fulbank.View
                 lbl_solde.Text = lbl_solde.Text + " €";
                 lbl_solde.ForeColor = Color.Red;
             }
+
+            //DataGridViewRow row = new DataGridViewRow();
+            //row.Cells[0].Value = lbl_solde.Text;
         }
 
         private void bt_virement_Click(object sender, EventArgs e)
@@ -96,24 +99,24 @@ namespace Fulbank.View
         {
             string nomcre = cbx_personne.SelectedItem.ToString();
 
-                string[] NomPrenom = new string[2];
-                string nom = "";
-                string prenom = "";
-                // MessageBox.Show(nomcre);
-                for (int i = 0; i < nomcre.Length; i++)
+            string[] NomPrenom = new string[2];
+            string nom = "";
+            string prenom = "";
+            // MessageBox.Show(nomcre);
+            for (int i = 0; i < nomcre.Length; i++)
+            {
+                nom += nomcre[i];
+                if (nomcre[i].ToString() == " ")
                 {
-                    nom += nomcre[i];
-                    if (nomcre[i].ToString() == " ")
+                    NomPrenom[0] = nom;
+                    for (int j = i + 1; j < nomcre.Length; j++)
                     {
-                        NomPrenom[0] = nom;
-                        for (int j = i+1; j < nomcre.Length; j++)
-                        {
-                            prenom += nomcre[j];
-                        }
-                        NomPrenom[1] = prenom;
+                        prenom += nomcre[j];
                     }
+                    NomPrenom[1] = prenom;
                 }
-            
+            }
+
             compteViewModel.transactionCompteCourant(NumCompteActuel, compteViewModel.getNumCompteByNom(NomPrenom[1], NomPrenom[0]), float.Parse(txt_montant.Text));
         }
 

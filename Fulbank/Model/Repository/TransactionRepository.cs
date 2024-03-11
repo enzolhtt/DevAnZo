@@ -15,15 +15,11 @@ namespace Fulbank.Model.Repository
         {
             CompteViewModel compte = new CompteViewModel();
             List<Transaction> LesTransactions = new List<Transaction>();
-            string name;
-            string rib;
-            string iban;
-            string prenom;
             using (MySqlConnection connexion = new MySqlConnection())
             {
                 connexion.ConnectionString = connectionString;
                 connexion.Open();
-                string sql = "SELECT DateTransaction, montantEmeteur, numCompteCre FROM bénéficiaire WHERE idClient = @idClient;";
+                string sql = "SELECT * FROM Transaction t JOIN DAB d ON d.idDAB = t.idDAB WHERE numCompteDeb = @NumCompte OR numCompteCre = @NumCompte;";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
                 cmd.Parameters.AddWithValue("@NumCompte", NumCompte);
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -33,12 +29,19 @@ namespace Fulbank.Model.Repository
                     while (reader.Read())
                     {
                         //MessageBox.Show("oui je read");
-                        name = reader.GetString(0);
-                        prenom = reader.GetString(1);
-                        rib = reader.GetString(2);
-                        iban = reader.GetString(3);
-                        Transaction t = new Transaction(name, prenom, rib, iban, compte.getNomByNumCompte(idClient));
-                        LesTransactions.Add(b);
+                        int idTransac = reader.GetInt32(0);
+                        DateTime Datetransaction = reader.GetDateTime(1);
+                        int montantEmeteur = reader.GetInt32(2);
+                        int taux = reader.GetInt32(3);
+                        int numCompteDeb = reader.GetInt32(4);
+                        int numCompteCre = reader.GetInt32(5);
+                        int idDAB = reader.GetInt32(6);
+                        string ville = reader.GetString(8);
+                        string rue = reader.GetString(9);
+                        int cp = reader.GetInt32(10);
+                        DAB dab = new DAB(idDAB, ville, rue, cp);
+                        Transaction t = new Transaction(idTransac, Datetransaction, montantEmeteur, taux, numCompteDeb, numCompteCre, dab);
+                        LesTransactions.Add(t);
                     }
                     reader.NextResult();
                 }

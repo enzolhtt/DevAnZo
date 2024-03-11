@@ -9,10 +9,9 @@ namespace Fulbank.Model
     internal class DAB
     {
         private int _idDAB;
-        private string _ville;
-        private string _rue;
-        private int _cp;
-        private Client _client;
+        private string _ville { get; set; }
+        private string _rue {  get; set; }
+        private int _cp {  get; set; }
 
         public DAB(int idDAB, string ville, string rue, int cp)
         {
@@ -23,9 +22,5 @@ namespace Fulbank.Model
         }
 
         public int IdDAB { get { return _idDAB; } }
-        public string Ville { get; set; }
-        public string Rue { get;set; }
-        public int Cp { get; set; }
-        public Client Client { get { return _client; } }
     }
 }

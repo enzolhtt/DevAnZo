@@ -46,6 +46,7 @@
             bt_envoyer = new Button();
             lbl_virement = new Label();
             txt_montant = new TextBox();
+            montant = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             gbx_compte.SuspendLayout();
@@ -181,6 +182,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { montant });
             dataGridView1.Location = new Point(196, 262);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
@@ -238,14 +240,19 @@
             txt_montant.Text = "De combien ?";
             txt_montant.TextAlign = HorizontalAlignment.Center;
             // 
+            // montant
+            // 
+            montant.HeaderText = "montant";
+            montant.Name = "montant";
+            // 
             // CompteCourant
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
-            Controls.Add(gbx_virement);
             Controls.Add(gbx_compte);
+            Controls.Add(gbx_virement);
             Controls.Add(bt_crypto);
             Controls.Add(bt_livret);
             Controls.Add(bt_epargne);
@@ -286,5 +293,6 @@
         private Label lbl_virement;
         private TextBox txt_montant;
         private ComboBox cbx_personne;
+        private DataGridViewTextBoxColumn montant;
     }
 }
