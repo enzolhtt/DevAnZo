@@ -32,9 +32,9 @@ namespace Fulbank.Model
         public string getRIB() { return _RIB; }
         public string getIBAN() { return _IBAN; }
 
-        public string affiche()
-        {
-            return "Nom : " + this.getNom() + " | Prenom : " + this.getPrenom() + " | RIB : " + this.getRIB() + " | IBAN : " + this.getIBAN() + ";";
-        }
+        //public string affiche()
+        //{
+        //    return "Nom : " + this.getNom() + " | Prenom : " + this.getPrenom() + " | RIB : " + this.getRIB() + " | IBAN : " + this.getIBAN() + ";";
+        //}
     }
 }

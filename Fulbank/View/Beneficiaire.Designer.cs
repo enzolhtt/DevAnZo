@@ -104,7 +104,7 @@
             groupBox1.Size = new Size(305, 464);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Ajout Beneficiaire";
             groupBox1.Visible = false;
             // 
             // tbx_Prenom
@@ -112,8 +112,10 @@
             tbx_Prenom.Location = new Point(73, 139);
             tbx_Prenom.Name = "tbx_Prenom";
             tbx_Prenom.Size = new Size(155, 23);
-            tbx_Prenom.TabIndex = 4;
+            tbx_Prenom.TabIndex = 1;
             tbx_Prenom.Text = "Prenom";
+            tbx_Prenom.Enter += tbx_Prenom_Enter;
+            tbx_Prenom.Leave += tbx_Prenom_Leave;
             // 
             // textBox3
             // 
@@ -122,6 +124,8 @@
             textBox3.Size = new Size(155, 23);
             textBox3.TabIndex = 3;
             textBox3.Text = "IBAN";
+            textBox3.Enter += textBox3_Enter;
+            textBox3.Leave += textBox3_Leave;
             // 
             // textBox2
             // 
@@ -130,21 +134,25 @@
             textBox2.Size = new Size(155, 23);
             textBox2.TabIndex = 2;
             textBox2.Text = "RIB";
+            textBox2.Enter += textBox2_Enter;
+            textBox2.Leave += textBox2_Leave;
             // 
             // textBox1
             // 
             textBox1.Location = new Point(73, 76);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(155, 23);
-            textBox1.TabIndex = 1;
+            textBox1.TabIndex = 0;
             textBox1.Text = "Nom";
+            textBox1.Enter += textBox1_Enter;
+            textBox1.Leave += textBox1_Leave;
             // 
             // button1
             // 
             button1.Location = new Point(114, 356);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
+            button1.TabIndex = 4;
             button1.Text = "Ajouter";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -154,7 +162,7 @@
             bt_voir.Location = new Point(383, 791);
             bt_voir.Name = "bt_voir";
             bt_voir.Size = new Size(228, 65);
-            bt_voir.TabIndex = 13;
+            bt_voir.TabIndex = 5;
             bt_voir.Text = "Liste Bénéficiaire";
             bt_voir.UseVisualStyleBackColor = true;
             bt_voir.Visible = false;

@@ -43,7 +43,7 @@ namespace Fulbank.View
             bt_add.Visible = false;
             bt_delete.Visible = false;
             bt_voir.Visible = true;
-            groupBox2.Visible = false;
+            ListeBeneficiaire.Visible = false;
         }
 
         private void bt_voir_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace Fulbank.View
             bt_add.Visible = true;
             bt_delete.Visible = true;
             bt_voir.Visible = false;
-            groupBox2.Visible = true;
+            ListeBeneficiaire.Visible = true;
         }
 
         private void textBox1_Click(object sender, EventArgs e)
@@ -68,52 +68,41 @@ namespace Fulbank.View
             string iban = textBox3.Text;
             string prenom = tbx_Prenom.Text;
 
-            static bool verifRIB(string rib)
+            static bool verifRIBandIBAN(string rib, string iban)
             {
                 bool verif = false;
-                int verifInt = 0;
+                string newIBAN = iban.Substring(2, 25); ;
 
                 try
                 {
                     BigInteger ribint = BigInteger.Parse(rib);
+                    BigInteger ibanint = BigInteger.Parse(newIBAN);
                     return true;
                 }
-                catch(Exception e) 
+                catch (Exception e)
                 {
                     // ya une lettre dans le rib
                     return false;
                 }
 
-                foreach(char chiffre in rib)
-                {
-                    try
-                    {
-                        verifInt += 1;
-                    }
-                    catch
-                    {
-                        verif = false;
-                    }
-                }
-                if (verifInt == 35)
-                {
-                    verif = true;
-                }
-
                 return verif;
             }
 
-            if (name == "")
+            if (name == "" || prenom == "" || rib == "" || iban == "")
             {
-                MessageBox.Show("Le champs nom est obligatoire !", "Attention :", MessageBoxButtons.OK, icon);
+                MessageBox.Show("Les champs sont tous obligatoires !", "Attention :", MessageBoxButtons.OK, icon);
             }
             else if (rib.Length != 35)
             {
                 MessageBox.Show("Le champs RIB ne contient pas 35 chiffres", "Attention :", MessageBoxButtons.OK, icon);
             }
+            else if (iban.Length != 27)
+            {
+                MessageBox.Show("Le champs IBAN ne contient pas 25 chiffres en plus de l'abréviation 'FR'", "Attention :", MessageBoxButtons.OK, icon);
+            }
             else
             {
-                if(verifRIB(rib))
+                if (verifRIBandIBAN(rib, iban))
                 {
                     beneficiaireViewModel.addBeneficiaire(name, prenom, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
                     Beneficiaire benef = new Beneficiaire(NumCompteActuel);
@@ -123,7 +112,7 @@ namespace Fulbank.View
                     bt_add.Visible = true;
                     bt_delete.Visible = true;
                     bt_voir.Visible = false;
-                    groupBox2.Visible = true;
+                    ListeBeneficiaire.Visible = true;
                 }
                 else
                 {
@@ -202,6 +191,70 @@ namespace Fulbank.View
             }*/
 
 
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Nom")
+            {
+                textBox1.Text = "";
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Nom";
+            }
+        }
+
+        private void tbx_Prenom_Enter(object sender, EventArgs e)
+        {
+            if (tbx_Prenom.Text == "Prenom")
+            {
+                tbx_Prenom.Text = "";
+            }
+        }
+
+        private void tbx_Prenom_Leave(object sender, EventArgs e)
+        {
+            if (tbx_Prenom.Text == "")
+            {
+                tbx_Prenom.Text = "Prenom";
+            }
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "RIB")
+            {
+                textBox2.Text = "";
+            }
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if(textBox2.Text == "")
+            {
+                textBox2.Text = "RIB";
+            }
+        }
+
+        private void textBox3_Enter(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "IBAN")
+            {
+                textBox3.Text = "FR";
+            }
+        }
+
+        private void textBox3_Leave(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "FR")
+            {
+                textBox3.Text = "IBAN";
+            }
         }
     }
 }
