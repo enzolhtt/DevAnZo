@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Fulbank.Model.Repository
 {
@@ -13,22 +14,21 @@ namespace Fulbank.Model.Repository
         private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
         public List<Transaction> getTransactions(int NumCompte)
         {
-            CompteViewModel compte = new CompteViewModel();
             List<Transaction> LesTransactions = new List<Transaction>();
+
             using (MySqlConnection connexion = new MySqlConnection())
             {
                 connexion.ConnectionString = connectionString;
                 connexion.Open();
-                string sql = "SELECT * FROM Transaction t JOIN DAB d ON d.idDAB = t.idDAB WHERE numCompteDeb = @NumCompte OR numCompteCre = @NumCompte;";
+
+                string sql = "SELECT * FROM Transaction t JOIN DAB d ON d.idDAB = t.idDAB WHERE numCompteDeb = @NumCompte OR numCompteCre = @NumCompte ORDER BY Datetransaction DESC;";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
                 cmd.Parameters.AddWithValue("@NumCompte", NumCompte);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.HasRows)
                 {
-                    //MessageBox.Show("oui je passe row");
                     while (reader.Read())
                     {
-                        //MessageBox.Show("oui je read");
                         int idTransac = reader.GetInt32(0);
                         DateTime Datetransaction = reader.GetDateTime(1);
                         int montantEmeteur = reader.GetInt32(2);
@@ -48,5 +48,6 @@ namespace Fulbank.Model.Repository
             }
             return LesTransactions;
         }
+
     }
 }
