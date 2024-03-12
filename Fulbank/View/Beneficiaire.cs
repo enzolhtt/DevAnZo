@@ -43,7 +43,7 @@ namespace Fulbank.View
             bt_add.Visible = false;
             bt_delete.Visible = false;
             bt_voir.Visible = true;
-            groupBox2.Visible = false;
+            ListeBeneficiaire.Visible = false;
         }
 
         private void bt_voir_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace Fulbank.View
             bt_add.Visible = true;
             bt_delete.Visible = true;
             bt_voir.Visible = false;
-            groupBox2.Visible = true;
+            ListeBeneficiaire.Visible = true;
         }
 
         private void textBox1_Click(object sender, EventArgs e)
@@ -78,13 +78,13 @@ namespace Fulbank.View
                     BigInteger ribint = BigInteger.Parse(rib);
                     return true;
                 }
-                catch(Exception e) 
+                catch (Exception e)
                 {
                     // ya une lettre dans le rib
                     return false;
                 }
 
-                foreach(char chiffre in rib)
+                foreach (char chiffre in rib)
                 {
                     try
                     {
@@ -113,7 +113,7 @@ namespace Fulbank.View
             }
             else
             {
-                if(verifRIB(rib))
+                if (verifRIB(rib))
                 {
                     beneficiaireViewModel.addBeneficiaire(name, prenom, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
                     Beneficiaire benef = new Beneficiaire(NumCompteActuel);
@@ -123,7 +123,7 @@ namespace Fulbank.View
                     bt_add.Visible = true;
                     bt_delete.Visible = true;
                     bt_voir.Visible = false;
-                    groupBox2.Visible = true;
+                    ListeBeneficiaire.Visible = true;
                 }
                 else
                 {
@@ -140,6 +140,7 @@ namespace Fulbank.View
                 DataTable table = beneficiaireViewModel.getBeneficiaires(compteViewModel.getIdClientByNumCompte(NumCompteActuel));
                 ListeBeneficiaire.AutoGenerateColumns = true;
                 ListeBeneficiaire.DataSource = table;
+                ListeBeneficiaire.AutoResizeColumns();
             }
             catch
             {
