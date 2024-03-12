@@ -129,6 +129,7 @@ namespace Fulbank.View
                 DataTable table = beneficiaireViewModel.getBeneficiaires(compteViewModel.getIdClientByNumCompte(NumCompteActuel));
                 ListeBeneficiaire.AutoGenerateColumns = true;
                 ListeBeneficiaire.DataSource = table;
+                ListeBeneficiaire.AutoResizeColumns();
             }
             catch
             {

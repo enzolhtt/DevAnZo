@@ -41,13 +41,11 @@
             button1 = new Button();
             bt_voir = new Button();
             bindingSource1 = new BindingSource(components);
-            groupBox2 = new GroupBox();
             ListeBeneficiaire = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
-            groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ListeBeneficiaire).BeginInit();
             SuspendLayout();
             // 
@@ -168,25 +166,16 @@
             bt_voir.Visible = false;
             bt_voir.Click += bt_voir_Click;
             // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(ListeBeneficiaire);
-            groupBox2.Location = new Point(33, 238);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(891, 547);
-            groupBox2.TabIndex = 15;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
-            // 
             // ListeBeneficiaire
             // 
+            ListeBeneficiaire.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ListeBeneficiaire.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ListeBeneficiaire.Location = new Point(6, 13);
+            ListeBeneficiaire.Location = new Point(158, 333);
             ListeBeneficiaire.Name = "ListeBeneficiaire";
             ListeBeneficiaire.RowHeadersWidth = 65;
             ListeBeneficiaire.RowTemplate.Height = 25;
-            ListeBeneficiaire.Size = new Size(879, 528);
-            ListeBeneficiaire.TabIndex = 0;
+            ListeBeneficiaire.Size = new Size(668, 295);
+            ListeBeneficiaire.TabIndex = 14;
             // 
             // Beneficiaire
             // 
@@ -194,8 +183,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
+            Controls.Add(ListeBeneficiaire);
             Controls.Add(groupBox1);
-            Controls.Add(groupBox2);
             Controls.Add(bt_voir);
             Controls.Add(bt_delete);
             Controls.Add(bt_add);
@@ -209,7 +198,6 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
-            groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ListeBeneficiaire).EndInit();
             ResumeLayout(false);
         }
@@ -228,7 +216,6 @@
         private Button bt_voir;
         private BindingSource bindingSource1;
         private ListView listView1;
-        private GroupBox groupBox2;
         private TextBox tbx_Prenom;
         private DataGridView ListeBeneficiaire;
     }
