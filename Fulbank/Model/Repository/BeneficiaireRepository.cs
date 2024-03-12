@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Fulbank.Model;
 using Fulbank.ViewModel;
+using System.Data;
 
 namespace Fulbank.Model.Repository
 {
@@ -66,17 +67,38 @@ namespace Fulbank.Model.Repository
             return LesBeneficiaires;
         }
 
-        public void deleteBeneficiaire(string Nom)
+        public void deleteBeneficiaire(string RIB)
         {
             using (MySqlConnection connexion = new MySqlConnection())
             {
                 connexion.ConnectionString = connectionString;
                 connexion.Open();
-                string sql = "DELETE FROM bénéficiaire WHERE nom = @Nom;";
+                string sql = "DELETE FROM bénéficiaire WHERE RIB = @RIB;";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
-                cmd.Parameters.AddWithValue("@Nom", Nom);
+                cmd.Parameters.AddWithValue("@RIB", RIB);
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public DataTable getBeneficiaires(int idCLient)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (MySqlConnection connexion = new MySqlConnection(connectionString))
+            {
+                connexion.Open();
+
+                string sql = "SELECT Nom, Prenom, RIB from bénéficiaire where idClient = @idClient";
+                using (MySqlCommand cmd = new MySqlCommand(sql, connexion))
+                {
+                    cmd.Parameters.AddWithValue("@idClient", idCLient);
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+            return dataTable;
         }
     }
 }

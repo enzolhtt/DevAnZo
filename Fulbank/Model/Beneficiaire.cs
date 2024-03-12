@@ -1,4 +1,5 @@
-﻿using MySqlX.XDevAPI.Common;
+﻿using Fulbank.Model.Repository;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace Fulbank.Model
 
         public string affiche()
         {
-            return "Nom : " + this.getNom() + " Prenom :" + this.getPrenom() + " RIB : " + this.getRIB() + " IBAN : " + this.getIBAN();            
+            return "Nom : " + this.getNom() + " | Prenom : " + this.getPrenom() + " | RIB : " + this.getRIB() + " | IBAN : " + this.getIBAN() + ";";
         }
     }
 }

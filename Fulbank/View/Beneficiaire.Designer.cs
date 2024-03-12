@@ -34,20 +34,21 @@
             bt_add = new Button();
             bt_delete = new Button();
             groupBox1 = new GroupBox();
+            tbx_Prenom = new TextBox();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
             button1 = new Button();
             bt_voir = new Button();
             bindingSource1 = new BindingSource(components);
-            listBox1 = new ListBox();
             groupBox2 = new GroupBox();
-            tbx_Prenom = new TextBox();
+            ListeBeneficiaire = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ListeBeneficiaire).BeginInit();
             SuspendLayout();
             // 
             // img_retour
@@ -106,6 +107,14 @@
             groupBox1.Text = "groupBox1";
             groupBox1.Visible = false;
             // 
+            // tbx_Prenom
+            // 
+            tbx_Prenom.Location = new Point(73, 139);
+            tbx_Prenom.Name = "tbx_Prenom";
+            tbx_Prenom.Size = new Size(155, 23);
+            tbx_Prenom.TabIndex = 4;
+            tbx_Prenom.Text = "Prenom";
+            // 
             // textBox3
             // 
             textBox3.Location = new Point(73, 275);
@@ -151,19 +160,9 @@
             bt_voir.Visible = false;
             bt_voir.Click += bt_voir_Click;
             // 
-            // listBox1
-            // 
-            listBox1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 32;
-            listBox1.Location = new Point(33, 91);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(828, 356);
-            listBox1.TabIndex = 14;
-            // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(listBox1);
+            groupBox2.Controls.Add(ListeBeneficiaire);
             groupBox2.Location = new Point(33, 238);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(891, 547);
@@ -171,13 +170,15 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox2";
             // 
-            // tbx_Prenom
+            // ListeBeneficiaire
             // 
-            tbx_Prenom.Location = new Point(73, 139);
-            tbx_Prenom.Name = "tbx_Prenom";
-            tbx_Prenom.Size = new Size(155, 23);
-            tbx_Prenom.TabIndex = 4;
-            tbx_Prenom.Text = "Prenom";
+            ListeBeneficiaire.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ListeBeneficiaire.Location = new Point(6, 13);
+            ListeBeneficiaire.Name = "ListeBeneficiaire";
+            ListeBeneficiaire.RowHeadersWidth = 65;
+            ListeBeneficiaire.RowTemplate.Height = 25;
+            ListeBeneficiaire.Size = new Size(879, 528);
+            ListeBeneficiaire.TabIndex = 0;
             // 
             // Beneficiaire
             // 
@@ -201,6 +202,7 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ListeBeneficiaire).EndInit();
             ResumeLayout(false);
         }
 
@@ -217,10 +219,9 @@
         private Button button1;
         private Button bt_voir;
         private BindingSource bindingSource1;
-        private DataGridView dataGridView1;
         private ListView listView1;
-        private ListBox listBox1;
         private GroupBox groupBox2;
         private TextBox tbx_Prenom;
+        private DataGridView ListeBeneficiaire;
     }
 }

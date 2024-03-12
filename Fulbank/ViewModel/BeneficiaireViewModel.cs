@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Fb_VM = Fulbank.ViewModel;
 using CRepository = Fulbank.Model.Repository;
 using System.Web;
+using System.Data;
 
 namespace Fulbank.ViewModel
 {
@@ -33,9 +34,14 @@ namespace Fulbank.ViewModel
             return BeneficiaireRepository.getAllBeneficiaire(idClient);
         }
 
-        public void deleteBeneficiaire(string name)
+        public void deleteBeneficiaire(string RIB)
         {
-            BeneficiaireRepository.deleteBeneficiaire(name);
+            BeneficiaireRepository.deleteBeneficiaire(RIB);
+        }
+
+        public DataTable getBeneficiaires(int idClient)
+        {
+            return BeneficiaireRepository.getBeneficiaires(idClient);
         }
     }
 }

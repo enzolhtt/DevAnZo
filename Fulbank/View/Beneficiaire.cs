@@ -13,6 +13,7 @@ using Fb_VM = Fulbank.ViewModel;
 using Fulbank.Model.Repository;
 using Fulbank.Model;
 using System.Security.Cryptography.X509Certificates;
+using System.Numerics;
 
 namespace Fulbank.View
 {
@@ -66,83 +67,141 @@ namespace Fulbank.View
             string rib = textBox2.Text;
             string iban = textBox3.Text;
             string prenom = tbx_Prenom.Text;
+
+            static bool verifRIB(string rib)
+            {
+                bool verif = false;
+                int verifInt = 0;
+
+                try
+                {
+                    BigInteger ribint = BigInteger.Parse(rib);
+                    return true;
+                }
+                catch(Exception e) 
+                {
+                    // ya une lettre dans le rib
+                    return false;
+                }
+
+                foreach(char chiffre in rib)
+                {
+                    try
+                    {
+                        verifInt += 1;
+                    }
+                    catch
+                    {
+                        verif = false;
+                    }
+                }
+                if (verifInt == 35)
+                {
+                    verif = true;
+                }
+
+                return verif;
+            }
+
             if (name == "")
             {
                 MessageBox.Show("Le champs nom est obligatoire !", "Attention :", MessageBoxButtons.OK, icon);
             }
+            else if (rib.Length != 35)
+            {
+                MessageBox.Show("Le champs RIB ne contient pas 35 chiffres", "Attention :", MessageBoxButtons.OK, icon);
+            }
             else
             {
-                beneficiaireViewModel.addBeneficiaire(name, prenom, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
-                Beneficiaire benef = new Beneficiaire(NumCompteActuel);
-                benef.Show();
-                this.Hide();
-                groupBox1.Visible = false;
-                bt_add.Visible = true;
-                bt_delete.Visible = true;
-                bt_voir.Visible = false;
-                groupBox2.Visible = true;
+                if(verifRIB(rib))
+                {
+                    beneficiaireViewModel.addBeneficiaire(name, prenom, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
+                    Beneficiaire benef = new Beneficiaire(NumCompteActuel);
+                    benef.Show();
+                    this.Hide();
+                    groupBox1.Visible = false;
+                    bt_add.Visible = true;
+                    bt_delete.Visible = true;
+                    bt_voir.Visible = false;
+                    groupBox2.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Votre RIB ne contient pas que des chiffres !", "Attention :", MessageBoxButtons.OK, icon);
+                }
             }
         }
 
         private void Beneficiaire_Load(object sender, EventArgs e)
         {
-            List<Fb_M.Beneficiaire> BeneficiaireVar = beneficiaireViewModel.getAllBeneficiaire(compteViewModel.getIdClientByNumCompte(NumCompteActuel));
-            foreach (Fb_M.Beneficiaire b in BeneficiaireVar)
+            try
             {
-                listBox1.Items.Add(b.affiche());
-                //listBox1.Items.Add("Nom : " + b.getNom() + " RIB : " + b.getRIB() + " IBAN : " + b.getIBAN());
+                //MessageBox.Show("idClient : " + compteViewModel.getIdClientByNumCompte(NumCompteActuel));
+                DataTable table = beneficiaireViewModel.getBeneficiaires(compteViewModel.getIdClientByNumCompte(NumCompteActuel));
+                ListeBeneficiaire.AutoGenerateColumns = true;
+                ListeBeneficiaire.DataSource = table;
+            }
+            catch
+            {
+                MessageBox.Show("Erreur de chargement des bénéficiaires merci de réessayer ultérieurement !");
             }
         }
 
         private void bt_delete_Click(object sender, EventArgs e)
         {
-            string getNom()
+            /*string getRIB()
             {
-                string NomList = "";
-                for (var i = 0; i < listBox1.Items.Count; i++)
+                string SelectRow = listBox1.SelectedItem.ToString();
+                string RIB_Select = "";
+                for (int i = 0; i < SelectRow.Length; i++)
                 {
-                    if (i == listBox1.SelectedIndex)
+                    if (SelectRow[i + 4] == ';')
                     {
-                        string chaine = (string)listBox1.Items[i];
-                        for (var j = 0; j < chaine.Length; j++)
+                        //MessageBox.Show("test i+4");
+                        return "";
+                    }
+                    else
+                    {
+                        //MessageBox.Show("test else");
+                        string RIBFind = SelectRow[i].ToString() + SelectRow[i + 1].ToString() + SelectRow[i + 2].ToString() + SelectRow[i + 3].ToString() + SelectRow[i + 4].ToString() + SelectRow[i + 5].ToString() + SelectRow[i + 6].ToString();
+                        //MessageBox.Show("test RIBFind = " +  RIBFind);
+                        if (RIBFind == "| RIB :")
                         {
-                            if (Convert.ToString(chaine[j]) == ":")
+                            //MessageBox.Show("test if rib");
+                            for (int j = i + 9; j < (i + 9) + 34; j++)
                             {
-                                string RIBText = "";
-                                int k = j + 2;
-                                while (Convert.ToString(chaine[j]) != " ")
-                                {
-                                    NomList += Convert.ToString(chaine[k]);
-                                    RIBText = Convert.ToString(chaine[k + 1]) + Convert.ToString(chaine[k + 2]) + Convert.ToString(chaine[k + 3]) + Convert.ToString(chaine[k + 4]);
-                                    k += 1;
-                                    if (RIBText == " RIB")
-                                    {
-                                        return NomList;
-                                    }
-                                }
+                                //MessageBox.Show("test for j");
+                                RIB_Select = RIB_Select + SelectRow[j].ToString();
+                                //MessageBox.Show("RIB INT " + SelectRow[j].ToString());
+
                             }
+                            MessageBox.Show(";" + RIB_Select + ";");
+                            return RIB_Select;
                         }
                     }
                 }
-                return NomList;
+
+                return "";
             }
 
 
-            if (getNom() != "")
+            if (getRIB() != "")
             {
-                string mess = "Etes-vous sur de vouloir suprimer " + getNom() + " de votre liste de beneficiare ?"; ;
+                string mess = "Etes-vous sur de vouloir suprimer ce bénéficiare de votre liste de beneficiare ?"; ;
                 string title = "Attention vous tentez de supprimer un beneficiaire.";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 MessageBoxIcon icon = MessageBoxIcon.Exclamation;
                 DialogResult result = MessageBox.Show(mess, title, buttons, icon);
                 if (result == DialogResult.Yes)
                 {
-                    beneficiaireViewModel.deleteBeneficiaire(getNom());
+                    beneficiaireViewModel.deleteBeneficiaire(getRIB());
                     Beneficiaire benef = new Beneficiaire(NumCompteActuel);
                     benef.Show();
                     this.Hide();
                 }
-            }
+            }*/
+
+
         }
     }
 }
