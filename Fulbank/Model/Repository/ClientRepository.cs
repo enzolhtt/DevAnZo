@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Fulbank.Model;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
@@ -31,6 +32,33 @@ namespace Fulbank.Model.Repository
                 }
                 return NomComplet;
             }
+        }
+
+        public Client getClientByNumCompte(int numCompte)
+        {
+            using (MySqlConnection connexion = new MySqlConnection())
+            {
+                connexion.ConnectionString = connectionString;
+                connexion.Open();
+                string sql = "select * from Client cl join Compte co on co.idClient = cl.idClient where NumeroCompte = @numCompte;";
+                MySqlCommand cmd = new MySqlCommand( sql, connexion);
+                cmd.Parameters.AddWithValue("@numcompte", numCompte);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int idClient = reader.GetInt32(0);
+                    string tel = reader.GetString(1);
+                    string nom = reader.GetString(2);
+                    string prenom = reader.GetString(3);
+                    string ville = reader.GetString(4);
+                    string rue = reader.GetString(5);
+                    string cp = reader.GetString(6);
+                    string mail = reader.GetString(7);
+                    Client cli = new Client(idClient, tel, nom, prenom, ville, rue, cp, mail );
+                    return cli;
+                }
+            }
+            return null;
         }
     }
 }

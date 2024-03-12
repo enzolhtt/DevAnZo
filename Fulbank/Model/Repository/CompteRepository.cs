@@ -83,8 +83,7 @@ namespace Fulbank.Model.Repository
                 cmd.Parameters.Add(new MySqlParameter("idCompteDebiteur", idCompteDebiteur));
                 cmd.Parameters.Add(new MySqlParameter("idCompteCrediteur", idCompteCrediteur));
                 cmd.Parameters.Add(new MySqlParameter("ValDebit", Valdebit));
-                 cmd.ExecuteNonQuery();
-                MessageBox.Show(cmd.ToString());
+                cmd.ExecuteNonQuery();
             }
         }
 

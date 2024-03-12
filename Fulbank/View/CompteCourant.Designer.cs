@@ -38,19 +38,17 @@
             lb_solde = new Label();
             lb_compte = new Label();
             gbx_compte = new GroupBox();
+            listBox2 = new ListBox();
             lbl_solde = new Label();
             lbl_client = new Label();
-            dataGridView1 = new DataGridView();
             gbx_virement = new GroupBox();
             cbx_personne = new ComboBox();
             bt_envoyer = new Button();
             lbl_virement = new Label();
             txt_montant = new TextBox();
-            montant = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             gbx_compte.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             gbx_virement.SuspendLayout();
             SuspendLayout();
             // 
@@ -146,9 +144,9 @@
             // 
             // gbx_compte
             // 
+            gbx_compte.Controls.Add(listBox2);
             gbx_compte.Controls.Add(lbl_solde);
             gbx_compte.Controls.Add(lbl_client);
-            gbx_compte.Controls.Add(dataGridView1);
             gbx_compte.Controls.Add(lb_compte);
             gbx_compte.Controls.Add(bt_virement);
             gbx_compte.Controls.Add(lb_solde);
@@ -158,6 +156,16 @@
             gbx_compte.TabIndex = 17;
             gbx_compte.TabStop = false;
             gbx_compte.Visible = false;
+            // 
+            // listBox2
+            // 
+            listBox2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 25;
+            listBox2.Location = new Point(112, 248);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(551, 304);
+            listBox2.TabIndex = 19;
             // 
             // lbl_solde
             // 
@@ -178,16 +186,6 @@
             lbl_client.Size = new Size(43, 17);
             lbl_client.TabIndex = 17;
             lbl_client.Text = "label1";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { montant });
-            dataGridView1.Location = new Point(196, 262);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(390, 312);
-            dataGridView1.TabIndex = 16;
             // 
             // gbx_virement
             // 
@@ -240,11 +238,6 @@
             txt_montant.Text = "De combien ?";
             txt_montant.TextAlign = HorizontalAlignment.Center;
             // 
-            // montant
-            // 
-            montant.HeaderText = "montant";
-            montant.Name = "montant";
-            // 
             // CompteCourant
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -266,7 +259,6 @@
             ((System.ComponentModel.ISupportInitialize)img_retour).EndInit();
             gbx_compte.ResumeLayout(false);
             gbx_compte.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             gbx_virement.ResumeLayout(false);
             gbx_virement.PerformLayout();
             ResumeLayout(false);
@@ -285,7 +277,6 @@
         private Label lb_compte;
         private ListBox listBox1;
         private GroupBox gbx_compte;
-        private DataGridView dataGridView1;
         private Label lbl_client;
         private Label lbl_solde;
         private GroupBox gbx_virement;
@@ -293,6 +284,6 @@
         private Label lbl_virement;
         private TextBox txt_montant;
         private ComboBox cbx_personne;
-        private DataGridViewTextBoxColumn montant;
+        private ListBox listBox2;
     }
 }
