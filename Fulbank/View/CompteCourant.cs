@@ -149,5 +149,12 @@ namespace Fulbank.View
                 //listBox1.Items.Add("Nom : " + b.getNom() + " RIB : " + b.getRIB() + " IBAN : " + b.getIBAN());
             }
         }
+
+        private void bt_crypto_Click(object sender, EventArgs e)
+        {
+            CompteCrypto compteCrypto = new CompteCrypto(NumCompteActuel);
+            compteCrypto.Show();
+            this.Hide();
+        }
     }
 }

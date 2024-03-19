@@ -82,6 +82,7 @@
             bt_crypto.TabIndex = 11;
             bt_crypto.Text = "Crypto";
             bt_crypto.UseVisualStyleBackColor = true;
+            bt_crypto.Click += bt_crypto_Click;
             // 
             // bt_livret
             // 
