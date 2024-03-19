@@ -106,8 +106,8 @@ namespace Fulbank.View
         private void bt_virement_Click(object sender, EventArgs e)
         {
             gbx_compte.Visible = false;
+            logoFB_General.Visible = false;
             gbx_virement.Visible = true;
-            lbl_virement.Visible = true;
             cbx_personne.Visible = true;
             txt_montant.Visible = true;
         }
@@ -136,7 +136,6 @@ namespace Fulbank.View
             compteViewModel.transactionCompteCourant(NumCompteActuel, compteViewModel.getNumCompteByNom(NomPrenom[1], NomPrenom[0]), float.Parse(txt_montant.Text));
             gbx_compte.Visible = true;
             gbx_virement.Visible = false;
-            lbl_virement.Visible = false;
             cbx_personne.Visible = false;
             txt_montant.Visible = false;
         }

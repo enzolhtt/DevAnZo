@@ -26,7 +26,7 @@ namespace Fulbank.View
         {
             NumCompteActuel = NumCompte;
             InitializeComponent();
-            compteViewModel = new Fb_VM.CompteViewModel();
+            compteViewModel = new CompteViewModel();
             beneficiaireViewModel = new BeneficiaireViewModel();
         }
 
@@ -57,18 +57,18 @@ namespace Fulbank.View
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
+            tbx_Nom.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBoxIcon icon = MessageBoxIcon.Exclamation;
-            string name = textBox1.Text;
-            string rib = textBox2.Text;
-            string iban = textBox3.Text;
+            string name = tbx_Nom.Text;
+            string rib = tbx_rib.Text;
+            string iban = tbx_iban.Text;
             string prenom = tbx_Prenom.Text;
 
-            static bool verifRIBandIBAN(string rib, string iban)
+            bool verifRIBandIBAN(string rib, string iban)
             {
                 bool verif = false;
                 string newIBAN = iban.Substring(2, 25); ;
@@ -88,6 +88,22 @@ namespace Fulbank.View
                 return verif;
             }
 
+            bool checkCompteExiste(string rib)
+            {
+                bool check = false;
+                List<Compte> ListeComptes = compteViewModel.getAllRib();
+
+                foreach (Compte compte in ListeComptes)
+                {
+                    if (compte.getRib() == rib)
+                    {
+                        check = true;
+                    }
+                }
+
+                return check;
+            }
+
             if (name == "" || prenom == "" || rib == "" || iban == "")
             {
                 MessageBox.Show("Les champs sont tous obligatoires !", "Attention :", MessageBoxButtons.OK, icon);
@@ -102,21 +118,28 @@ namespace Fulbank.View
             }
             else
             {
-                if (verifRIBandIBAN(rib, iban))
+                if (checkCompteExiste(rib))
                 {
-                    beneficiaireViewModel.addBeneficiaire(name, prenom, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
-                    Beneficiaire benef = new Beneficiaire(NumCompteActuel);
-                    benef.Show();
-                    this.Hide();
-                    groupBox1.Visible = false;
-                    bt_add.Visible = true;
-                    bt_delete.Visible = true;
-                    bt_voir.Visible = false;
-                    ListeBeneficiaire.Visible = true;
+                    if (verifRIBandIBAN(rib, iban))
+                    {
+                        beneficiaireViewModel.addBeneficiaire(name, prenom, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
+                        Beneficiaire benef = new Beneficiaire(NumCompteActuel);
+                        benef.Show();
+                        this.Hide();
+                        groupBox1.Visible = false;
+                        bt_add.Visible = true;
+                        bt_delete.Visible = true;
+                        bt_voir.Visible = false;
+                        ListeBeneficiaire.Visible = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Votre RIB ne contient pas que des chiffres !", "Attention :", MessageBoxButtons.OK, icon);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Votre RIB ne contient pas que des chiffres !", "Attention :", MessageBoxButtons.OK, icon);
+                    MessageBox.Show("Le bénéficiaire que vous essayez de créer ne possède pas de compte dans notre banque !", "Attention :", MessageBoxButtons.OK, icon);
                 }
             }
         }
@@ -135,6 +158,11 @@ namespace Fulbank.View
             {
                 MessageBox.Show("Erreur de chargement des bénéficiaires merci de réessayer ultérieurement !");
             }
+
+            tbx_iban.PlaceholderText = "IBAN";
+            tbx_Nom.PlaceholderText = "Nom";
+            tbx_Prenom.PlaceholderText = "Prenom";
+            tbx_rib.PlaceholderText = "RIB";
         }
 
         private void bt_delete_Click(object sender, EventArgs e)
@@ -191,70 +219,22 @@ namespace Fulbank.View
                 }
             }*/
 
+            string Nom = (string)ListeBeneficiaire.CurrentRow.Cells[0].Value;
+            string Prenom = (string)ListeBeneficiaire.CurrentRow.Cells[1].Value;
+            string RIB = (string)ListeBeneficiaire.CurrentRow.Cells[2].Value;
+            //MessageBox.Show("RIB :" + RIB);
 
-        }
-
-        private void textBox1_Enter(object sender, EventArgs e)
-        {
-            if (textBox1.Text == "Nom")
+            string mess = "Etes-vous sur de vouloir suprimer " + Nom + " " + Prenom + " de votre liste de beneficiare ?"; ;
+            string title = "Attention vous tentez de supprimer un beneficiaire.";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            MessageBoxIcon icon = MessageBoxIcon.Exclamation;
+            DialogResult result = MessageBox.Show(mess, title, buttons, icon);
+            if (result == DialogResult.Yes)
             {
-                textBox1.Text = "";
-            }
-        }
-
-        private void textBox1_Leave(object sender, EventArgs e)
-        {
-            if (textBox1.Text == "")
-            {
-                textBox1.Text = "Nom";
-            }
-        }
-
-        private void tbx_Prenom_Enter(object sender, EventArgs e)
-        {
-            if (tbx_Prenom.Text == "Prenom")
-            {
-                tbx_Prenom.Text = "";
-            }
-        }
-
-        private void tbx_Prenom_Leave(object sender, EventArgs e)
-        {
-            if (tbx_Prenom.Text == "")
-            {
-                tbx_Prenom.Text = "Prenom";
-            }
-        }
-
-        private void textBox2_Enter(object sender, EventArgs e)
-        {
-            if (textBox2.Text == "RIB")
-            {
-                textBox2.Text = "";
-            }
-        }
-
-        private void textBox2_Leave(object sender, EventArgs e)
-        {
-            if(textBox2.Text == "")
-            {
-                textBox2.Text = "RIB";
-            }
-        }
-
-        private void textBox3_Enter(object sender, EventArgs e)
-        {
-            if (textBox3.Text == "IBAN")
-            {
-                textBox3.Text = "FR";
-            }
-        }
-
-        private void textBox3_Leave(object sender, EventArgs e)
-        {
-            if (textBox3.Text == "FR")
-            {
-                textBox3.Text = "IBAN";
+                beneficiaireViewModel.deleteBeneficiaire(RIB);
+                Beneficiaire benef = new Beneficiaire(NumCompteActuel);
+                benef.Show();
+                this.Hide();
             }
         }
     }

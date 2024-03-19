@@ -15,10 +15,9 @@ namespace Fulbank.Model
         private double _taux;
         private string _rib;
         private string _iban;
-        private bool _externe;
-        private bool a;
+        private int _externe;
 
-        public Compte(int numerocompte, string mdp, double solde, DateTime dateouverture, double taux, string rib, string iban, bool externe)
+        public Compte(int numerocompte, string mdp, double solde, DateTime dateouverture, double taux, string rib, string iban, int externe)
         {
             _numeroCompte = numerocompte;
             _mdp = mdp;
@@ -31,5 +30,10 @@ namespace Fulbank.Model
         }
 
         public string Solde { get; set; }
+
+        public string getRib()
+        {
+            return _rib;
+        }
     }
 }

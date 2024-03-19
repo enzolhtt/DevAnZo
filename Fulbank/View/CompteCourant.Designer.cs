@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
+            logoFB_General = new PictureBox();
             img_retour = new PictureBox();
             bt_crypto = new Button();
             bt_livret = new Button();
@@ -44,23 +44,24 @@
             gbx_virement = new GroupBox();
             cbx_personne = new ComboBox();
             bt_envoyer = new Button();
-            lbl_virement = new Label();
             txt_montant = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            logoFB_Virement = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)logoFB_General).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             gbx_compte.SuspendLayout();
             gbx_virement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)logoFB_Virement).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // logoFB_General
             // 
-            pictureBox1.Image = Properties.Resources.Fulbank;
-            pictureBox1.Location = new Point(620, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(352, 208);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
+            logoFB_General.Image = Properties.Resources.Fulbank;
+            logoFB_General.Location = new Point(620, 12);
+            logoFB_General.Name = "logoFB_General";
+            logoFB_General.Size = new Size(352, 208);
+            logoFB_General.SizeMode = PictureBoxSizeMode.CenterImage;
+            logoFB_General.TabIndex = 5;
+            logoFB_General.TabStop = false;
             // 
             // img_retour
             // 
@@ -190,9 +191,9 @@
             // gbx_virement
             // 
             gbx_virement.BackColor = Color.FromArgb(128, 194, 236);
+            gbx_virement.Controls.Add(logoFB_Virement);
             gbx_virement.Controls.Add(cbx_personne);
             gbx_virement.Controls.Add(bt_envoyer);
-            gbx_virement.Controls.Add(lbl_virement);
             gbx_virement.Controls.Add(txt_montant);
             gbx_virement.Location = new Point(221, 226);
             gbx_virement.Name = "gbx_virement";
@@ -219,24 +220,24 @@
             bt_envoyer.UseVisualStyleBackColor = true;
             bt_envoyer.Click += bt_envoyer_Click;
             // 
-            // lbl_virement
-            // 
-            lbl_virement.AutoSize = true;
-            lbl_virement.Font = new Font("Segoe UI", 36F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            lbl_virement.Location = new Point(159, 152);
-            lbl_virement.Name = "lbl_virement";
-            lbl_virement.Size = new Size(237, 65);
-            lbl_virement.TabIndex = 3;
-            lbl_virement.Text = "Virement";
-            // 
             // txt_montant
             // 
             txt_montant.Location = new Point(195, 349);
             txt_montant.Name = "txt_montant";
+            txt_montant.PlaceholderText = "De combien ?";
             txt_montant.Size = new Size(155, 23);
             txt_montant.TabIndex = 1;
-            txt_montant.Text = "De combien ?";
             txt_montant.TextAlign = HorizontalAlignment.Center;
+            // 
+            // logoFB_Virement
+            // 
+            logoFB_Virement.Image = Properties.Resources.Fulbank;
+            logoFB_Virement.Location = new Point(99, 65);
+            logoFB_Virement.Name = "logoFB_Virement";
+            logoFB_Virement.Size = new Size(352, 208);
+            logoFB_Virement.SizeMode = PictureBoxSizeMode.CenterImage;
+            logoFB_Virement.TabIndex = 21;
+            logoFB_Virement.TabStop = false;
             // 
             // CompteCourant
             // 
@@ -244,29 +245,30 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
-            Controls.Add(gbx_compte);
             Controls.Add(gbx_virement);
             Controls.Add(bt_crypto);
             Controls.Add(bt_livret);
             Controls.Add(bt_epargne);
             Controls.Add(bt_courant);
             Controls.Add(img_retour);
-            Controls.Add(pictureBox1);
+            Controls.Add(logoFB_General);
+            Controls.Add(gbx_compte);
             Name = "CompteCourant";
             Text = "CompteCourant";
             Load += CompteCourant_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)logoFB_General).EndInit();
             ((System.ComponentModel.ISupportInitialize)img_retour).EndInit();
             gbx_compte.ResumeLayout(false);
             gbx_compte.PerformLayout();
             gbx_virement.ResumeLayout(false);
             gbx_virement.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)logoFB_Virement).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox logoFB_General;
         private PictureBox img_retour;
         private Button bt_crypto;
         private Button bt_livret;
@@ -281,9 +283,9 @@
         private Label lbl_solde;
         private GroupBox gbx_virement;
         private Button bt_envoyer;
-        private Label lbl_virement;
         private TextBox txt_montant;
         private ComboBox cbx_personne;
         private ListBox listBox2;
+        private PictureBox logoFB_Virement;
     }
 }

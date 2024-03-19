@@ -35,9 +35,9 @@
             bt_delete = new Button();
             groupBox1 = new GroupBox();
             tbx_Prenom = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            tbx_iban = new TextBox();
+            tbx_rib = new TextBox();
+            tbx_Nom = new TextBox();
             button1 = new Button();
             bt_voir = new Button();
             bindingSource1 = new BindingSource(components);
@@ -93,9 +93,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(tbx_Prenom);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(tbx_iban);
+            groupBox1.Controls.Add(tbx_rib);
+            groupBox1.Controls.Add(tbx_Nom);
             groupBox1.Controls.Add(button1);
             groupBox1.Location = new Point(341, 205);
             groupBox1.Name = "groupBox1";
@@ -111,39 +111,38 @@
             tbx_Prenom.Name = "tbx_Prenom";
             tbx_Prenom.Size = new Size(155, 23);
             tbx_Prenom.TabIndex = 1;
-            tbx_Prenom.Text = "Prenom";
-            tbx_Prenom.Enter += tbx_Prenom_Enter;
-            tbx_Prenom.Leave += tbx_Prenom_Leave;
+            //tbx_Prenom.Text = "Prenom";
+            //tbx_Prenom.Enter += tbx_Prenom_Enter;
+            //tbx_Prenom.Leave += tbx_Prenom_Leave;
             // 
-            // textBox3
+            // tbx_iban
             // 
-            textBox3.Location = new Point(73, 275);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(155, 23);
-            textBox3.TabIndex = 3;
-            textBox3.Text = "IBAN";
-            textBox3.Enter += textBox3_Enter;
-            textBox3.Leave += textBox3_Leave;
+            tbx_iban.Location = new Point(73, 275);
+            tbx_iban.Name = "tbx_iban";
+            tbx_iban.Size = new Size(155, 23);
+            tbx_iban.TabIndex = 3;
+            //tbx_iban.Text = "IBAN";
+            //tbx_iban.Enter += textBox3_Enter;
+            //tbx_iban.Leave += textBox3_Leave;
             // 
-            // textBox2
+            // tbx_rib
             // 
-            textBox2.Location = new Point(73, 210);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(155, 23);
-            textBox2.TabIndex = 2;
-            textBox2.Text = "RIB";
-            textBox2.Enter += textBox2_Enter;
-            textBox2.Leave += textBox2_Leave;
+            tbx_rib.Location = new Point(73, 210);
+            tbx_rib.Name = "tbx_rib";
+            tbx_rib.Size = new Size(155, 23);
+            tbx_rib.TabIndex = 2;
+            //tbx_rib.Text = "RIB";
+            //tbx_rib.Enter += textBox2_Enter;
+            //tbx_rib.Leave += textBox2_Leave;
             // 
-            // textBox1
+            // tbx_Nom
             // 
-            textBox1.Location = new Point(73, 76);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(155, 23);
-            textBox1.TabIndex = 0;
-            textBox1.Text = "Nom";
-            textBox1.Enter += textBox1_Enter;
-            textBox1.Leave += textBox1_Leave;
+            tbx_Nom.Location = new Point(73, 76);
+            tbx_Nom.Name = "tbx_Nom";
+            tbx_Nom.Size = new Size(155, 23);
+            tbx_Nom.TabIndex = 0;
+            //tbx_Nom.Text = "Nom";
+            //tbx_Nom.Enter += textBox1_Enter;
             // 
             // button1
             // 
@@ -183,13 +182,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
-            Controls.Add(ListeBeneficiaire);
             Controls.Add(groupBox1);
             Controls.Add(bt_voir);
             Controls.Add(bt_delete);
             Controls.Add(bt_add);
             Controls.Add(pictureBox1);
             Controls.Add(img_retour);
+            Controls.Add(ListeBeneficiaire);
             Name = "Beneficiaire";
             Text = "Beneficiaire";
             Load += Beneficiaire_Load;
@@ -209,9 +208,9 @@
         private Button bt_add;
         private Button bt_delete;
         private GroupBox groupBox1;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox tbx_iban;
+        private TextBox tbx_rib;
+        private TextBox tbx_Nom;
         private Button button1;
         private Button bt_voir;
         private BindingSource bindingSource1;

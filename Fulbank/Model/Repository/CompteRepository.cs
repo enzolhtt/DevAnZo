@@ -128,5 +128,47 @@ namespace Fulbank.Model.Repository
                 return nom;
             }
         }
+
+        public List<Compte> getAllRib()
+        {
+            List<Compte> LesComptes = new List<Compte>();
+            int numerocompte;
+            double solde;
+            DateTime dateouverture;
+            double taux;
+            string RIB;
+            string IBAN;
+            int Externe;
+            string Mdp;
+
+            using (MySqlConnection connexion = new MySqlConnection())
+            {
+                connexion.ConnectionString = connectionString;
+                connexion.Open();
+                string sql = "select NumeroCompte, Solde, DateOuverture, taux, RIB, IBAN, Externe, Mdp from Compte";
+                MySqlCommand cmd = new MySqlCommand(sql, connexion);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.HasRows)
+                {
+                    //MessageBox.Show("oui je passe row");
+                    while (reader.Read())
+                    {
+                        //MessageBox.Show("oui je read");
+                        numerocompte = int.Parse(reader.GetString(0));
+                        solde = double.Parse(reader.GetString(1));
+                        dateouverture = DateTime.Parse(reader.GetString(2));
+                        taux = double.Parse(reader.GetString(3));
+                        RIB = reader.GetString(4);
+                        IBAN = reader.GetString(5);
+                        Externe = int.Parse(reader.GetString(6));
+                        Mdp = reader.GetString(7);
+                        Compte c = new Compte(numerocompte, Mdp, solde, dateouverture, taux, RIB, IBAN, Externe);
+                        LesComptes.Add(c);
+                    }
+                    reader.NextResult();
+                }
+                return LesComptes;
+            }
+        }
     }
 }

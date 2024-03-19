@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fulbank.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,11 @@ namespace Fulbank.ViewModel
         public string getNomByNumCompte(int NumCompte)
         {
             return CompteRepository.getNomByNumCompte(NumCompte);
+        }
+
+        public List<Compte> getAllRib()
+        {
+            return CompteRepository.getAllRib();
         }
 
     }
