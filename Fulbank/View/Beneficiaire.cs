@@ -91,7 +91,7 @@ namespace Fulbank.View
             bool checkCompteExiste(string rib)
             {
                 bool check = false;
-                List<Compte> ListeComptes = compteViewModel.getAllRib();
+                List<Compte> ListeComptes = compteViewModel.getAllCompte();
 
                 foreach (Compte compte in ListeComptes)
                 {

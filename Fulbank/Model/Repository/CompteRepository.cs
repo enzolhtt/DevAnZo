@@ -129,7 +129,7 @@ namespace Fulbank.Model.Repository
             }
         }
 
-        public List<Compte> getAllRib()
+        public List<Compte> getAllCompte()
         {
             List<Compte> LesComptes = new List<Compte>();
             int numerocompte;
@@ -145,7 +145,7 @@ namespace Fulbank.Model.Repository
             {
                 connexion.ConnectionString = connectionString;
                 connexion.Open();
-                string sql = "select NumeroCompte, Solde, DateOuverture, taux, RIB, IBAN, Externe, Mdp from Compte";
+                string sql = "select * from Compte join Type T on T.IdType = Compte.IdType join devise d on d.idDevise = Compte.idDevise;";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.HasRows)
@@ -161,8 +161,15 @@ namespace Fulbank.Model.Repository
                         RIB = reader.GetString(4);
                         IBAN = reader.GetString(5);
                         Externe = int.Parse(reader.GetString(6));
-                        Mdp = reader.GetString(7);
-                        Compte c = new Compte(numerocompte, Mdp, solde, dateouverture, taux, RIB, IBAN, Externe);
+                        int idclient = int.Parse(reader.GetString(9));
+                        Mdp = reader.GetString(10);
+                        int idType = int.Parse(reader.GetString(11));
+                        string type = reader.GetString(12);
+                        int idDevise = int.Parse(reader.GetString(13));
+                        string devise = reader.GetString(14);
+                        Type t = new Type(idType, type);
+                        Devise d = new Devise(idDevise, devise);
+                        Compte c = new Compte(numerocompte, Mdp, solde, dateouverture, taux, RIB, IBAN, Externe, idclient,t,d);
                         LesComptes.Add(c);
                     }
                     reader.NextResult();

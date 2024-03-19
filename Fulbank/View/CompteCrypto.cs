@@ -12,24 +12,42 @@ using System.Net.Http.Headers;
 using MySqlX.XDevAPI.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Fulbank.Model;
+using Fulbank.ViewModel;
+using Fb_VM = Fulbank.ViewModel;
 
 namespace Fulbank.View
 {
     public partial class CompteCrypto : Form
     {
-        public CompteCrypto(int numerocompte = 0)
+        public int idClientActuel;
+        private CompteViewModel compteViewModel;
+        public CompteCrypto(int idClient)
         {
+            idClientActuel = idClient;
+            compteViewModel = new CompteViewModel();
             InitializeComponent();
         }
 
         private async void CompteCrypto_Load(object sender, EventArgs e)
         {
             string name = "";
+            double solde = 0;
             try
             {
+                
                 // Créez un client HTTP
                 using (HttpClient client = new HttpClient())
                 {
+                    Compte c;
+                    foreach (Compte item in compteViewModel.getAllCompte())
+                    {
+                        Fulbank.Model.Type t = item.getType();
+                        if (item.getType().TypeDeCompte == "crypto" && item.getIdClient() == idClientActuel)
+                        {
+                            c = item;
+                        }
+                    }
                     // Définir l'URL de l'API
                     string apiUrl = "https://api.coingecko.com/api/v3/coins/list?x_cg_demo_api_key=CG-AVc1nx3n6trSuiWhZUQ6Bwiq";
 
@@ -51,7 +69,7 @@ namespace Fulbank.View
                         // Récupérer les propriétés de la première instance
                         foreach (JObject item in responseArray)
                         {
-                            if (item["name"].ToString() == "Bitcoin")
+                            if (item["name"].ToString() == c.getType().TypeDeCompte)
                             {
                                 name = item["name"].ToString();
                                 label1.Text = name;

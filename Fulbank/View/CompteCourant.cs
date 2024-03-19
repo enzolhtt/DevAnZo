@@ -19,6 +19,7 @@ namespace Fulbank.View
     public partial class CompteCourant : Form
     {
         public int NumCompteActuel;
+        public int idClient;
         public Login Login = new Login();
         private Fb_VM.ClientViewModel clientViewModel;
         private Fb_VM.CompteViewModel compteViewModel;
@@ -34,6 +35,7 @@ namespace Fulbank.View
             transactionViewModel = new TransactionViewModel();
             lb_compte.Text = clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(NumCompte)).ToString();
             lbl_solde.Text = compteViewModel.getSoldeByNumCompte(NumCompte).ToString();
+            idClient = clientViewModel.getClientByNumCompte(NumCompteActuel).getId();
         }
 
         private void img_retour_Click(object sender, EventArgs e)
@@ -152,7 +154,7 @@ namespace Fulbank.View
 
         private void bt_crypto_Click(object sender, EventArgs e)
         {
-            CompteCrypto compteCrypto = new CompteCrypto(NumCompteActuel);
+            CompteCrypto compteCrypto = new CompteCrypto(idClient);
             compteCrypto.Show();
             this.Hide();
         }

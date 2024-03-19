@@ -45,9 +45,9 @@ namespace Fulbank.ViewModel
             return CompteRepository.getNomByNumCompte(NumCompte);
         }
 
-        public List<Compte> getAllRib()
+        public List<Compte> getAllCompte()
         {
-            return CompteRepository.getAllRib();
+            return CompteRepository.getAllCompte();
         }
 
     }
