@@ -128,5 +128,6 @@ namespace Fulbank.Model.Repository
                 return nom;
             }
         }
+
     }
 }
