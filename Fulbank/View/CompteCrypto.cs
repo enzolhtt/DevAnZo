@@ -32,25 +32,26 @@ namespace Fulbank.View
         private async void CompteCrypto_Load(object sender, EventArgs e)
         {
             string name = "";
-            double solde = 0;
+            double convert = 0;
+
+            Compte c = null;
+            foreach (Compte item in compteViewModel.getAllCompte())
+            {
+                if (item.getIdClient() == idClientActuel)
+                {
+                    c = item;
+                }
+            }
             try
             {
-                
                 // Créez un client HTTP
+                string devise = c.getDevise().TypeDevise;
+                MessageBox.Show("type :" + devise);
                 using (HttpClient client = new HttpClient())
                 {
-                    Compte c;
-                    foreach (Compte item in compteViewModel.getAllCompte())
-                    {
-                        Fulbank.Model.Type t = item.getType();
-                        if (item.getType().TypeDeCompte == "crypto" && item.getIdClient() == idClientActuel)
-                        {
-                            c = item;
-                        }
-                    }
                     // Définir l'URL de l'API
-                    string apiUrl = "https://api.coingecko.com/api/v3/coins/list?x_cg_demo_api_key=CG-AVc1nx3n6trSuiWhZUQ6Bwiq";
-
+                    string apiUrl = string.Format("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids={0}&x_cg_demo_api_key=CG-AVc1nx3n6trSuiWhZUQ6Bwiq", devise);
+                    MessageBox.Show(apiUrl);
                     // Effectuer une demande GET à l'API et attendre la réponse
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
 
@@ -69,11 +70,23 @@ namespace Fulbank.View
                         // Récupérer les propriétés de la première instance
                         foreach (JObject item in responseArray)
                         {
-                            if (item["name"].ToString() == c.getType().TypeDeCompte)
-                            {
-                                name = item["name"].ToString();
-                                label1.Text = name;
-                            }
+                            //if (item["name"].ToString() == c.getDevise().TypeDevise)
+                            //{
+                            //    name = item["name"].ToString();
+                            //    label1.Text = name;
+                            //    lbSolde.Text = c.getSolde().ToString();
+                            //    //lb_prix.Text = item["current_price"].ToString();
+                            //}
+                            name = item["name"].ToString();
+                            convert = c.getSolde() * (double)item["current_price"];
+
+
+                            label3.Text = name;
+                            lb_solde.Text = "Vous avez : " + c.getSolde().ToString() + " " + name;
+                            lb_prix.Text = item["current_price"].ToString();
+                            pbx_crypto.ImageLocation = item["image"].ToString();
+                            pbx_crypto.SizeMode = PictureBoxSizeMode.Zoom;
+                            lb_convertion.Text = "Vous êtes actuellement à :"+ String.Format("{0:0.00}",convert) + " €";
                         }
 
                         // Afficher les propriétés dans une boîte de message

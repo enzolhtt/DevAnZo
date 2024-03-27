@@ -28,52 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             lb_solde = new Label();
-            lbl_solde = new Label();
+            lb_prix = new Label();
+            label2 = new Label();
+            pbx_crypto = new PictureBox();
+            label3 = new Label();
+            lb_convertion = new Label();
+            ((System.ComponentModel.ISupportInitialize)pbx_crypto).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(222, 60);
-            label1.Name = "label1";
-            label1.Size = new Size(70, 15);
-            label1.TabIndex = 0;
-            label1.Text = "NomCrypto";
             // 
             // lb_solde
             // 
             lb_solde.AutoSize = true;
             lb_solde.Font = new Font("Segoe UI Black", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_solde.Location = new Point(208, 140);
+            lb_solde.Location = new Point(327, 232);
             lb_solde.Name = "lb_solde";
-            lb_solde.Size = new Size(129, 45);
+            lb_solde.Size = new Size(109, 45);
             lb_solde.TabIndex = 15;
-            lb_solde.Text = "Solde :";
+            lb_solde.Text = "Solde";
             // 
-            // lbl_solde
+            // lb_prix
             // 
-            lbl_solde.AutoSize = true;
-            lbl_solde.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lbl_solde.Location = new Point(343, 148);
-            lbl_solde.Name = "lbl_solde";
-            lbl_solde.Size = new Size(179, 37);
-            lbl_solde.TabIndex = 19;
-            lbl_solde.Text = "SoldeCompte";
+            lb_prix.AutoSize = true;
+            lb_prix.Location = new Point(339, 42);
+            lb_prix.Name = "lb_prix";
+            lb_prix.Size = new Size(38, 15);
+            lb_prix.TabIndex = 17;
+            lb_prix.Text = "label2";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(220, 42);
+            label2.Name = "label2";
+            label2.Size = new Size(113, 15);
+            label2.TabIndex = 18;
+            label2.Text = "Prix crypto en euro :";
+            // 
+            // pbx_crypto
+            // 
+            pbx_crypto.Location = new Point(12, 12);
+            pbx_crypto.Name = "pbx_crypto";
+            pbx_crypto.Size = new Size(187, 172);
+            pbx_crypto.TabIndex = 19;
+            pbx_crypto.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(220, 21);
+            label3.Name = "label3";
+            label3.Size = new Size(38, 15);
+            label3.TabIndex = 20;
+            label3.Text = "label1";
+            // 
+            // lb_convertion
+            // 
+            lb_convertion.AutoSize = true;
+            lb_convertion.Location = new Point(327, 291);
+            lb_convertion.Name = "lb_convertion";
+            lb_convertion.Size = new Size(38, 15);
+            lb_convertion.TabIndex = 21;
+            lb_convertion.Text = "label1";
             // 
             // CompteCrypto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
-            ClientSize = new Size(800, 450);
-            Controls.Add(lbl_solde);
+            ClientSize = new Size(984, 961);
+            Controls.Add(lb_convertion);
+            Controls.Add(label3);
+            Controls.Add(pbx_crypto);
+            Controls.Add(label2);
+            Controls.Add(lb_prix);
             Controls.Add(lb_solde);
-            Controls.Add(label1);
             Name = "CompteCrypto";
             Text = "CompteCrypto";
             Load += CompteCrypto_Load;
+            ((System.ComponentModel.ISupportInitialize)pbx_crypto).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -82,6 +115,11 @@
 
         private Label label1;
         private Label lb_solde;
-        private Label lbl_solde;
+        private Label lbSolde;
+        private Label lb_prix;
+        private Label label2;
+        private PictureBox pbx_crypto;
+        private Label label3;
+        private Label lb_convertion;
     }
 }

@@ -42,10 +42,10 @@
             lbl_solde = new Label();
             lbl_client = new Label();
             gbx_virement = new GroupBox();
+            logoFB_Virement = new PictureBox();
             cbx_personne = new ComboBox();
             bt_envoyer = new Button();
             txt_montant = new TextBox();
-            logoFB_Virement = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)logoFB_General).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             gbx_compte.SuspendLayout();
@@ -202,6 +202,16 @@
             gbx_virement.TabIndex = 20;
             gbx_virement.TabStop = false;
             // 
+            // logoFB_Virement
+            // 
+            logoFB_Virement.Image = Properties.Resources.Fulbank;
+            logoFB_Virement.Location = new Point(99, 65);
+            logoFB_Virement.Name = "logoFB_Virement";
+            logoFB_Virement.Size = new Size(352, 208);
+            logoFB_Virement.SizeMode = PictureBoxSizeMode.CenterImage;
+            logoFB_Virement.TabIndex = 21;
+            logoFB_Virement.TabStop = false;
+            // 
             // cbx_personne
             // 
             cbx_personne.FormattingEnabled = true;
@@ -230,22 +240,13 @@
             txt_montant.TabIndex = 1;
             txt_montant.TextAlign = HorizontalAlignment.Center;
             // 
-            // logoFB_Virement
-            // 
-            logoFB_Virement.Image = Properties.Resources.Fulbank;
-            logoFB_Virement.Location = new Point(99, 65);
-            logoFB_Virement.Name = "logoFB_Virement";
-            logoFB_Virement.Size = new Size(352, 208);
-            logoFB_Virement.SizeMode = PictureBoxSizeMode.CenterImage;
-            logoFB_Virement.TabIndex = 21;
-            logoFB_Virement.TabStop = false;
-            // 
             // CompteCourant
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
+            Controls.Add(gbx_compte);
             Controls.Add(gbx_virement);
             Controls.Add(bt_crypto);
             Controls.Add(bt_livret);
@@ -253,7 +254,6 @@
             Controls.Add(bt_courant);
             Controls.Add(img_retour);
             Controls.Add(logoFB_General);
-            Controls.Add(gbx_compte);
             Name = "CompteCourant";
             Text = "CompteCourant";
             Load += CompteCourant_Load;
