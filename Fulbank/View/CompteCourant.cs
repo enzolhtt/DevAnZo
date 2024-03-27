@@ -177,7 +177,7 @@ namespace Fulbank.View
 
         private void bt_crypto_Click(object sender, EventArgs e)
         {
-            CompteCrypto compteCrypto = new CompteCrypto(idClient);
+            CompteCrypto compteCrypto = new CompteCrypto(idClientActuel);
             compteCrypto.Show();
             this.Hide();
         }

@@ -29,7 +29,7 @@ namespace Fulbank.View
             InitializeComponent();
         }
 
-        /*private async void CompteCrypto_Load(object sender, EventArgs e)
+        private async void CompteCrypto_Load(object sender, EventArgs e)
         {
             string name = "";
             double convert = 0;
@@ -37,6 +37,8 @@ namespace Fulbank.View
             Compte c = null;
             foreach (Compte item in compteViewModel.getAllCompte())
             {
+                System.Diagnostics.Debug.WriteLine("value" + item.getIdClient());
+                System.Diagnostics.Debug.WriteLine("IdCLientActuel" + idClientActuel);
                 if (item.getIdClient() == idClientActuel)
                 {
                     c = item;
@@ -46,12 +48,12 @@ namespace Fulbank.View
             {
                 // Créez un client HTTP
                 string devise = c.getDevise().TypeDevise;
-                MessageBox.Show("type :" + devise);
+                //MessageBox.Show("type :" + devise);
                 using (HttpClient client = new HttpClient())
                 {
                     // Définir l'URL de l'API
                     string apiUrl = string.Format("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids={0}&x_cg_demo_api_key=CG-AVc1nx3n6trSuiWhZUQ6Bwiq", devise);
-                    MessageBox.Show(apiUrl);
+                    //MessageBox.Show(apiUrl);
                     // Effectuer une demande GET à l'API et attendre la réponse
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
 
@@ -86,7 +88,7 @@ namespace Fulbank.View
                             lb_prix.Text = item["current_price"].ToString();
                             pbx_crypto.ImageLocation = item["image"].ToString();
                             pbx_crypto.SizeMode = PictureBoxSizeMode.Zoom;
-                            lb_convertion.Text = "Vous êtes actuellement à :"+ String.Format("{0:0.00}",convert) + " €";
+                            lb_convertion.Text = "Vous êtes actuellement à :" + String.Format("{0:0.00}", convert) + " €";
                         }
 
                         // Afficher les propriétés dans une boîte de message
@@ -102,8 +104,8 @@ namespace Fulbank.View
             {
                 MessageBox.Show("Une erreur s'est produite : " + ex.Message, "Erreur2");
             }
-        
+
         }
-        */
+
     }
 }

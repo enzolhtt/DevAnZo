@@ -76,7 +76,7 @@ namespace Fulbank.Model.Repository
                 while (reader.Read())
                 {
                     DicoNumCompte.Add(reader.GetInt32(0), reader.GetString(1));
-                    MessageBox.Show("Voici la liste des comptes: " + reader.GetInt32(0) + " " + reader.GetString(1));
+                    //MessageBox.Show("Voici la liste des comptes: " + reader.GetInt32(0) + " " + reader.GetString(1));
                 }
                 return DicoNumCompte;
             }
