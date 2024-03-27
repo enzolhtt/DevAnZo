@@ -20,7 +20,10 @@ namespace Fulbank.View
     public partial class Beneficiaire : Form
     {
         public int NumCompteActuel;
+        public Dictionary<int, string> DicoNumCompte;
         private Fb_VM.CompteViewModel compteViewModel;
+        private Fb_VM.ClientViewModel clientViewModel;
+        int idClient;
         private Fb_VM.BeneficiaireViewModel beneficiaireViewModel;
         public Beneficiaire(int NumCompte)
         {
@@ -28,11 +31,14 @@ namespace Fulbank.View
             InitializeComponent();
             compteViewModel = new CompteViewModel();
             beneficiaireViewModel = new BeneficiaireViewModel();
+            clientViewModel = new ClientViewModel();
+            idClient = compteViewModel.getIdClientByNumCompte(NumCompteActuel);
+            DicoNumCompte = clientViewModel.getNumCompteByIdClient(idClient);
         }
 
         private void img_retour_Click(object sender, EventArgs e)
         {
-            ChooseAccount retour = new ChooseAccount(NumCompteActuel);
+            ChooseAccount retour = new ChooseAccount(DicoNumCompte, idClient);
             retour.Show();
             this.Hide();
         }

@@ -29,7 +29,7 @@ namespace Fulbank.View
             InitializeComponent();
         }
 
-        private async void CompteCrypto_Load(object sender, EventArgs e)
+        /*private async void CompteCrypto_Load(object sender, EventArgs e)
         {
             string name = "";
             double solde = 0;
@@ -89,6 +89,8 @@ namespace Fulbank.View
             {
                 MessageBox.Show("Une erreur s'est produite : " + ex.Message, "Erreur2");
             }
+        
         }
+        */
     }
 }

@@ -15,26 +15,37 @@ namespace Fulbank
 {
     public partial class ChooseAccount : Form
     {
-        public int NumCompteActuel;
-        public string NomPrenomClient;
-        private Fb_VM.ClientViewModel clientViewModel;
-        private Fb_VM.CompteViewModel compteViewModel;
+        public int idClientActuel;
+        int NumCompteCourant = 0;
+        public string ? NomPrenomClient;
+        private Fb_VM.ClientViewModel ? clientViewModel;
+        private Fb_VM.CompteViewModel ? compteViewModel;
 
-        public ChooseAccount(int numerocompte = 0)
+        public ChooseAccount(Dictionary<int, string> DicoNumCompte, int idClient = 0)
         {
-            NumCompteActuel = numerocompte;
+            idClientActuel = idClient;
+
+            foreach (KeyValuePair<int, string> NumCompte in DicoNumCompte)
+            {
+                if (NumCompte.Value.Equals("courant"))
+                {
+                    NumCompteCourant = NumCompte.Key;
+                }
+            }
             InitializeComponent();
             clientViewModel = new ClientViewModel();
             compteViewModel = new CompteViewModel();
-            if(clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(numerocompte)).ToString() != "")
+            if(clientViewModel.GetNomPrenom(idClientActuel).ToString() != "")
             {
-                lbl_ClientAccount.Text = clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(numerocompte)).ToString();
+                lbl_ClientAccount.Text = clientViewModel.GetNomPrenom(idClientActuel).ToString();
             }
+
         }
 
         private void bt_courant_Click(object sender, EventArgs e)
         {
-            CompteCourant compteCourant = new CompteCourant(NumCompteActuel);
+
+            CompteCourant compteCourant = new CompteCourant(idClientActuel);
             compteCourant.Show();
             this.Hide();
         }
@@ -48,7 +59,7 @@ namespace Fulbank
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Beneficiaire benef = new Beneficiaire(NumCompteActuel);
+            Beneficiaire benef = new Beneficiaire(NumCompteCourant);
             benef.Show();
             this.Hide();
         }

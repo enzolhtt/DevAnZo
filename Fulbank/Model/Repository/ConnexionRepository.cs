@@ -15,13 +15,13 @@ namespace Fulbank.Model.Repository
         private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
         private string password;
 
-        public  string TestConnexion(int NumCompte)
+        public  string TestConnexion(int idClient)
         {
             using (MySqlConnection connexion = new MySqlConnection())
             {
                 connexion.ConnectionString = connectionString;
                 connexion.Open();
-                string sql = "select Mdp, idClient from Compte where NumeroCompte = " + NumCompte + ";";
+                string sql = "select Mdp from Client where idClient = " + idClient + ";";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 password = "";

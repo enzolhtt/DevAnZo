@@ -73,7 +73,7 @@
             Controls.Add(label1);
             Name = "CompteCrypto";
             Text = "CompteCrypto";
-            Load += CompteCrypto_Load;
+            //Load += CompteCrypto_Load;
             ResumeLayout(false);
             PerformLayout();
         }

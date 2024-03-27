@@ -12,37 +12,46 @@ using Fulbank.View;
 using Fb_M = Fulbank.Model;
 using Fb_VM = Fulbank.ViewModel;
 using Fulbank.ViewModel;
-
+using System.Reflection.Metadata.Ecma335;
 
 namespace Fulbank.View
 {
     public partial class CompteCourant : Form
     {
-        public int NumCompteActuel;
+        public int idClientActuel;
         public int idClient;
+        public int NumCompteCourant = 0;
+        public Dictionary<int, string> DicoNumCompte;
         public Login Login = new Login();
         private Fb_VM.ClientViewModel clientViewModel;
         private Fb_VM.CompteViewModel compteViewModel;
         private Fb_VM.BeneficiaireViewModel beneficiaireViewModel;
         private Fb_VM.TransactionViewModel transactionViewModel;
-        public CompteCourant(int NumCompte)
+        public CompteCourant(int idClient)
         {
-            NumCompteActuel = NumCompte;
+            idClientActuel = idClient;
             InitializeComponent();
             clientViewModel = new ClientViewModel();
             compteViewModel = new CompteViewModel();
             beneficiaireViewModel = new BeneficiaireViewModel();
             transactionViewModel = new TransactionViewModel();
-            lb_compte.Text = clientViewModel.GetNomPrenom(compteViewModel.getIdClientByNumCompte(NumCompte)).ToString();
-            lbl_solde.Text = compteViewModel.getSoldeByNumCompte(NumCompte).ToString();
-            idClient = clientViewModel.getClientByNumCompte(NumCompteActuel).getId();
+            lb_compte.Text = clientViewModel.GetNomPrenom(idClient).ToString();
+            DicoNumCompte = clientViewModel.getNumCompteByIdClient(idClientActuel);
+            foreach (KeyValuePair<int, string> NumCompte in DicoNumCompte)
+            {
+                if (NumCompte.Value.Equals("courant"))
+                {
+                    NumCompteCourant = NumCompte.Key;
+                }
+            }
+            lbl_solde.Text = compteViewModel.getSoldeByNumCompte(NumCompteCourant).ToString();
         }
 
         private void img_retour_Click(object sender, EventArgs e)
         {
             if (gbx_compte.Visible == false)
             {
-                ChooseAccount retour = new ChooseAccount(Login.NumCompte);
+                ChooseAccount retour = new ChooseAccount(DicoNumCompte, idClientActuel);
                 retour.Show();
                 this.Hide();
             }
@@ -57,6 +66,20 @@ namespace Fulbank.View
             }
         }
 
+        //private int getNumCompteCourant(int idClientActuel)
+        //{
+        //    int NumCompteCourant = 0;
+        //    foreach (KeyValuePair<int, string> NumCompte in DicoNumCompte)
+        //    {
+        //        if (NumCompte.Value.Equals("courant"))
+        //        {
+        //            NumCompteCourant = NumCompte.Key;
+        //            return NumCompteCourant;
+        //        }
+        //    }
+        //    return NumCompteCourant;
+        //}
+
         private void bt_courant_Click(object sender, EventArgs e)
         {
             bt_courant.Visible = false;
@@ -67,13 +90,13 @@ namespace Fulbank.View
             gbx_compte.Visible = true;
             lbl_client.Text = "Compte courant";
 
-            var transaction = transactionViewModel.getTransactions(NumCompteActuel);
+            var transaction = transactionViewModel.getTransactions(NumCompteCourant);
             int i = 0;
-            foreach (Transaction t in transactionViewModel.getTransactions(NumCompteActuel))
+            foreach (Transaction t in transactionViewModel.getTransactions(NumCompteCourant))
             {
                 var client = clientViewModel.getClientByNumCompte(transaction[i].getCompteCrediteur());
                 var clientdeb = clientViewModel.getClientByNumCompte(transaction[i].getCompteDebiteur());
-                if (transaction[i].getCompteCrediteur() == NumCompteActuel)
+                if (transaction[i].getCompteCrediteur() == NumCompteCourant)
                 {
                     listBox2.Items.Add("+ " + t.getMontantEmeteur() + " de " + clientdeb.getPrenom() + " " + clientdeb.getNom() + ", date : " + t.getDateTransaction().ToString("dd/MM/yyyy"));
                 }
@@ -135,7 +158,7 @@ namespace Fulbank.View
                     NomPrenom[1] = prenom;
                 }
             }
-            compteViewModel.transactionCompteCourant(NumCompteActuel, compteViewModel.getNumCompteByNom(NomPrenom[1], NomPrenom[0]), float.Parse(txt_montant.Text));
+            compteViewModel.transactionCompteCourant(NumCompteCourant, compteViewModel.getNumCompteByNom(NomPrenom[1], NomPrenom[0]), float.Parse(txt_montant.Text));
             gbx_compte.Visible = true;
             gbx_virement.Visible = false;
             cbx_personne.Visible = false;
@@ -144,7 +167,7 @@ namespace Fulbank.View
 
         private void cbx_personne_VisibleChanged(object sender, EventArgs e)
         {
-            List<Fb_M.Beneficiaire> BeneficiaireVar = beneficiaireViewModel.getAllBeneficiaire(compteViewModel.getIdClientByNumCompte(NumCompteActuel));
+            List<Fb_M.Beneficiaire> BeneficiaireVar = beneficiaireViewModel.getAllBeneficiaire(compteViewModel.getIdClientByNumCompte(NumCompteCourant));
             foreach (Fb_M.Beneficiaire b in BeneficiaireVar)
             {
                 cbx_personne.Items.Add(b.getNom() + " " + b.getPrenom());

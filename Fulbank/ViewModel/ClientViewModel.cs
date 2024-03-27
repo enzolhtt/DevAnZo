@@ -26,5 +26,10 @@ namespace Fulbank.ViewModel
         {
             return ClientRepository.getClientByNumCompte((int)numCompte);
         }
+
+        public Dictionary<int,string> getNumCompteByIdClient(int idClient)
+        {
+            return ClientRepository.getNumCompteByIdClient(idClient);
+        }
     }
 }

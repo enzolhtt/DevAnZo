@@ -15,9 +15,9 @@ namespace Fulbank.ViewModel
             ConnexionRepository = new CRepository.ConnexionRepository();
         }
 
-        public string TestConnexion(int NumCompte)
+        public string TestConnexion(int idClient)
         {
-            return ConnexionRepository.TestConnexion(NumCompte);
+            return ConnexionRepository.TestConnexion(idClient);
         }
     }
 }

@@ -60,5 +60,26 @@ namespace Fulbank.Model.Repository
             }
             return null;
         }
+
+        public Dictionary<int,string> getNumCompteByIdClient(int idClient)
+        {
+            Dictionary<int, string> DicoNumCompte = new Dictionary<int, string>();
+            using (MySqlConnection connexion = new MySqlConnection())
+            {
+                connexion.ConnectionString = connectionString;
+                connexion.Open();
+                string sql = "select Compte.NumeroCompte, TypeDeCompte from Client join Compte on Client.idClient = Compte.idClient join Type on Compte.idType = Type.IdType where Client.idClient = " + idClient + ";";
+                MySqlCommand cmd = new MySqlCommand(sql, connexion);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                int NumCompte = 0;
+
+                while (reader.Read())
+                {
+                    DicoNumCompte.Add(reader.GetInt32(0), reader.GetString(1));
+                    MessageBox.Show("Voici la liste des comptes: " + reader.GetInt32(0) + " " + reader.GetString(1));
+                }
+                return DicoNumCompte;
+            }
+        }
     }
 }

@@ -12,12 +12,17 @@ namespace Fulbank
     public partial class Login : Form
     {
         private Fb_VM.ConnexionViewModel connexionViewModel;
+        private Fb_VM.ClientViewModel clientViewModel;
+        public Dictionary<int, string> DicoNumCompte;
         private Model.Compte compte;
-        public static int NumCompte;
+        public static int idClient;
         public Login()
         {
+            int idClientActuel = idClient;
             InitializeComponent();
             connexionViewModel = new ConnexionViewModel();
+            clientViewModel = new ClientViewModel();
+            DicoNumCompte = clientViewModel.getNumCompteByIdClient(idClientActuel);
         }
 
         private void bt_connecter_Click(object sender, EventArgs e)
@@ -35,11 +40,17 @@ namespace Fulbank
                 return sb.ToString();
             }
 
-            NumCompte = int.Parse(tbx_user.Text);
-            string MdpCompte = tbx_password.Text;
-            if (connexionViewModel.TestConnexion(NumCompte) == ToSHA256(MdpCompte))
+            idClient = int.Parse(tbx_user.Text);
+            Dictionary<int, string> DicoNumCompte = clientViewModel.getNumCompteByIdClient(idClient);
+            if (DicoNumCompte is null)
             {
-                ChooseAccount chooseAccount = new ChooseAccount(NumCompte);
+                MessageBox.Show("Vous n'avez aucun compte lié à votre compte client");
+            }
+            string MdpCompte = tbx_password.Text;
+            if (connexionViewModel.TestConnexion(idClient) == ToSHA256(MdpCompte))
+            {
+
+                ChooseAccount chooseAccount = new ChooseAccount(DicoNumCompte, idClient);
                 chooseAccount.Show();
                 this.Hide();
             }
@@ -76,11 +87,11 @@ namespace Fulbank
 
             if (e.KeyChar == (char)Keys.Enter)
             {
-                NumCompte = int.Parse(tbx_user.Text);
+                idClient = int.Parse(tbx_user.Text);
                 string MdpCompte = tbx_password.Text;
-                if (connexionViewModel.TestConnexion(NumCompte) == ToSHA256(MdpCompte))
+                if (connexionViewModel.TestConnexion(idClient) == ToSHA256(MdpCompte))
                 {
-                    ChooseAccount chooseAccount = new ChooseAccount(NumCompte);
+                    ChooseAccount chooseAccount = new ChooseAccount(DicoNumCompte, idClient);
                     chooseAccount.Show();
                     this.Hide();
                 }
