@@ -20,7 +20,7 @@ namespace Fulbank.Model
         private Type _type;
         private Devise _devise;
 
-        public Compte(int numerocompte, string mdp, double solde, DateTime dateouverture, double taux, string rib, string iban, int externe, int idclient, Type unType, Devise uneDevise)
+        public Compte(int numerocompte, string mdp, double solde, DateTime dateouverture, double taux, string? rib, string? iban, int externe, int idclient, Type unType, Devise uneDevise)
         {
             _numeroCompte = numerocompte;
             _mdp = mdp;
@@ -30,6 +30,7 @@ namespace Fulbank.Model
             _rib = rib;
             _iban = iban;
             _externe = externe;
+            _idClient = idclient;
             _type = unType;
             _devise = uneDevise;
         }
@@ -48,6 +49,15 @@ namespace Fulbank.Model
         public Type getType()
         {
             return this._type;
+        }
+        public Devise getDevise()
+        {
+            return this._devise;
+        }
+
+        public double getSolde()
+        {
+            return this._solde;
         }
     }
 }

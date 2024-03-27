@@ -18,6 +18,6 @@ namespace Fulbank.Model
         }
 
         public int IdDevise { get { return idDevise; } }
-        public string TypeDevise { get; set; }
+        public string TypeDevise { get { return typeDevise; } }
     }
 }

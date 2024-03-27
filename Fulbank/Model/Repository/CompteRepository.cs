@@ -161,11 +161,11 @@ namespace Fulbank.Model.Repository
                         RIB = reader.GetString(4);
                         IBAN = reader.GetString(5);
                         Externe = int.Parse(reader.GetString(6));
-                        int idclient = int.Parse(reader.GetString(9));
+                        int idclient = reader.GetInt32(9);
                         Mdp = reader.GetString(10);
-                        int idType = int.Parse(reader.GetString(11));
+                        int idType = reader.GetInt32(11);
                         string type = reader.GetString(12);
-                        int idDevise = int.Parse(reader.GetString(13));
+                        int idDevise = reader.GetInt32(13);
                         string devise = reader.GetString(14);
                         Type t = new Type(idType, type);
                         Devise d = new Devise(idDevise, devise);
