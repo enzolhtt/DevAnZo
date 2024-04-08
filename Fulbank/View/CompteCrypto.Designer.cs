@@ -34,14 +34,16 @@
             pbx_crypto = new PictureBox();
             label3 = new Label();
             lb_convertion = new Label();
+            img_retour = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pbx_crypto).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             SuspendLayout();
             // 
             // lb_solde
             // 
             lb_solde.AutoSize = true;
             lb_solde.Font = new Font("Segoe UI Black", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_solde.Location = new Point(327, 232);
+            lb_solde.Location = new Point(389, 267);
             lb_solde.Name = "lb_solde";
             lb_solde.Size = new Size(109, 45);
             lb_solde.TabIndex = 15;
@@ -50,7 +52,7 @@
             // lb_prix
             // 
             lb_prix.AutoSize = true;
-            lb_prix.Location = new Point(339, 42);
+            lb_prix.Location = new Point(702, 42);
             lb_prix.Name = "lb_prix";
             lb_prix.Size = new Size(38, 15);
             lb_prix.TabIndex = 17;
@@ -59,7 +61,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(220, 42);
+            label2.Location = new Point(583, 42);
             label2.Name = "label2";
             label2.Size = new Size(113, 15);
             label2.TabIndex = 18;
@@ -67,7 +69,7 @@
             // 
             // pbx_crypto
             // 
-            pbx_crypto.Location = new Point(12, 12);
+            pbx_crypto.Location = new Point(375, 12);
             pbx_crypto.Name = "pbx_crypto";
             pbx_crypto.Size = new Size(187, 172);
             pbx_crypto.TabIndex = 19;
@@ -76,7 +78,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(220, 21);
+            label3.Location = new Point(583, 21);
             label3.Name = "label3";
             label3.Size = new Size(38, 15);
             label3.TabIndex = 20;
@@ -85,11 +87,21 @@
             // lb_convertion
             // 
             lb_convertion.AutoSize = true;
-            lb_convertion.Location = new Point(327, 291);
+            lb_convertion.Location = new Point(389, 324);
             lb_convertion.Name = "lb_convertion";
             lb_convertion.Size = new Size(38, 15);
             lb_convertion.TabIndex = 21;
             lb_convertion.Text = "label1";
+            // 
+            // img_retour
+            // 
+            img_retour.Image = Properties.Resources.flecheRetour;
+            img_retour.Location = new Point(12, 12);
+            img_retour.Name = "img_retour";
+            img_retour.Size = new Size(140, 140);
+            img_retour.SizeMode = PictureBoxSizeMode.StretchImage;
+            img_retour.TabIndex = 22;
+            img_retour.TabStop = false;
             // 
             // CompteCrypto
             // 
@@ -97,6 +109,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
+            Controls.Add(img_retour);
             Controls.Add(lb_convertion);
             Controls.Add(label3);
             Controls.Add(pbx_crypto);
@@ -107,6 +120,7 @@
             Text = "CompteCrypto";
             Load += CompteCrypto_Load;
             ((System.ComponentModel.ISupportInitialize)pbx_crypto).EndInit();
+            ((System.ComponentModel.ISupportInitialize)img_retour).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -121,5 +135,6 @@
         private PictureBox pbx_crypto;
         private Label label3;
         private Label lb_convertion;
+        private PictureBox img_retour;
     }
 }

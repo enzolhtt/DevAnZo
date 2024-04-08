@@ -37,8 +37,6 @@ namespace Fulbank.View
             Compte c = null;
             foreach (Compte item in compteViewModel.getAllCompte())
             {
-                System.Diagnostics.Debug.WriteLine("value" + item.getIdClient());
-                System.Diagnostics.Debug.WriteLine("IdCLientActuel" + idClientActuel);
                 if (item.getIdClient() == idClientActuel)
                 {
                     c = item;
