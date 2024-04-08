@@ -49,7 +49,7 @@ namespace Fulbank
             string MdpCompte = tbx_password.Text;
             if (connexionViewModel.TestConnexion(idClient) == ToSHA256(MdpCompte))
             {
-
+                //MessageBox.Show("Dico " + DicoNumCompte);
                 ChooseAccount chooseAccount = new ChooseAccount(DicoNumCompte, idClient);
                 chooseAccount.Show();
                 this.Hide();
@@ -85,6 +85,8 @@ namespace Fulbank
                 return sb.ToString();
             }
 
+            idClient = int.Parse(tbx_user.Text);
+            Dictionary<int, string> DicoNumCompte = clientViewModel.getNumCompteByIdClient(idClient);
             if (e.KeyChar == (char)Keys.Enter)
             {
                 idClient = int.Parse(tbx_user.Text);
