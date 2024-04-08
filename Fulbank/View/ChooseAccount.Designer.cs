@@ -79,9 +79,10 @@
             // lbl_ClientAccount
             // 
             lbl_ClientAccount.AutoSize = true;
-            lbl_ClientAccount.Location = new Point(167, 114);
+            lbl_ClientAccount.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_ClientAccount.Location = new Point(126, 99);
             lbl_ClientAccount.Name = "lbl_ClientAccount";
-            lbl_ClientAccount.Size = new Size(38, 15);
+            lbl_ClientAccount.Size = new Size(71, 30);
             lbl_ClientAccount.TabIndex = 7;
             lbl_ClientAccount.Text = "label1";
             // 

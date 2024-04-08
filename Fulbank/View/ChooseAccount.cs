@@ -17,9 +17,9 @@ namespace Fulbank
     {
         public int idClientActuel;
         int NumCompteCourant = 0;
-        public string ? NomPrenomClient;
-        private Fb_VM.ClientViewModel ? clientViewModel;
-        private Fb_VM.CompteViewModel ? compteViewModel;
+        public string? NomPrenomClient;
+        private Fb_VM.ClientViewModel? clientViewModel;
+        private Fb_VM.CompteViewModel? compteViewModel;
 
         public ChooseAccount(Dictionary<int, string> DicoNumCompte, int idClient = 0)
         {
@@ -35,9 +35,9 @@ namespace Fulbank
             InitializeComponent();
             clientViewModel = new ClientViewModel();
             compteViewModel = new CompteViewModel();
-            if(clientViewModel.GetNomPrenom(idClientActuel).ToString() != "")
+            if (clientViewModel.GetNomPrenom(idClientActuel).ToString() != "")
             {
-                lbl_ClientAccount.Text = clientViewModel.GetNomPrenom(idClientActuel).ToString();
+                lbl_ClientAccount.Text = "Connecté en tant que : " + clientViewModel.GetNomPrenom(idClientActuel).ToString();
             }
 
         }
