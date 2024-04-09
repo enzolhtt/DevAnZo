@@ -16,7 +16,7 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace Fulbank.View
 {
-    public partial class CompteCourant : Form
+    public partial class Compte : Form
     {
         public int idClientActuel;
         public int idClient;
@@ -27,7 +27,7 @@ namespace Fulbank.View
         private Fb_VM.CompteViewModel compteViewModel;
         private Fb_VM.BeneficiaireViewModel beneficiaireViewModel;
         private Fb_VM.TransactionViewModel transactionViewModel;
-        public CompteCourant(int idClient)
+        public Compte(int idClient)
         {
             idClientActuel = idClient;
             InitializeComponent();
@@ -51,7 +51,7 @@ namespace Fulbank.View
         {
             if (gbx_compte.Visible == false)
             {
-                ChooseAccount retour = new ChooseAccount(DicoNumCompte, idClientActuel);
+                Accueil retour = new Accueil(DicoNumCompte, idClientActuel);
                 retour.Show();
                 this.Hide();
             }

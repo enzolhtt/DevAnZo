@@ -71,7 +71,6 @@ namespace Fulbank.Model.Repository
                 string sql = "select Compte.NumeroCompte, TypeDeCompte from Client join Compte on Client.idClient = Compte.idClient join Type on Compte.idType = Type.IdType where Client.idClient = " + idClient + ";";
                 MySqlCommand cmd = new MySqlCommand(sql, connexion);
                 MySqlDataReader reader = cmd.ExecuteReader();
-                int NumCompte = 0;
 
                 while (reader.Read())
                 {

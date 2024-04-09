@@ -1,6 +1,6 @@
 ﻿namespace Fulbank
 {
-    partial class ChooseAccount
+    partial class Accueil
     {
         /// <summary>
         /// Required designer variable.

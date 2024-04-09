@@ -13,7 +13,7 @@ using Fb_VM = Fulbank.ViewModel;
 
 namespace Fulbank
 {
-    public partial class ChooseAccount : Form
+    public partial class Accueil : Form
     {
         public int idClientActuel;
         int NumCompteCourant = 0;
@@ -21,7 +21,7 @@ namespace Fulbank
         private Fb_VM.ClientViewModel? clientViewModel;
         private Fb_VM.CompteViewModel? compteViewModel;
 
-        public ChooseAccount(Dictionary<int, string> DicoNumCompte, int idClient = 0)
+        public Accueil(Dictionary<int, string> DicoNumCompte, int idClient = 0)
         {
             idClientActuel = idClient;
 
@@ -45,7 +45,7 @@ namespace Fulbank
         private void bt_courant_Click(object sender, EventArgs e)
         {
 
-            CompteCourant compteCourant = new CompteCourant(idClientActuel);
+            Compte compteCourant = new Compte(idClientActuel);
             compteCourant.Show();
             this.Hide();
         }
