@@ -24,14 +24,6 @@ namespace Fulbank
         public Accueil(Dictionary<int, string> DicoNumCompte, int idClient = 0)
         {
             idClientActuel = idClient;
-
-            foreach (KeyValuePair<int, string> NumCompte in DicoNumCompte)
-            {
-                if (NumCompte.Value.Equals("courant"))
-                {
-                    NumCompteCourant = NumCompte.Key;
-                }
-            }
             InitializeComponent();
             clientViewModel = new ClientViewModel();
             compteViewModel = new CompteViewModel();
@@ -59,7 +51,7 @@ namespace Fulbank
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Beneficiaire benef = new Beneficiaire(NumCompteCourant);
+            Beneficiaire benef = new Beneficiaire(idClientActuel);
             benef.Show();
             this.Hide();
         }

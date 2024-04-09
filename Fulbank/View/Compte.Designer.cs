@@ -168,6 +168,7 @@
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(551, 304);
             listBox2.TabIndex = 19;
+            listBox2.SizeChanged += listBox2_SizeChanged;
             // 
             // lbl_solde
             // 
@@ -240,7 +241,7 @@
             txt_montant.TabIndex = 1;
             txt_montant.TextAlign = HorizontalAlignment.Center;
             // 
-            // CompteCourant
+            // Compte
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -254,7 +255,7 @@
             Controls.Add(bt_courant);
             Controls.Add(img_retour);
             Controls.Add(logoFB_General);
-            Name = "CompteCourant";
+            Name = "Compte";
             Text = "CompteCourant";
             Load += CompteCourant_Load;
             ((System.ComponentModel.ISupportInitialize)logoFB_General).EndInit();

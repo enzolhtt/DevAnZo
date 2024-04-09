@@ -14,6 +14,11 @@ namespace Fulbank.Model.Repository
     {
         private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
 
+        /**
+         * @role : Procédure permettant d'insérer un bénéficiaire dans la base de données
+         * @param : Nom, prenom, rib, iban et idClient =>  chaines de caractère
+         * @return : Aucun
+         */
         public void addBeneficiaire(string name, string prenom, string rib, string iban, string idClient)
         {
             using (MySqlConnection connexion = new MySqlConnection())
@@ -31,6 +36,11 @@ namespace Fulbank.Model.Repository
             }
         }
 
+        /**
+         * @role : Fonction permettant de trouver tous les bénéficiaires associés à un client.
+         * @param : idClient => entier
+         * @return : Liste comportant tous les bénéficiaires pour l'id du client passé en paramètre
+         */
         public List<Beneficiaire> getAllBeneficiaire(int idClient)
         {
             CompteViewModel compte = new CompteViewModel();
@@ -57,7 +67,7 @@ namespace Fulbank.Model.Repository
                         prenom = reader.GetString(1);
                         rib = reader.GetString(2);
                         iban = reader.GetString(3);
-                        Beneficiaire b = new Beneficiaire(name, prenom, rib, iban, compte.getIdClientByNumCompte(idClient));
+                        Beneficiaire b = new Beneficiaire(name, prenom, rib, iban, idClient);
                         LesBeneficiaires.Add(b);
                     }
                     reader.NextResult();
@@ -67,6 +77,11 @@ namespace Fulbank.Model.Repository
             return LesBeneficiaires;
         }
 
+        /**
+         * @role : Procédure permettant de supprimer un bénéficiaire par rapport à son RIB
+         * @param : RIB => chaine de caractère
+         * @return : Aucun
+         */
         public void deleteBeneficiaire(string RIB)
         {
             using (MySqlConnection connexion = new MySqlConnection())
@@ -80,6 +95,11 @@ namespace Fulbank.Model.Repository
             }
         }
 
+        /**
+         * @role : Fonction permettant d'alimenter un DataTable avec tous les bénéficiares associés à un client
+         * @param : idClient => entier
+         * @return : DataTable
+         */
         public DataTable getBeneficiaires(int idCLient)
         {
             DataTable dataTable = new DataTable();

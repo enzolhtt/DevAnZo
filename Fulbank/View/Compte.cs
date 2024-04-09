@@ -66,20 +66,6 @@ namespace Fulbank.View
             }
         }
 
-        //private int getNumCompteCourant(int idClientActuel)
-        //{
-        //    int NumCompteCourant = 0;
-        //    foreach (KeyValuePair<int, string> NumCompte in DicoNumCompte)
-        //    {
-        //        if (NumCompte.Value.Equals("courant"))
-        //        {
-        //            NumCompteCourant = NumCompte.Key;
-        //            return NumCompteCourant;
-        //        }
-        //    }
-        //    return NumCompteCourant;
-        //}
-
         private void bt_courant_Click(object sender, EventArgs e)
         {
             bt_courant.Visible = false;
@@ -167,7 +153,7 @@ namespace Fulbank.View
 
         private void cbx_personne_VisibleChanged(object sender, EventArgs e)
         {
-            List<Fb_M.Beneficiaire> BeneficiaireVar = beneficiaireViewModel.getAllBeneficiaire(compteViewModel.getIdClientByNumCompte(NumCompteCourant));
+            List<Fb_M.Beneficiaire> BeneficiaireVar = beneficiaireViewModel.getAllBeneficiaire(idClientActuel);
             foreach (Fb_M.Beneficiaire b in BeneficiaireVar)
             {
                 cbx_personne.Items.Add(b.getNom() + " " + b.getPrenom());
@@ -180,6 +166,26 @@ namespace Fulbank.View
             CompteCrypto compteCrypto = new CompteCrypto(idClientActuel);
             compteCrypto.Show();
             this.Hide();
+        }
+
+        private void listBox2_SizeChanged(object sender, EventArgs e)
+        {
+            var transaction = transactionViewModel.getTransactions(NumCompteCourant);
+            int i = 0;
+            foreach (Transaction t in transactionViewModel.getTransactions(NumCompteCourant))
+            {
+                var client = clientViewModel.getClientByNumCompte(transaction[i].getCompteCrediteur());
+                var clientdeb = clientViewModel.getClientByNumCompte(transaction[i].getCompteDebiteur());
+                if (transaction[i].getCompteCrediteur() == NumCompteCourant)
+                {
+                    listBox2.Items.Add("+ " + t.getMontantEmeteur() + " de " + clientdeb.getPrenom() + " " + clientdeb.getNom() + ", date : " + t.getDateTransaction().ToString("dd/MM/yyyy"));
+                }
+                else
+                {
+                    listBox2.Items.Add("- " + t.getMontantEmeteur() + " à " + client.getPrenom() + " " + client.getNom() + ", date : " + t.getDateTransaction().ToString("dd/MM/yyyy"));
+                }
+                i++;
+            }
         }
     }
 }

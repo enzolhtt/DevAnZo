@@ -23,22 +23,21 @@ namespace Fulbank.View
         public Dictionary<int, string> DicoNumCompte;
         private Fb_VM.CompteViewModel compteViewModel;
         private Fb_VM.ClientViewModel clientViewModel;
-        int idClient;
+        int idClientActuel;
         private Fb_VM.BeneficiaireViewModel beneficiaireViewModel;
-        public Beneficiaire(int NumCompte)
+        public Beneficiaire(int idClient)
         {
-            NumCompteActuel = NumCompte;
+            idClientActuel = idClient;
             InitializeComponent();
             compteViewModel = new CompteViewModel();
             beneficiaireViewModel = new BeneficiaireViewModel();
             clientViewModel = new ClientViewModel();
-            idClient = compteViewModel.getIdClientByNumCompte(NumCompteActuel);
             DicoNumCompte = clientViewModel.getNumCompteByIdClient(idClient);
         }
 
         private void img_retour_Click(object sender, EventArgs e)
         {
-            Accueil retour = new Accueil(DicoNumCompte, idClient);
+            Accueil retour = new Accueil(DicoNumCompte, idClientActuel);
             retour.Show();
             this.Hide();
         }
@@ -128,8 +127,8 @@ namespace Fulbank.View
                 {
                     if (verifRIBandIBAN(rib, iban))
                     {
-                        beneficiaireViewModel.addBeneficiaire(name, prenom, rib, iban, compteViewModel.getIdClientByNumCompte(NumCompteActuel).ToString());
-                        Beneficiaire benef = new Beneficiaire(NumCompteActuel);
+                        beneficiaireViewModel.addBeneficiaire(name, prenom, rib, iban, idClientActuel.ToString());
+                        Beneficiaire benef = new Beneficiaire(idClientActuel);
                         benef.Show();
                         this.Hide();
                         groupBox1.Visible = false;
@@ -155,7 +154,7 @@ namespace Fulbank.View
             try
             {
                 //MessageBox.Show("idClient : " + compteViewModel.getIdClientByNumCompte(NumCompteActuel));
-                DataTable table = beneficiaireViewModel.getBeneficiaires(compteViewModel.getIdClientByNumCompte(NumCompteActuel));
+                DataTable table = beneficiaireViewModel.getBeneficiaires(idClientActuel);
                 ListeBeneficiaire.AutoGenerateColumns = true;
                 ListeBeneficiaire.DataSource = table;
                 ListeBeneficiaire.AutoResizeColumns();
@@ -173,58 +172,6 @@ namespace Fulbank.View
 
         private void bt_delete_Click(object sender, EventArgs e)
         {
-            /*string getRIB()
-            {
-                string SelectRow = listBox1.SelectedItem.ToString();
-                string RIB_Select = "";
-                for (int i = 0; i < SelectRow.Length; i++)
-                {
-                    if (SelectRow[i + 4] == ';')
-                    {
-                        //MessageBox.Show("test i+4");
-                        return "";
-                    }
-                    else
-                    {
-                        //MessageBox.Show("test else");
-                        string RIBFind = SelectRow[i].ToString() + SelectRow[i + 1].ToString() + SelectRow[i + 2].ToString() + SelectRow[i + 3].ToString() + SelectRow[i + 4].ToString() + SelectRow[i + 5].ToString() + SelectRow[i + 6].ToString();
-                        //MessageBox.Show("test RIBFind = " +  RIBFind);
-                        if (RIBFind == "| RIB :")
-                        {
-                            //MessageBox.Show("test if rib");
-                            for (int j = i + 9; j < (i + 9) + 34; j++)
-                            {
-                                //MessageBox.Show("test for j");
-                                RIB_Select = RIB_Select + SelectRow[j].ToString();
-                                //MessageBox.Show("RIB INT " + SelectRow[j].ToString());
-
-                            }
-                            MessageBox.Show(";" + RIB_Select + ";");
-                            return RIB_Select;
-                        }
-                    }
-                }
-
-                return "";
-            }
-
-
-            if (getRIB() != "")
-            {
-                string mess = "Etes-vous sur de vouloir suprimer ce bénéficiare de votre liste de beneficiare ?"; ;
-                string title = "Attention vous tentez de supprimer un beneficiaire.";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                MessageBoxIcon icon = MessageBoxIcon.Exclamation;
-                DialogResult result = MessageBox.Show(mess, title, buttons, icon);
-                if (result == DialogResult.Yes)
-                {
-                    beneficiaireViewModel.deleteBeneficiaire(getRIB());
-                    Beneficiaire benef = new Beneficiaire(NumCompteActuel);
-                    benef.Show();
-                    this.Hide();
-                }
-            }*/
-
             string Nom = (string)ListeBeneficiaire.CurrentRow.Cells[0].Value;
             string Prenom = (string)ListeBeneficiaire.CurrentRow.Cells[1].Value;
             string RIB = (string)ListeBeneficiaire.CurrentRow.Cells[2].Value;
@@ -238,7 +185,7 @@ namespace Fulbank.View
             if (result == DialogResult.Yes)
             {
                 beneficiaireViewModel.deleteBeneficiaire(RIB);
-                Beneficiaire benef = new Beneficiaire(NumCompteActuel);
+                Beneficiaire benef = new Beneficiaire(idClientActuel);
                 benef.Show();
                 this.Hide();
             }
