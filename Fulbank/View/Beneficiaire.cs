@@ -38,7 +38,7 @@ namespace Fulbank.View
 
         private void img_retour_Click(object sender, EventArgs e)
         {
-            ChooseAccount retour = new ChooseAccount(DicoNumCompte, idClient);
+            Accueil retour = new Accueil(DicoNumCompte, idClient);
             retour.Show();
             this.Hide();
         }
@@ -97,9 +97,9 @@ namespace Fulbank.View
             bool checkCompteExiste(string rib)
             {
                 bool check = false;
-                List<Compte> ListeComptes = compteViewModel.getAllCompte();
+                List<Fb_M.Compte> ListeComptes = compteViewModel.getAllCompte();
 
-                foreach (Compte compte in ListeComptes)
+                foreach (Fb_M.Compte compte in ListeComptes)
                 {
                     if (compte.getRib() == rib)
                     {

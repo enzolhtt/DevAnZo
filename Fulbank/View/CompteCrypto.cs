@@ -34,8 +34,8 @@ namespace Fulbank.View
             string name = "";
             double convert = 0;
 
-            Compte c = null;
-            foreach (Compte item in compteViewModel.getAllCompte())
+            Model.Compte c = null;
+            foreach (Model.Compte item in compteViewModel.getAllCompte())
             {
                 if (item.getIdClient() == idClientActuel)
                 {

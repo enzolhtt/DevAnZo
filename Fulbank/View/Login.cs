@@ -50,7 +50,7 @@ namespace Fulbank
             if (connexionViewModel.TestConnexion(idClient) == ToSHA256(MdpCompte))
             {
                 //MessageBox.Show("Dico " + DicoNumCompte);
-                ChooseAccount chooseAccount = new ChooseAccount(DicoNumCompte, idClient);
+                Accueil chooseAccount = new Accueil(DicoNumCompte, idClient);
                 chooseAccount.Show();
                 this.Hide();
             }
@@ -93,7 +93,7 @@ namespace Fulbank
                 string MdpCompte = tbx_password.Text;
                 if (connexionViewModel.TestConnexion(idClient) == ToSHA256(MdpCompte))
                 {
-                    ChooseAccount chooseAccount = new ChooseAccount(DicoNumCompte, idClient);
+                    Accueil chooseAccount = new Accueil(DicoNumCompte, idClient);
                     chooseAccount.Show();
                     this.Hide();
                 }

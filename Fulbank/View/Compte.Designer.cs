@@ -1,6 +1,6 @@
 ﻿namespace Fulbank.View
 {
-    partial class CompteCourant
+    partial class Compte
     {
         /// <summary>
         /// Required designer variable.
