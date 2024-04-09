@@ -42,6 +42,7 @@
             bt_voir = new Button();
             bindingSource1 = new BindingSource(components);
             ListeBeneficiaire = new DataGridView();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)img_retour).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -111,9 +112,6 @@
             tbx_Prenom.Name = "tbx_Prenom";
             tbx_Prenom.Size = new Size(155, 23);
             tbx_Prenom.TabIndex = 1;
-            //tbx_Prenom.Text = "Prenom";
-            //tbx_Prenom.Enter += tbx_Prenom_Enter;
-            //tbx_Prenom.Leave += tbx_Prenom_Leave;
             // 
             // tbx_iban
             // 
@@ -121,9 +119,6 @@
             tbx_iban.Name = "tbx_iban";
             tbx_iban.Size = new Size(155, 23);
             tbx_iban.TabIndex = 3;
-            //tbx_iban.Text = "IBAN";
-            //tbx_iban.Enter += textBox3_Enter;
-            //tbx_iban.Leave += textBox3_Leave;
             // 
             // tbx_rib
             // 
@@ -131,9 +126,6 @@
             tbx_rib.Name = "tbx_rib";
             tbx_rib.Size = new Size(155, 23);
             tbx_rib.TabIndex = 2;
-            //tbx_rib.Text = "RIB";
-            //tbx_rib.Enter += textBox2_Enter;
-            //tbx_rib.Leave += textBox2_Leave;
             // 
             // tbx_Nom
             // 
@@ -141,8 +133,6 @@
             tbx_Nom.Name = "tbx_Nom";
             tbx_Nom.Size = new Size(155, 23);
             tbx_Nom.TabIndex = 0;
-            //tbx_Nom.Text = "Nom";
-            //tbx_Nom.Enter += textBox1_Enter;
             // 
             // button1
             // 
@@ -176,12 +166,23 @@
             ListeBeneficiaire.Size = new Size(668, 295);
             ListeBeneficiaire.TabIndex = 14;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(12, 267);
+            label1.Name = "label1";
+            label1.Size = new Size(323, 37);
+            label1.TabIndex = 15;
+            label1.Text = "Liste de vos bénéficiaires :";
+            // 
             // Beneficiaire
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 194, 236);
             ClientSize = new Size(984, 961);
+            Controls.Add(label1);
             Controls.Add(groupBox1);
             Controls.Add(bt_voir);
             Controls.Add(bt_delete);
@@ -199,6 +200,7 @@
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)ListeBeneficiaire).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -217,5 +219,6 @@
         private ListView listView1;
         private TextBox tbx_Prenom;
         private DataGridView ListeBeneficiaire;
+        private Label label1;
     }
 }
