@@ -12,4 +12,4 @@ SGBD : MariaDB
 
 version : 10.5.19-MariaDB
 
-Un dump de la base de données vous a été fourni. 
+Un dump de la base de données vous a été fourni. Il se nomme "sauvegarde_FulBank.sql"
