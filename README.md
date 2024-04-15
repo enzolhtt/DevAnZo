@@ -19,6 +19,6 @@ Un dump de la base de données vous a été fourni.
 
 chemin : ...\Fulbank\Model\Repository\ConnexionRepository.cs
 
-La variable "connectionString" sert a rentrer les données d'authentification a la base de données.
+La variable "connectionString" sert a rentrer les paramètres d'authentification à la base de données.
 
 exemple : private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
