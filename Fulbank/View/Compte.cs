@@ -97,6 +97,7 @@ namespace Fulbank.View
         private void CompteCourant_Load(object sender, EventArgs e)
         {
             gbx_virement.Visible = false;
+            listBox3.Visible = false;
             if (int.Parse(lbl_solde.Text) > 0)
             {
                 lbl_solde.Text = " + " + lbl_solde.Text + " €";
@@ -166,26 +167,6 @@ namespace Fulbank.View
             CompteCrypto compteCrypto = new CompteCrypto(idClientActuel);
             compteCrypto.Show();
             this.Hide();
-        }
-
-        private void listBox2_SizeChanged(object sender, EventArgs e)
-        {
-            var transaction = transactionViewModel.getTransactions(NumCompteCourant);
-            int i = 0;
-            foreach (Transaction t in transactionViewModel.getTransactions(NumCompteCourant))
-            {
-                var client = clientViewModel.getClientByNumCompte(transaction[i].getCompteCrediteur());
-                var clientdeb = clientViewModel.getClientByNumCompte(transaction[i].getCompteDebiteur());
-                if (transaction[i].getCompteCrediteur() == NumCompteCourant)
-                {
-                    listBox2.Items.Add("+ " + t.getMontantEmeteur() + " de " + clientdeb.getPrenom() + " " + clientdeb.getNom() + ", date : " + t.getDateTransaction().ToString("dd/MM/yyyy"));
-                }
-                else
-                {
-                    listBox2.Items.Add("- " + t.getMontantEmeteur() + " à " + client.getPrenom() + " " + client.getNom() + ", date : " + t.getDateTransaction().ToString("dd/MM/yyyy"));
-                }
-                i++;
-            }
         }
     }
 }

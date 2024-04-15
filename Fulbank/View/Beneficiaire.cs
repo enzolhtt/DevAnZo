@@ -60,11 +60,6 @@ namespace Fulbank.View
             ListeBeneficiaire.Visible = true;
         }
 
-        private void textBox1_Click(object sender, EventArgs e)
-        {
-            tbx_Nom.Text = "";
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBoxIcon icon = MessageBoxIcon.Exclamation;

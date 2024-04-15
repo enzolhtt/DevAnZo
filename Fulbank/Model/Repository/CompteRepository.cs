@@ -14,6 +14,11 @@ namespace Fulbank.Model.Repository
     {
         private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
 
+        /**
+         * @role : Fonction permettant d'avoir l'id d'un client par son numéro de compte
+         * @param : compteNum => entier
+         * @return : idClient => entier
+         */
         public int getIdClientByNumCompte(int compteNum)
         {
             int IdClient;
@@ -33,6 +38,11 @@ namespace Fulbank.Model.Repository
             return 0;
         }
 
+        /**
+         * @role : Fonction permettant d'avoir l'id d'un client par son RIB
+         * @param : ribNum => chaine de caractère
+         * @return : idClient => entier
+         */
         public int getIdClientByRib(string ribNum)
         {
             int IdClient;
@@ -52,6 +62,11 @@ namespace Fulbank.Model.Repository
             return 0;
         }
 
+        /**
+         * @role : Fonction permettant d'avoir le solde d'un compte par son numéro de compte
+         * @param : NumCompte => entier
+         * @return : solde => double
+         */
         public double getSoldeByNumCompte(int NumCompte)
         {
             double solde;
@@ -71,6 +86,11 @@ namespace Fulbank.Model.Repository
             return 0;
         }
 
+        /**
+         * @role : Procédure permettant d'appeler la procédure stockée dans la base de données pour changer le solde suivant les transactions effectués
+         * @param : idCompteDebiteur, idCompteCrediteur => entier; Valdebit => float
+         * @return : Aucun
+         */
         public void transactionCompteCourant(int idCompteDebiteur, int idCompteCrediteur,float Valdebit)
         {
             using (MySqlConnection connexion = new MySqlConnection())
@@ -87,6 +107,11 @@ namespace Fulbank.Model.Repository
             }
         }
 
+        /**
+         * @role : Fonction permettant d'avoir le numéro de compte par le nom et prenom
+         * @param : prenom, nom => chaine de caractère
+         * @return : NumCompte => entier
+         */
         public int getNumCompteByNom(string prenom, string nom)
         {
             int numcompte;
@@ -108,6 +133,11 @@ namespace Fulbank.Model.Repository
             return 0;
         }
 
+        /**
+         * @role : Fonction permettant d'avoir le nom par le numéro de compte
+         * @param : NumCompte => entier
+         * @return : Nom => chaine de caractère
+         */
         public string getNomByNumCompte(int NumCompte)
         {
             string nom;
@@ -129,6 +159,11 @@ namespace Fulbank.Model.Repository
             }
         }
 
+        /**
+         * @role : Fonction permettant d'avoir toutes les informations de tous les comptes
+         * @param : Aucun
+         * @return : List<Compte> => Liste comportant des instances de la classe compte
+         */
         public List<Compte> getAllCompte()
         {
             List<Compte> LesComptes = new List<Compte>();

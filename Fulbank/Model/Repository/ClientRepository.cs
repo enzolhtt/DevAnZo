@@ -13,6 +13,12 @@ namespace Fulbank.Model.Repository
     internal class ClientRepository
     {
         private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
+
+        /**
+         * @role : Fonction permettant de trouver le nom et prénom d'un client cia son id
+         * @param : id => entier
+         * @return : NomComplet => chaine de caractère avec nom et prenom concaténé
+         */
         public string GetNomPrenom(int id)
         {
             using (MySqlConnection connexion = new MySqlConnection())
@@ -34,6 +40,11 @@ namespace Fulbank.Model.Repository
             }
         }
 
+        /**
+         * @role : Fonction permettant de trouver toutes les informations d'un client via son numéro de compte
+         * @param : numCompte => entier
+         * @return : Client => instance de client comportant toutes les informations du client
+         */
         public Client getClientByNumCompte(int numCompte)
         {
             using (MySqlConnection connexion = new MySqlConnection())
@@ -61,6 +72,11 @@ namespace Fulbank.Model.Repository
             return null;
         }
 
+        /**
+         * @role : Fonction permettant de lister tous les comptes d'un client
+         * @param : idClient => entier
+         * @return : Dictionnaire avec comme clés les numéro de compte et comme valeur le type de compte
+         */
         public Dictionary<int,string> getNumCompteByIdClient(int idClient)
         {
             Dictionary<int, string> DicoNumCompte = new Dictionary<int, string>();

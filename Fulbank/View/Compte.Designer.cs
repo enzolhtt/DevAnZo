@@ -168,7 +168,6 @@
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(551, 304);
             listBox2.TabIndex = 19;
-            listBox2.SizeChanged += listBox2_SizeChanged;
             // 
             // lbl_solde
             // 
