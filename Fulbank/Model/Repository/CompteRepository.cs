@@ -162,14 +162,14 @@ namespace Fulbank.Model.Repository
                         IBAN = reader.GetString(5);
                         Externe = int.Parse(reader.GetString(6));
                         int idclient = reader.GetInt32(9);
-                        Mdp = reader.GetString(10);
-                        int idType = reader.GetInt32(11);
-                        string type = reader.GetString(12);
-                        int idDevise = reader.GetInt32(13);
-                        string devise = reader.GetString(14);
+                        //Mdp = reader.GetString(10);
+                        int idType = reader.GetInt32(10);
+                        string type = reader.GetString(11);
+                        int idDevise = reader.GetInt32(12);
+                        string devise = reader.GetString(13);
                         Type t = new Type(idType, type);
                         Devise d = new Devise(idDevise, devise);
-                        Compte c = new Compte(numerocompte, Mdp, solde, dateouverture, taux, RIB, IBAN, Externe, idclient,t,d);
+                        Compte c = new Compte(numerocompte, solde, dateouverture, taux, RIB, IBAN, Externe, idclient,t,d);
                         LesComptes.Add(c);
                     }
                     reader.NextResult();

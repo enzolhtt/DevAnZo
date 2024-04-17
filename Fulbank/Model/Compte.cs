@@ -9,7 +9,6 @@ namespace Fulbank.Model
     internal class Compte
     {
         private int _numeroCompte;
-        private string _mdp;
         private double _solde;
         private DateTime _dateouverture;
         private double _taux;
@@ -20,10 +19,9 @@ namespace Fulbank.Model
         private Type _type;
         private Devise _devise;
 
-        public Compte(int numerocompte, string mdp, double solde, DateTime dateouverture, double taux, string? rib, string? iban, int externe, int idclient, Type unType, Devise uneDevise)
+        public Compte(int numerocompte, double solde, DateTime dateouverture, double taux, string? rib, string? iban, int externe, int idclient, Type unType, Devise uneDevise)
         {
             _numeroCompte = numerocompte;
-            _mdp = mdp;
             _solde = solde;
             _dateouverture = dateouverture;
             _taux = taux;

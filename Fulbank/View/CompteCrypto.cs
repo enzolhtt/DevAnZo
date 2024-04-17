@@ -22,30 +22,46 @@ namespace Fulbank.View
     {
         public int idClientActuel;
         private CompteViewModel compteViewModel;
+        private ClientViewModel clientViewModel;
         public CompteCrypto(int idClient)
         {
             idClientActuel = idClient;
             compteViewModel = new CompteViewModel();
+            clientViewModel = new ClientViewModel();
             InitializeComponent();
         }
 
-        private async void CompteCrypto_Load(object sender, EventArgs e)
+        private void CompteCrypto_Load(object sender, EventArgs e)
         {
-            string name = "";
-            double convert = 0;
-
-            Model.Compte c = null;
+            lb_compte.Text = clientViewModel.GetNomPrenom(idClientActuel);
             foreach (Model.Compte item in compteViewModel.getAllCompte())
             {
-                if (item.getIdClient() == idClientActuel)
+                if (item.getIdClient() == idClientActuel && item.getDevise().TypeDevise != "Euro")
                 {
-                    c = item;
+                    cbx_crypto.Items.Add(item.getDevise().TypeDevise);
                 }
             }
+        }
+
+        private async void cbx_crypto_SelectedIndexChanged(object sender, EventArgs e)
+        {
             try
             {
+                string name = "";
+                double convert = 0;
                 // Créez un client HTTP
-                string devise = c.getDevise().TypeDevise;
+                //string devise = c.getDevise().TypeDevise;
+                string devise = cbx_crypto.SelectedItem.ToString();
+
+                Model.Compte c = null;
+                foreach (Model.Compte item in compteViewModel.getAllCompte())
+                {
+                    if (item.getIdClient() == idClientActuel && item.getDevise().TypeDevise == devise)
+                    {
+                        c = item;
+                    }
+                }
+
                 //MessageBox.Show("type :" + devise);
                 using (HttpClient client = new HttpClient())
                 {
@@ -67,23 +83,22 @@ namespace Fulbank.View
                         // Récupérer la première instance de l'objet dans le tableau
                         //JObject firstInstance = (JObject)responseArray[0];
 
+                        label3.Visible = true;
+                        lb_solde.Visible = true;
+                        lb_prix.Visible = true;
+                        pbx_crypto.Visible = true;
+                        lb_convertion.Visible = true;
+
                         // Récupérer les propriétés de la première instance
                         foreach (JObject item in responseArray)
                         {
-                            //if (item["name"].ToString() == c.getDevise().TypeDevise)
-                            //{
-                            //    name = item["name"].ToString();
-                            //    label1.Text = name;
-                            //    lbSolde.Text = c.getSolde().ToString();
-                            //    //lb_prix.Text = item["current_price"].ToString();
-                            //}
                             name = item["name"].ToString();
                             convert = c.getSolde() * (double)item["current_price"];
 
 
                             label3.Text = name;
                             lb_solde.Text = "Vous avez : " + c.getSolde().ToString() + " " + name;
-                            lb_prix.Text = item["current_price"].ToString();
+                            lb_prix.Text = "Prix crypto en Euro : " + item["current_price"].ToString();
                             pbx_crypto.ImageLocation = item["image"].ToString();
                             pbx_crypto.SizeMode = PictureBoxSizeMode.Zoom;
                             lb_convertion.Text = "Vous êtes actuellement à :" + String.Format("{0:0.00}", convert) + " €";
@@ -102,8 +117,13 @@ namespace Fulbank.View
             {
                 MessageBox.Show("Une erreur s'est produite : " + ex.Message, "Erreur2");
             }
-
         }
 
+        private void img_retour_Click(object sender, EventArgs e)
+        {
+            Compte compte = new Compte(idClientActuel);
+            compte.Show();
+            this.Hide();
+        }
     }
 }
