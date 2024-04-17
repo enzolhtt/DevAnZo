@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 namespace Fulbank.Model.Repository
 {
     internal class ConnexionRepository
-    {
+    { 
         private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
         private string password;
 
