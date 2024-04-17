@@ -9,19 +9,15 @@ namespace Fulbank.ViewModel
 {
     internal class ConnexionViewModel
     {
-        private CRepository.ConnexionRepository CompteRepository;
+        private CRepository.ConnexionRepository ConnexionRepository;
         public ConnexionViewModel() 
-        { 
-            CompteRepository = new CRepository.ConnexionRepository();
+        {
+            ConnexionRepository = new CRepository.ConnexionRepository();
         }
 
-        public bool TestConnexion(int NumCompte, string MdpCompte)
+        public string TestConnexion(int idClient)
         {
-            if(CompteRepository.TestConnexion(NumCompte, MdpCompte))
-            {
-                return true;
-            }
-            return false;
+            return ConnexionRepository.TestConnexion(idClient);
         }
     }
 }

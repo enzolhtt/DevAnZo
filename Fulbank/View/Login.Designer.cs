@@ -55,28 +55,34 @@
             bt_connecter.Margin = new Padding(0);
             bt_connecter.Name = "bt_connecter";
             bt_connecter.Size = new Size(247, 77);
-            bt_connecter.TabIndex = 1;
+            bt_connecter.TabIndex = 3;
             bt_connecter.Text = "Se connecter";
             bt_connecter.UseVisualStyleBackColor = false;
             bt_connecter.Click += bt_connecter_Click;
             // 
             // tbx_password
             // 
-            tbx_password.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            tbx_password.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             tbx_password.Location = new Point(324, 602);
             tbx_password.Name = "tbx_password";
+            tbx_password.PasswordChar = '*';
             tbx_password.Size = new Size(346, 43);
             tbx_password.TabIndex = 2;
             tbx_password.Text = "Password";
+            tbx_password.TextAlign = HorizontalAlignment.Center;
+            tbx_password.Click += tbx_password_Click;
+            tbx_password.KeyPress += tbx_password_KeyPress;
             // 
             // tbx_user
             // 
-            tbx_user.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            tbx_user.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             tbx_user.Location = new Point(324, 449);
             tbx_user.Name = "tbx_user";
             tbx_user.Size = new Size(346, 43);
-            tbx_user.TabIndex = 3;
-            tbx_user.Text = "Username";
+            tbx_user.TabIndex = 1;
+            tbx_user.Text = "Identifiant client";
+            tbx_user.TextAlign = HorizontalAlignment.Center;
+            tbx_user.Click += tbx_user_Click;
             // 
             // Login
             // 
