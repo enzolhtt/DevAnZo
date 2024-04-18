@@ -1,24 +1,20 @@
+## Documentation sur l'installation de la FulBank
 
-# Installer FulBank
+# 1) Les prérequis
 
-Voici un petit guide pour faire fonctionner notre projet. 
+- Un SGBD : MariaDB ( version 10.5.19 )
+- Il vous faudra créer une base de données nommée FulBank.
+- Un dump de la base de données est fourni dans le git du projet.
 
+# 2) Modification du code
 
+- Il faudra modifier certaines lignes dans le code pour que la connexion à votre base de données puisse fonctionner.
+- Voici les chemins où il y a du code à modifier :
+    - ...\Fulbank\Model\Repository\ConnexionRepository.cs
+    - ...\Fulbank\Model\Repository\ClientRepository.cs
+    - ...\Fulbank\Model\Repository\BeneficiaireRepository.cs
+    - ...\Fulbank\Model\Repository\CompteRepository.cs
+    - ...\Fulbank\Model\Repository\TransactionRepository.cs
 
-
-## Base de données
-
-**SGBD** : MariaDB 
-
-**version** : 10.5.19-MariaDB
-
-Un dump de la base de données vous a été fourni. 
-
-
-## Connection db dans l'application
-
-chemin : ...\Fulbank\Model\Repository\ConnexionRepository.cs
-
-La variable "connectionString" sert a rentrer les paramètres d'authentification à la base de données.
-
-exemple : private string connectionString = "server=172.16.119.26; uid=brochard;pwd=admin;database=FulBank";
+    Et ensuite modifier la chaine de caractère qui s'appelle connectionString qui permet de rentrer les paramètres d'authentification à votre base de données.
+    Donc il faut modifier l'adresse IP du server (en mettant l'adresse de la machine où se trouve la BDD), uid qui correspond au nom d'utilisateur de l'utilisateur mariaDB et pwd qui est le mot de passe de l'utilisateur uid.
