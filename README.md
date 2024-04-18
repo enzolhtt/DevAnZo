@@ -1,12 +1,12 @@
-## Documentation sur l'installation de la FulBank
+# Documentation sur l'installation de la FulBank
 
-# 1) Les prérequis
+## 1) Les prérequis
 
 - Un SGBD : MariaDB ( version 10.5.19 )
 - Il vous faudra créer une base de données nommée FulBank.
 - Un dump de la base de données est fourni dans le git du projet.
 
-# 2) Modification du code
+## 2) Modification du code
 
 - Il faudra modifier certaines lignes dans le code pour que la connexion à votre base de données puisse fonctionner.
 - Voici les chemins où il y a du code à modifier :
